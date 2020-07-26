@@ -22,8 +22,10 @@ module.exports = {
         theme_color: fullConfig.theme.colors.teal["400"],
         display: `minimal-ui`,
         icon: `src/images/tailwind-icon.png`,
-        type: `image/png`,
-        purpose: `maskable`,
+        icon_options: {
+          type: `image/png`,
+          purpose: `maskable`,
+        }
       },
     },
     {
