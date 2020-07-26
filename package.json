@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-tailwind",
-  "description": "Gatsby starter styled with Tailwind",
-  "version": "4.0.0",
-  "author": "Taylor Bryant <taylor@bryant.io>",
+  "name": "tail-story",
+  "description": "A Tail Story",
+  "version": "0.0.1",
+  "author": "Bilal Tahir",
   "dependencies": {
     "gatsby": "2.24.11",
     "gatsby-plugin-manifest": "2.4.21",
@@ -31,7 +31,7 @@
     "fix": "npm run fix:lint && npm run fix:prettier",
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "dev": "npm run develop",
+    "dev": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
@@ -52,9 +52,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/taylorbryant/gatsby-starter-tailwind"
+    "url": "https://github.com/btahir/tail-story"
   },
   "bugs": {
-    "url": "https://github.com/taylorbryant/gatsby-starter-tailwind/issues"
+    "url": "https://github.com/btahir/tail-story/issues"
   }
 }
