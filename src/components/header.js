@@ -14,10 +14,10 @@ function Header() {
   `);
 
   return (
-    <header className="bg-teal-700">
+    <header className="bg-gray-100 text-gray-900">
       <div className="flex flex-wrap items-center justify-between max-w-4xl p-4 mx-auto md:p-8">
         <Link to="/">
-          <h1 className="flex items-center text-white no-underline">
+          <h1 className="flex items-center no-underline">
             <svg
               className="w-8 h-8 mr-2 fill-current"
               height="54"
@@ -63,7 +63,7 @@ function Header() {
             },
           ].map((link) => (
             <Link
-              className="block mt-4 text-white no-underline md:inline-block md:mt-0 md:ml-6"
+              className="block mt-4 no-underline md:inline-block md:mt-0 md:ml-6"
               key={link.title}
               to={link.route}
             >
