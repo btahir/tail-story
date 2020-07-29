@@ -5,14 +5,6 @@ import SEO from "../components/seo";
 
 function IndexPage() {
 
-  const handleSignup = () => {
-    
-  }
-
-  const handleLogin = () => {
-    
-  }
-
   return (
     <Layout>
       <SEO
