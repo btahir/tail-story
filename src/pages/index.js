@@ -2,16 +2,15 @@ import React from "react";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import netlifyIdentity from 'netlify-identity-widget';
 
 function IndexPage() {
 
   const handleSignup = () => {
-    netlifyIdentity.open('signup')
+    
   }
 
   const handleLogin = () => {
-    netlifyIdentity.open('login')
+    
   }
 
   return (
