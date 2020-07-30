@@ -39,6 +39,15 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-139206114-4',
+        // this option places the tracking script into the head of the DOM
+        head: true,
+        anonymize: true,
+      },
+    },    
     `gatsby-plugin-offline`,
   ],
 };
