@@ -5,8 +5,8 @@ const fullConfig = resolveConfig(tailwindConfig);
 
 module.exports = {
   siteMetadata: {
-    title: `A Tail Story`,
-    description: `A Tail Story`,
+    title: `TwitPivot`,
+    description: `See what both sides are saying.`,
     author: `@deepwhitman`,
   },
   plugins: [
@@ -20,7 +20,7 @@ module.exports = {
         background_color: fullConfig.theme.colors.white,
         theme_color: fullConfig.theme.colors.teal["400"],
         display: `minimal-ui`,
-        icon: `src/images/tailwind-icon.png`,
+        icon: `src/images/pivot.svg`,
         icon_options: {
           type: `image/png`,
           purpose: `maskable`,
