@@ -15,3 +15,6 @@ now.json
 
 # Local Netlify folder
 .netlify
+
+# ignore env fles
+.env.*
