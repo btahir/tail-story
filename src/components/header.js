@@ -1,8 +1,10 @@
-import { graphql, useStaticQuery, Link } from "gatsby";
+import { graphql, useStaticQuery, Link, navigate } from "gatsby";
 import React, { useState } from "react";
+import { auth, useAuth } from "gatsby-theme-firebase";
 
 function Header() {
   const [isExpanded, toggleExpansion] = useState(false);
+  const { isLoggedIn } = useAuth();
   const { site } = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -50,7 +52,7 @@ function Header() {
         <nav
           className={`${
             isExpanded ? `block` : `hidden`
-          } md:block md:flex md:items-center w-full md:w-auto`}
+            } md:block md:flex md:items-center w-full md:w-auto`}
         >
           {[
             {
@@ -60,11 +62,7 @@ function Header() {
             {
               route: `/contact`,
               title: `Contact`,
-            },
-            {
-              route: `/login`,
-              title: `Login`,
-            },            
+            }
           ].map((link) => (
             <Link
               className="block mt-4 no-underline md:inline-block md:mt-0 md:ml-6"
@@ -74,6 +72,20 @@ function Header() {
               {link.title}
             </Link>
           ))}
+          {isLoggedIn ?
+            <button
+              className="block mt-4 no-underline md:inline-block md:mt-0 md:ml-6"
+              onClick={() => auth.signOut()}
+            >
+              Sign Out
+            </button> :
+            <Link
+              className="block mt-4 no-underline md:inline-block md:mt-0 md:ml-6"
+              to="/login"
+            >
+              Login
+            </Link>
+          }
         </nav>
       </div>
     </header>
