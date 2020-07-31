@@ -62,7 +62,14 @@ module.exports = {
             : []),
         ],
       },
-    },
+    },    
+    {
+      resolve:`gatsby-plugin-webpack-size`,
+      options: {
+        // Set to true to show bundle sizes in development mode as well
+        development: true
+      }
+    },   
     `gatsby-plugin-offline`,
   ],
 };

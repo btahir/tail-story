@@ -1,4 +1,4 @@
-import { graphql, useStaticQuery, Link, navigate } from "gatsby";
+import { graphql, useStaticQuery, Link } from "gatsby";
 import React, { useState } from "react";
 import { auth, useAuth } from "gatsby-theme-firebase";
 
