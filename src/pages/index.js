@@ -13,8 +13,6 @@ function IndexPage() {
         title="Home"
       />
       <div className="text-center text-2xl font-bold text-gray-800 tracking-wide" >{isLoggedIn ? `Welcome ${profile.displayName}` : 'Please Sign In'}</div>
-
-  
     </Layout>
   );
 }
