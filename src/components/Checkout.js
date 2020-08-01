@@ -1,4 +1,4 @@
-import { loadStripe } from "gatsby-source-stripe";
+import { loadStripe } from '@stripe/stripe-js';
 
 const stripePromise = loadStripe("pk_test_8f6o9Uhjiz4mxCcNRJkcBZeL");
 

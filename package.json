@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "author": "Bilal Tahir",
   "dependencies": {
+    "@stripe/stripe-js": "^1.8.0",
     "gatsby": "2.24.11",
     "gatsby-plugin-manifest": "2.4.21",
     "gatsby-plugin-offline": "3.2.21",

@@ -1,7 +1,7 @@
 import React from "react";
 
-import Layout from "../components/Layout1";
-import SEO from "../components/SEO1";
+import Layout from "../components/Layout";
+import SEO from "../components/SEO";
 
 function ContactPage() {
   return (
