@@ -11,8 +11,8 @@ export const redirectToCheckout = async (event, userId) => {
             quantity: 1 
         }],
         mode: 'subscription',
-        successUrl: `http://localhost:8000/`,
-        cancelUrl: `http://localhost:8000/`,
+        successUrl: window.location.origin + '/',
+        cancelUrl: window.location.origin + '/',
         clientReferenceId: userId
     })
 
