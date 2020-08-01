@@ -8,6 +8,7 @@ import handleResetSuccess from "../firebase/auth/handleResetSuccess";
 import FormState from "../containers/FormState";
 import Form from "../components/Form";
 import theme from "../gatsby-plugin-theme-ui";
+import { createNewUser } from '../../utils/firebaseActions';
 
 const FormWithHandlers = () => {
   const { loginRedirectPath } = useFirebaseConfig();
@@ -16,9 +17,15 @@ const FormWithHandlers = () => {
     <Form
       onLoginSuccess={user => {
         handleLoginSuccess({ ...formState, user, loginRedirectPath });
+        if (user.additionalUserInfo) {
+          createNewUser(user.user);
+        } else {
+          createNewUser(user);
+        }
       }}
       onSignUpSuccess={user => {
         handleSignUpSuccess({ ...formState, user, loginRedirectPath });
+        createNewUser(user);
       }}
       onResetSuccess={() => {
         handleResetSuccess({ ...formState, loginRedirectPath });

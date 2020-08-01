@@ -6,7 +6,6 @@ import { auth } from "../firebase";
 import Form from "./FormBase";
 import Input from "./Input";
 import Button from "./Button";
-import { createNewUser } from '../../utils/firebaseActions';
 
 const SignUpForm: React.FunctionComponent<{
   onSuccess?: (user?: firebase.User | null) => void;
@@ -28,8 +27,7 @@ const SignUpForm: React.FunctionComponent<{
           );
           if (user) {
             await user.updateProfile({ displayName: name });
-            await user.sendEmailVerification();            
-            await createNewUser(user);
+            await user.sendEmailVerification();
           }
           onSuccess(user);
         } catch (error) {
