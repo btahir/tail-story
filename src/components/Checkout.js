@@ -6,7 +6,11 @@ export const redirectToCheckout = async event => {
     event.preventDefault()
     const stripe = await stripePromise
     const { error } = await stripe.redirectToCheckout({
-        items: [{ plan: "price_1HBBvFJpKTxPdmIt0SK2MaaS", quantity: 1 }],
+        lineItems: [{ 
+            price: "price_1HBDCrJpKTxPdmIthftrOl0M", 
+            quantity: 1 
+        }],
+        mode: 'subscription',
         successUrl: `http://localhost:8000/`,
         cancelUrl: `http://localhost:8000/`,
     })
