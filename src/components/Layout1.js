@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import Header from "./Header";
+import Header from "./Header1";
 
 function Layout({ children }) {
   return (
