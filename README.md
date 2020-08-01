@@ -19,3 +19,7 @@ FIREBASE_STORAGE_BUCKET="<YOURDATA>"
 FIREBASE_MESSAGING_SENDER_ID="<YOURDATA>"
 FIREBASE_APP_ID="<YOURDATA>"```
 
+## Stripe
+
+Use redirectToCheckout function. New Price API instead of Plan API.
+Send clientReferenceId as metadata. This can be used to update firestore for isPaying: true, Subscription_Plan info via webhook once checkout complete.
