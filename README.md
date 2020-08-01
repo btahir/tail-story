@@ -23,3 +23,15 @@ FIREBASE_APP_ID="<YOURDATA>"```
 
 Use redirectToCheckout function. New Price API instead of Plan API.
 Send clientReferenceId as metadata. This can be used to update firestore for isPaying: true, Subscription_Plan info via webhook once checkout complete.
+
+## Firebase Functions
+
+We need to setup firebase functions so Sripe webhooks can call them after events (add subscription, change subscription etc).
+Source: https://firebase.google.com/docs/functions/get-started
+In tail-story, run
+```firebase login```
+```firebase init functions```
+
+This will create firebase.json, .firebaserc, functions folder with all the things needed to deploy functions. index.js is where functions live.
+See saas-generator for Hamza's bash deployment.
+
