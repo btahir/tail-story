@@ -62,15 +62,7 @@ module.exports = {
             : []),
         ],
       },
-    },
-    {
-      resolve: `gatsby-source-stripe`,
-      options: {
-        objects: ["Product", "Subscription"],
-        secretKey: process.env.STRIPE_SECRET_KEY,
-        downloadFiles: false,
-      },
-    },    
+    },   
     {
       resolve:`gatsby-plugin-webpack-size`,
       options: {

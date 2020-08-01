@@ -12,7 +12,6 @@
     "gatsby-plugin-react-helmet": "3.3.10",
     "gatsby-plugin-sharp": "2.6.22",
     "gatsby-plugin-webpack-size": "^1.0.0",
-    "gatsby-source-stripe": "^3.1.1",
     "gatsby-theme-firebase": "^1.0.10",
     "prop-types": "15.7.2",
     "react": "16.13.1",
