@@ -12,6 +12,8 @@ const Input: React.FunctionComponent<Props> = ({ label, sx, ...restProps }) => {
     fontSize: 1,
     mb: 2,
     p: 1,
+    border: 'solid 1px #aaa',
+    outline: 'none',
   };
   return (
     <label css={{ display: "block" }}>

@@ -28,7 +28,7 @@ const Form: React.FunctionComponent<{
       }}
     >
       <Header css={{ textAlign: "center" }}>
-        <h1 sx={{ my: 1 }}>{siteMetadata.title}</h1>
+        <h1 className="text-2xl font-semibold" sx={{ my: 1 }}>{siteMetadata.title}</h1>
       </Header>
       <Nav />
       {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}

@@ -1,7 +1,7 @@
 const colors = {
   text: "#4A4A4A",
   background: "#FFF",
-  primary: "#3273DC",
+  primary: "#4FD1C5",
   muted: "#F1F1F1",
   green: "#23D160",
   blue: "#209CEE",
@@ -40,7 +40,7 @@ const styles = {
     backgroundColor: "muted",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center",    
   },
   a: {
     color: "primary",

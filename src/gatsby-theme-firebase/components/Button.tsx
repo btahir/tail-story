@@ -19,6 +19,7 @@ const Button: React.FunctionComponent<
         bg: "primary",
         border: 0,
         cursor: "pointer",
+        outline: 'none !important'
       }}
       {...restProps}
     />
