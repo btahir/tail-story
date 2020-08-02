@@ -8,7 +8,7 @@ export const manageStripeSubscription = (id, url) => {
         .then(res => res.data.body)
         .then((link) => {
             console.log(link)
-            // window.location.href = link;
+            window.location.href = link;
         })
         .catch(function (err) {
             console.log('error', err)
