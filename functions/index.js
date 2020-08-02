@@ -47,16 +47,24 @@ exports.addSubscriptionWebHook = functions.https.onRequest(({ rawBody, headers }
     }
 });
 
-exports.setupStripeCustomer = functions.https.onCall( async ( data, context ) => {
+exports.setupStripeCustomer = functions.firestore.document('users/{docId}')
+                                .onCreate( async (snap, context) => {
     // create a new customer in Stripe
-    const { email } = JSON.parse(data)
-    const customer = await stripe.customers.create({ email: email });
+    const data = snap.data();
+    const customer = await stripe.customers.create({ email: data.email });
 
     // subscribe the new customer to the free plan
-    await stripe.subscriptions.create({
+    const subscription = await stripe.subscriptions.create({
         customer: customer.id,
         items: [{ price: functions.config().stripe.default_plan }],
     });
+
+    const user = admin.firestore().collection('users').doc(context.params.docId)
+
+    await user.set({
+        stripeCustomerId: customer.id,
+        stripeSubscriptionId: subscription.id
+    }, { merge: true });
 
     return {
         statusCode: 200,

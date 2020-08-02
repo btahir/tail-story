@@ -27,7 +27,7 @@ const FormWithHandlers = () => {
       onSignUpSuccess={user => {
         handleSignUpSuccess({ ...formState, user, loginRedirectPath });
         createNewUser(user);
-        createStripeCustomer(user);
+        // createStripeCustomer(user);
       }}
       onResetSuccess={() => {
         handleResetSuccess({ ...formState, loginRedirectPath });
