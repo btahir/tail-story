@@ -7,7 +7,7 @@ export const manageStripeSubscription = (id, url) => {
     manageSub(postData)
         .then(res => res.data.body)
         .then((link) => {
-            console.log(link)
+            link = link.replace(/"/g,"");
             window.location.href = link;
         })
         .catch(function (err) {
