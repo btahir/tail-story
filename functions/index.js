@@ -47,18 +47,16 @@ exports.addSubscriptionWebHook = functions.https.onRequest(({ rawBody, headers }
     }
 });
 
-exports.setupStripeCustomer = functions.https.onCall( ( data, context ) => {
+exports.setupStripeCustomer = functions.https.onCall( async ( data, context ) => {
     // create a new customer in Stripe
-    console.log('this is the user')
-    // const { user } = event.data
-    // functions.logger.log('this is the email', user.email)
-    // const customer = await stripe.customers.create({ email: user.email });
+    const { email } = JSON.parse(data)
+    const customer = await stripe.customers.create({ email: email });
 
-    // // subscribe the new customer to the free plan
-    // await stripe.subscriptions.create({
-    //     customer: customer.id,
-    //     items: [{ price: functions.config().stripe.default_plan }],
-    // });
+    // subscribe the new customer to the free plan
+    await stripe.subscriptions.create({
+        customer: customer.id,
+        items: [{ price: functions.config().stripe.default_plan }],
+    });
 
     return {
         statusCode: 200,

@@ -13,7 +13,7 @@
 // }
 
 // import axios from 'axios';
-import firebase from "firebase/app";
+import firebase from "firebase";
 
 export const createStripeCustomer = (user) => {
     // axios.post('https://us-central1-wsb-thinkin.cloudfunctions.net/setupStripeCustomer', {
@@ -25,10 +25,11 @@ export const createStripeCustomer = (user) => {
     // }).then((res) => {
     //     console.log('success', res)
     // }).catch((err) => {
-    //     console.log('error', err)
+    //     console.log('error', err)    
     // })
     const setupCustomer = firebase.functions().httpsCallable('setupStripeCustomer')
-    setupCustomer().then(function (result) {
+    const postData = JSON.stringify({email: user.email})
+    setupCustomer(postData).then(function (result) {
         // Read result of the Cloud Function.
         console.log('result', result)
     }).catch(function (err) {
