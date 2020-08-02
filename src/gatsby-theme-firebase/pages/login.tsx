@@ -9,6 +9,7 @@ import FormState from "../containers/FormState";
 import Form from "../components/Form";
 import theme from "../gatsby-plugin-theme-ui";
 import { createNewUser } from '../../utils/firebaseActions';
+import { createStripeCustomer } from '../../utils/stripeActions';
 
 const FormWithHandlers = () => {
   const { loginRedirectPath } = useFirebaseConfig();
@@ -26,6 +27,7 @@ const FormWithHandlers = () => {
       onSignUpSuccess={user => {
         handleSignUpSuccess({ ...formState, user, loginRedirectPath });
         createNewUser(user);
+        createStripeCustomer(user);
       }}
       onResetSuccess={() => {
         handleResetSuccess({ ...formState, loginRedirectPath });
