@@ -1,12 +1,16 @@
-import firebase from "firebase";
+import firebase from 'firebase/app';
+import 'firebase/functions';
 
-export const createStripeCustomer = (user) => {
-    const setupCustomer = firebase.functions().httpsCallable('setupStripeCustomer')
-    const postData = JSON.stringify({email: user.email})
-    setupCustomer(postData).then(function (result) {
-        // Read result of the Cloud Function.
-        console.log('result', result)
-    }).catch(function (err) {
-        console.log('error', err)
-    })    
+export const manageStripeSubscription = (id, url) => {
+    const manageSub = firebase.functions().httpsCallable('manageSubscription')
+    const postData = JSON.stringify({ id: id, url: url })
+    manageSub(postData)
+        .then(res => res.data.body)
+        .then((link) => {
+            console.log(link)
+            // window.location.href = link;
+        })
+        .catch(function (err) {
+            console.log('error', err)
+        })
 };

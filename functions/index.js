@@ -48,7 +48,7 @@ exports.addSubscriptionWebHook = functions.https.onRequest(({ rawBody, headers }
 });
 
 exports.setupStripeCustomer = functions.firestore.document('users/{docId}')
-                                .onCreate( async (snap, context) => {
+    .onCreate(async (snap, context) => {
     // create a new customer in Stripe
     const data = snap.data();
     const customer = await stripe.customers.create({ email: data.email });
@@ -73,6 +73,23 @@ exports.setupStripeCustomer = functions.firestore.document('users/{docId}')
                 roles: ['free'],
             },
         }),
+    };
+});
+
+exports.manageSubscription = functions.https.onCall( async (data, context) => {
+    const { id, url } = JSON.parse(data);
+
+    const stripeId = await admin.firestore().collection('users').doc(id)
+                            .get().then(doc => doc.data().stripeCustomerId);
+
+    const link = await stripe.billingPortal.sessions.create({
+        customer: stripeId,
+        return_url: url,
+    });
+
+    return {
+        statusCode: 200,
+        body: JSON.stringify(link.url),
     };
 });
 
