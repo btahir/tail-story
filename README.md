@@ -40,7 +40,7 @@ firebase init functions
 ```
 
 This will create firebase.json, .firebaserc, functions folder with all the things needed to deploy functions. index.js is where functions live.
-See saas-generator for Hamza's bash deployment.
+You will need to updated .firebaserc for the name of your GCP project.
 
 ### Firebase variables
 These are in the deploy.sh file
