@@ -21,7 +21,13 @@ export const createNewUser = (user) => {
 }
 
 export const getStripeSubscription = async (id) => {
-    const plan = await firestore.collection("users").doc(id)
-        .get().then(doc => doc.data().stripeSubscriptionPlan)
-    return plan
+    try {
+        const plan = await firestore.collection("users").doc(id)
+            .get().then(doc => doc.data().stripeSubscriptionPlan)
+        return plan
+    }
+    catch(err) {
+        return null
+    }
+
 }

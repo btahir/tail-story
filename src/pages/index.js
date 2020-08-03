@@ -12,7 +12,19 @@ function IndexPage() {
 
   useEffect(() => {
     if (profile) {
-      getStripeSubscription(profile.uid).then(res => setStripePlan(res));
+      getStripeSubscription(profile.uid)
+        .then(res => {
+          if (res) {
+            setStripePlan(res)
+          }
+          else {
+            setTimeout(
+              function () {
+                getStripeSubscription(profile.uid)
+                  .then(res => setStripePlan(res))
+              }, 2500)
+          }
+        });
     }
   }, [profile])
 
