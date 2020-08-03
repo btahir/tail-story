@@ -12,7 +12,7 @@ export const createNewUser = (user) => {
     // store user in a user collection in Firestore
     firestore.collection("users").doc(user.uid).set(firestoreUserData, {merge: true})
         .then(function () {
-            return true;            
+            return true;
         })
         .catch(function (error) {
             console.error("Error writing document: ", error);
