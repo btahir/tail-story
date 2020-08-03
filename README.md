@@ -36,7 +36,6 @@ In tail-story, run
 
 ```
 firebase login
-
 firebase init functions
 ```
 
