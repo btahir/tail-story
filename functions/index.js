@@ -80,7 +80,7 @@ exports.manageSubscription = functions.https.onCall( async (data, context) => {
     const { id } = JSON.parse(data);
 
     const stripeId = await admin.firestore().collection('users').doc(id)
-                            .get().then(doc => doc.data().stripeCustomerId);
+                            .get().then(doc => doc.data().stripeCustomerId);    
 
     const link = await stripe.billingPortal.sessions.create({
         customer: stripeId,
