@@ -20,7 +20,6 @@ exports.setupStripeCustomer = functions.firestore.document('users/{docId}')
             items: [{ price: functions.config().stripe.default_plan }],
             metadata: {firebaseId: context.params.docId}
         });
-        console.log('subscription', subscription)
 
         const user = admin.firestore().collection('users').doc(context.params.docId)
 
