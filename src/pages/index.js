@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
 import { useAuth } from "gatsby-theme-firebase";
 import { manageStripeSubscription } from '../utils/stripeActions';
 import { getStripeSubscription } from '../utils/firebaseActions';
+import { GlobalDispatchContext } from '../context/GlobalContextProvider';
 
 function IndexPage() {
   const { isLoading, isLoggedIn, profile } = useAuth();
   const [stripePlan, setStripePlan] = useState(null);
+  const themeDispatch = useContext(GlobalDispatchContext)
 
   useEffect(() => {
     if (profile) {
@@ -41,9 +43,10 @@ function IndexPage() {
           {isLoggedIn ?
             <div className="text-center">
               <div className="mt-8 mb-16 text-3xl">You are on the <span className="text-teal-400 font-semibold">{stripePlan}</span></div>
+              <button onClick={() => themeDispatch({ type: 'TOGGLE_THEME' })} className="text-xl px-4 py-2 bg-teal-400 rounded text-gray-100 focus:outline-none mr-4">Toggle Theme</button>
               <button onClick={() => manageStripeSubscription(profile.uid)} className="text-xl px-4 py-2 bg-teal-400 rounded text-gray-100 focus:outline-none">Manage Subscription</button>
             </div>
-            : null
+            : <button onClick={() => themeDispatch({ type: 'TOGGLE_THEME' })} className="text-xl px-4 py-2 bg-teal-400 rounded text-gray-100 focus:outline-none mr-4">Toggle Theme</button>
           }
         </div>
       }

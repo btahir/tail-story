@@ -1,7 +1,6 @@
 import { graphql, useStaticQuery, Link } from "gatsby";
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { auth, useAuth } from "gatsby-theme-firebase";
-import { GlobalDispatchContext } from '../context/GlobalContextProvider';
 
 function Header() {
   const [isExpanded, toggleExpansion] = useState(false);
@@ -14,8 +13,7 @@ function Header() {
         }
       }
     }
-  `);
-  const themeDispatch = useContext(GlobalDispatchContext)
+  `);  
 
   return (
     <header>
@@ -49,8 +47,7 @@ function Header() {
             <title>Menu</title>
             <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
           </svg>
-        </button>
-        <button onClick={() => themeDispatch({ type: 'TOGGLE_THEME' })}>Toggle</button>
+        </button>        
 
         <nav
           className={`${
