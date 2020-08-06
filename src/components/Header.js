@@ -13,10 +13,10 @@ function Header() {
         }
       }
     }
-  `);
+  `);  
 
   return (
-    <header className="bg-gray-100 text-gray-900">
+    <header>
       <div className="flex flex-wrap items-center justify-between max-w-4xl p-4 mx-auto md:p-8">
         <Link to="/">
           <h1 className="flex items-center no-underline">
@@ -36,7 +36,7 @@ function Header() {
         </Link>
 
         <button
-          className="flex items-center block px-3 py-2 text-white border border-white rounded md:hidden"
+          className="flex items-center block px-3 py-2 rounded md:hidden"
           onClick={() => toggleExpansion(!isExpanded)}
         >
           <svg
@@ -47,7 +47,7 @@ function Header() {
             <title>Menu</title>
             <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
           </svg>
-        </button>
+        </button>        
 
         <nav
           className={`${

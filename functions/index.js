@@ -80,17 +80,17 @@ exports.updateSubscription = functions.https.onRequest( async ({ rawBody, header
             stripeSubscriptionPlan: plan
         });
 
-        return {
+        response.send({
             statusCode: 200,
             body: JSON.stringify({ received: true }),
-        };
+        });
     }
 
     catch (err) {
-        return {
+        response.send({
             statusCode: 400,
             body: `Webhook Error: ${err.message}`,
-        };
+        });
     }
 
 })
