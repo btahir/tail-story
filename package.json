@@ -4,6 +4,8 @@
   "version": "0.0.1",
   "author": "Bilal Tahir",
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
     "@stripe/stripe-js": "^1.8.0",
     "axios": "^0.19.2",
     "gatsby": "2.24.11",

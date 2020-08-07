@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
+import Card from "../components/Card";
 import { useAuth } from "gatsby-theme-firebase";
 import { manageStripeSubscription } from '../utils/stripeActions';
 import { getStripeSubscription } from '../utils/firebaseActions';
@@ -28,23 +29,25 @@ function IndexPage() {
     }
   }, [profile])
 
-
   return (
     <Layout>
       <SEO
         keywords={[`gatsby`, `tailwind`, `react`, `tailwindcss`]}
         title="Home"
       />
-      <div className="text-center text-2xl font-bold tracking-wide" >{isLoggedIn ? `Welcome ${profile.displayName}` : 'Hello!'}</div>
       {isLoading ? null :
-        <div className="flex justify-center mt-10 outline-none">
-          {isLoggedIn ?
-            <div className="text-center">
-              <div className="mt-8 mb-16 text-3xl">You are on the <span className="text-teal-400 font-semibold">{stripePlan}</span></div>
-              <button onClick={() => manageStripeSubscription(profile.uid)} className="text-xl px-4 py-2 bg-teal-400 rounded text-gray-100 focus:outline-none">Manage Subscription</button>
-            </div>
-            : null
-          }
+        <div className="justify-center outline-none">
+          <ul className="flex">
+            <li className="mr-3">
+              <a className="inline-block border border-blue-500 rounded py-1 px-3 bg-blue-500 text-white" href="#">Active Pill</a>
+            </li>
+            <li className="mr-3">
+              <a className="inline-block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-1 px-3" href="#">Pill</a>
+            </li>
+          </ul>          
+          <div className="flex flex-wrap mt-10">
+            {[1,1,1,1].map((item, index) => <Card key={index} />)}
+          </div>
         </div>
       }
     </Layout>
