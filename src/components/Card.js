@@ -1,5 +1,5 @@
 import React from 'react'
-import StarBorderIcon from '@material-ui/icons/StarBorder'
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 
 const Card = () => {
     return (
@@ -8,9 +8,9 @@ const Card = () => {
                 <div className="px-6 py-2">
                     <div className="flex justify-between">
                         <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
-                        <div className="flex items-start">
-                            <span className="text-sm mr-1">295</span>
-                            <StarBorderIcon fontSize="small" />
+                        <div className="relative cursor-pointer">                            
+                            <ExpandLessIcon />
+                            <span className="text-xs absolute right-0 bottom-0">295</span>
                         </div>
                     </div>                    
                     <p className="text-gray-700 text-base">
