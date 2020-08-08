@@ -1,4 +1,4 @@
-import { firestore } from "gatsby-theme-firebase";
+import { firebase, firestore } from "gatsby-theme-firebase";
 
 export const createNewUser = (user) => {
     let firestoreUserData = {
@@ -29,5 +29,21 @@ export const getStripeSubscription = async (id) => {
     catch(err) {
         return null
     }
+}
 
+export const submitIdea = async (title, summary, category) => {
+
+    await firestore.collection("ideas").add({
+        title: title,
+        summary: summary,
+        category: category,
+        'createdAt': firebase.firestore.FieldValue.serverTimestamp(),
+    })
+    .then(function () {
+        return true;
+    })
+    .catch(function (error) {
+        console.error("Error writing document: ", error);
+        return false;
+    });
 }
