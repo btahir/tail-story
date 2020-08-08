@@ -60,6 +60,10 @@ function Header() {
               title: `About`,
             },
             {
+              route: `/submit`,
+              title: `Submit`,
+            },            
+            {
               route: `/contact`,
               title: `Contact`,
             }
