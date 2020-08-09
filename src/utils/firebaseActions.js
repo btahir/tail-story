@@ -47,3 +47,8 @@ export const submitIdea = async (title, summary, category) => {
         return false;
     });
 }
+
+export const readIdeas = async () => {
+    const snapshot = await firestore.collection('ideas').get()
+    return snapshot.docs.map(doc => doc.data());
+}
