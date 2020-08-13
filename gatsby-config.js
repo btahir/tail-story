@@ -46,7 +46,7 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/images/icon.svg`,
         icon_options: {
-          type: `image/png`,
+          type: `image/svg`,
           purpose: `maskable`,
         }
       },
