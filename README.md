@@ -1,4 +1,4 @@
-# Gatsby Starter Tailwind
+# Gatsby Tailwind + Firebase + Stripe Starter
 
 ![preview](https://github.com/btahir/tail-story/blob/master/tail-story-preview.png)
 
