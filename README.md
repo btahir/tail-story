@@ -32,10 +32,10 @@ Send clientReferenceId as metadata. This can be used to update firestore for isP
 
 ## Firebase Functions
 
-We need to setup firebase functions so Sripe webhooks can call them after events (add subscription, change subscription etc).
+We need to setup firebase functions so Stripe webhooks can call them after events (add subscription, change subscription etc).
 Source: https://firebase.google.com/docs/functions/get-started
 
-In tail-story, run
+In the project root directory, run
 
 
 ```
