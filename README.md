@@ -12,7 +12,7 @@ Tailwind Starter: https://github.com/taylorbryant/gatsby-starter-tailwind
 
 Gatsby Theme Firebase: https://github.com/epilande/gatsby-theme-firebase
 
-Strip Customer Portal: https://www.netlify.com/blog/2020/07/13/manage-subscriptions-and-protect-content-with-stripe/
+Stripe Customer Portal: https://www.netlify.com/blog/2020/07/13/manage-subscriptions-and-protect-content-with-stripe/
 
 ## Firebase
 
