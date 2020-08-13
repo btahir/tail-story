@@ -3,6 +3,7 @@
 Tailwind starter wih authentication + stripe. Built on the shoulders of
 
 Tailwind Starter: https://github.com/taylorbryant/gatsby-starter-tailwind
+
 Gatsby Theme Firebase: https://github.com/epilande/gatsby-theme-firebase
 
 ## Firebase
