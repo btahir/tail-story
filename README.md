@@ -47,6 +47,11 @@ firebase init functions
 This will create firebase.json, .firebaserc, functions folder with all the things needed to deploy functions. index.js is where functions live.
 You will need to updated .firebaserc for the name of your GCP project.
 
+To deploy functions, cd into the functions directory and run
+```
+sh deploy.sh
+```
+
 ### Firebase Function Variables
 
 These are in the deploy.sh file
