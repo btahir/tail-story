@@ -1,5 +1,11 @@
 # Gatsby Starter Tailwind
 
+To start, cd into project directory and run
+
+```
+yarn && yarn dev
+```
+
 Tailwind starter wih authentication + stripe. Built on the shoulders of
 
 Tailwind Starter: https://github.com/taylorbryant/gatsby-starter-tailwind
@@ -30,7 +36,7 @@ FIREBASE_APP_ID="<YOURDATA>"
 We need to setup firebase functions so Stripe webhooks can call them after events (add subscription, change subscription etc).
 Source: https://firebase.google.com/docs/functions/get-started
 
-In the project root directory, run
+In the project directory, run
 
 
 ```
