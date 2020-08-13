@@ -1,5 +1,7 @@
 # Gatsby Starter Tailwind
 
+Live Demo: https://tail-story.netlify.app/
+
 To start, cd into project directory and run
 
 ```
