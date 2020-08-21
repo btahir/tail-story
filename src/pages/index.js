@@ -8,6 +8,15 @@ import { manageStripeSubscription } from '../utils/stripeActions';
 import { getStripeSubscription } from '../utils/firebaseActions';
 import { GlobalDispatchContext } from '../context/GlobalContextProvider';
 
+const DATA = [
+  {
+    title: 'Python Flask API',
+    description: 'I deployed a ML model using a Flask API that categorizes things into Hotdogs and Not Hotdogs',
+    tags: ['python','machine learning','computer vision','flask','api'],
+    image: 'https://cdn.pixabay.com/photo/2016/03/05/20/13/hot-dog-1238711_960_720.jpg'
+  }
+]
+
 function IndexPage() {
   const { isLoading, isLoggedIn, profile } = useAuth();
   const [stripePlan, setStripePlan] = useState(null);
@@ -49,7 +58,7 @@ function IndexPage() {
         </button>
       </div>  
       <div className="mt-16 flex flex-wrap ">
-        {[1,2,3,4,5].map(i => <Card />)}        
+        {DATA.map((el, index) => <Card key={index} item={el} />)}        
       </div>        
     </Layout>
   );
