@@ -38,7 +38,26 @@ const DATA = [
 function IndexPage() {
   const { isLoading, isLoggedIn, profile } = useAuth();
   const [stripePlan, setStripePlan] = useState(null);
-  const themeDispatch = useContext(GlobalDispatchContext)
+  const [filteredData, setFilteredData] = useState(DATA);
+  const themeDispatch = useContext(GlobalDispatchContext);
+
+  const filterResults = (searchTerm) => {
+    if(searchTerm === '') {
+      setFilteredData( DATA )
+      return
+    }
+    let results = []
+    DATA.map(el => {
+      el.tags.map(tag => {
+        if (searchTerm === tag) {
+          results.push(el)
+          setFilteredData( results )
+        } else {
+          setFilteredData( [] )
+        }
+      })
+    })
+  }
 
   useEffect(() => {
     if (profile) {
@@ -67,7 +86,7 @@ function IndexPage() {
       />
      <div className="pt-2 relative mx-auto text-gray-600 text-center w-full sm:w-1/2">
         <input className="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none w-full"
-          type="search" name="search" placeholder="Search" />
+          onChange={(event) => filterResults(event.target.value)} type="search" name="search" placeholder="Search" />
         <button type="submit" className="absolute right-0 top-0 mt-5 mr-4">
           <svg className="text-gray-600 h-4 w-4 fill-current" viewBox="0 0 56.966 56.966" width="512px" height="512px">
             <path
@@ -76,7 +95,7 @@ function IndexPage() {
         </button>
       </div>  
       <div className="mt-16 flex flex-wrap ">
-        {DATA.map((el, index) => <Card key={index} item={el} />)}        
+        {filteredData.map((el, index) => <Card key={index} item={el} />)}        
       </div>        
     </Layout>
   );
