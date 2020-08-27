@@ -1,5 +1,7 @@
 # Gatsby Tailwind + Firebase + Stripe Starter
 
+Authentication and Payments are 40-60% of the work! I wasted enough time on it to realize I needed a system. This starter combines an authentication flow using Firebase with the Stripe Customer Portal where users can manage their subscriptions.
+
 ![preview](https://github.com/btahir/tail-story/blob/master/tail-story-preview.png)
 
 Live Demo: https://tail-story.netlify.app/
