@@ -13,7 +13,7 @@ import {
   PinterestIcon
 } from "react-share";
 
-const MAX_SCORE = 10;
+const MAX_SCORE = 20;
 
 console.log(QUIZ_DATA.length)
 

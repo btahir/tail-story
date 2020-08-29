@@ -98,5 +98,105 @@ export const QUIZ_DATA = [
         quote: 'There is not a liberal America and a conservative America. There is the United States of America. There is not a black America, a white America, a Latino America, an Asian America. There’s the United States of America.',
         choices: ['Ronald Reagan', 'Bill Clinton', 'Donald Trump', 'Barack Obama'],
         answer: 'Barack Obama'
-    },          
+    },   
+    {
+        quote: 'The cave you fear to enter holds the treasure you seek.',
+        choices: ['Joseph Campbell', 'Bill Clinton', 'Mark Twain', 'Ralph Waldo Emerson'],
+        answer: 'Joseph Campbell'
+    },  
+    {
+        quote: 'In the end, it\'s not the years in your life that count. It\'s the life in your years.',
+        choices: ['Benjamin Franklin', 'Abraham Lincoln', 'Franklin D. Roosevelt', 'Ralph Waldo Emerson'],
+        answer: 'Abraham Lincoln'
+    }, 
+    {
+        quote: 'Success is walking from failure to failure with no loss of enthusiasm.',
+        choices: ['Benjamin Franklin', 'Abraham Lincoln', 'Franklin D. Roosevelt', 'Winston Churchill'],
+        answer: 'Winston Churchill'
+    },  
+    {
+        quote: 'You miss 100% of the shots you don\'t take.',
+        choices: ['Wayne Gretzky', 'John F. Kennedy', 'Kobe Bryant', 'Sachin Tendulkar'],
+        answer: 'Wayne Gretzky'
+    },  
+    {
+        quote: 'Life is 10% what happens to me and 90% of how I react to it.',
+        choices: ['Abraham Lincoln', 'Barack Obama', 'Lara Croft', 'Charles Swindoll'],
+        answer: 'Charles Swindoll'
+    }, 
+    {
+        quote: 'Twenty years from now you will be more disappointed by the things that you didn\'t do than by the ones you did do.',
+        choices: ['Abraham Lincoln', 'Mark Twain', 'Steve Jobs', 'Charles Swindoll'],
+        answer: 'Steve Jobs'
+    }, 
+    {
+        quote: 'Be yourself; everyone else is already taken.',
+        choices: ['Bruce Lee', 'Mark Twain', 'Charles Dickens', 'Oscar Wilde'],
+        answer: 'Oscar Wilde'
+    },  
+    {
+        quote: 'Be yourself; everyone else is already taken.',
+        choices: ['Steve Jobs', 'Mark Twain', 'Charles Dickens', 'Oscar Wilde'],
+        answer: 'Oscar Wilde'
+    },    
+    {
+        quote: 'Whenever you find yourself on the side of the majority, it is time to pause and reflect.',
+        choices: ['Steve Jobs', 'Mark Twain', 'Charles Dickens', 'Oscar Wilde'],
+        answer: 'Mark Twain'
+    },  
+    {
+        quote: 'Do not go where the path may lead , go instead where there is no path and leave a trail.',
+        choices: ['Ralph Waldo Emerson', 'Mark Twain', 'Steve Jobs', 'Oliver Windhelm Homes'],
+        answer: 'Ralph Waldo Emerson'
+    },     
+    {
+        quote: 'Today you are You, that is truer than true. There is no one alive who is Youer than You.',
+        choices: ['Ralph Waldo Emerson', 'Dr. Seuss', 'Lewis Carrol', 'Monty Python'],
+        answer: 'Dr. Seuss'
+    },   
+    {
+        quote: 'Life is always on the edge of death; narrow streets lead to the same place as wide avenues, and a little candle burns itself out just like a flaming torch does. I choose my own way to burn.',
+        choices: ['Vincent Van Gogh', 'Sophie Scoll', 'Emiliano Zapalata', 'Che Guevara'],
+        answer: 'Sophie Scoll'
+    },  
+    {
+        quote: 'If you judge a fish by its ability to climb a tree, it will live its whole life believing that it is stupid.',
+        choices: ['Vincent Van Gogh', 'Albert Einstein', 'Friedrick Nietzsche', 'Thomas Edison'],
+        answer: 'Albert Einstein'
+    },  
+    {
+        quote: 'An eye for eye only ends up making the whole world blind.',
+        choices: ['Martin Luther King', 'Nelson Mandela', 'Mahatama Gandhi', 'Friedrick Nietzsche'],
+        answer: 'Mahatama Gandhi'
+    },  
+    {
+        quote: 'The cure for boredom is curiosity. There is no cure for curiosity.',
+        choices: ['Vincent Van Gogh', 'Dorothy Parker', 'Eleanor Roosevelta', 'Oprah Winfrey'],
+        answer: 'Dorothy Parker'
+    },  
+    {
+        quote: 'I saw the angel in the marble and carved until I set him free.',
+        choices: ['Vincent Van Gogh', 'Michaelangelo', 'Jackson Pollock', 'Andy Warhol'],
+        answer: 'Michaelangelo'
+    },  
+    {
+        quote: 'It’s hard to beat a person who never gives up.',
+        choices: ['Michael Jordan', 'Kobe Bryant', 'Babe Ruth', 'Tom Brady'],
+        answer: 'Babe Ruth'
+    },  
+    {
+        quote: 'The secret of getting ahead is getting started.',
+        choices: ['Albert Einstein', 'Michaelangelo', 'Andy Warhol', 'Mark Twain'],
+        answer: 'Mark Twain'
+    },  
+    {
+        quote: 'People Who Are Crazy Enough To Think They Can Change The World, Are The Ones Who Do.',
+        choices: ['Steve Jobs', 'Rob Siltanen', 'Bill Gates', 'Martin Luther King'],
+        answer: 'Rob Siltanen'
+    },  
+    {
+        quote: 'One has to remember that every failure can be a stepping stone to something better.',
+        choices: ['Thomas Edison', 'Colonel Sanders', 'P.T. Barnum', 'Nikola Tesla'],
+        answer: 'Colonel Sanders'
+    },                                                                                                
 ]
