@@ -75,20 +75,14 @@ function Header() {
               {link.title}
             </Link>
           ))}
-          {isLoggedIn ?
-            <button
-              className="block mt-4 no-underline md:inline-block md:mt-0 md:ml-6"
-              onClick={() => auth.signOut()}
-            >
-              Sign Out
-            </button> :
-            <Link
-              className="block mt-4 no-underline md:inline-block md:mt-0 md:ml-6"
-              to="/login"
-            >
-              Login
-            </Link>
-          }
+            <a 
+              href="https://gum.co/tIODA" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block mt-4 no-underline md:inline-block md:mt-0 md:ml-6 text-teal-400 font-semibold"
+              >
+                Upgrade
+            </a>          
         </nav>
       </div>
     </header>
