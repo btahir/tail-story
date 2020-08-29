@@ -198,5 +198,55 @@ export const QUIZ_DATA = [
         quote: 'One has to remember that every failure can be a stepping stone to something better.',
         choices: ['Thomas Edison', 'Colonel Sanders', 'P.T. Barnum', 'Nikola Tesla'],
         answer: 'Colonel Sanders'
-    },                                                                                                
+    },  
+    {
+        quote: 'You Don’t Have To Be Great To Start, But You Have To Start To Be Great.',
+        choices: ['Thomas Edison', 'Colonel Sanders', 'Zig Ziglar', 'Tony Robins'],
+        answer: 'Zig Ziglar'
+    },  
+    {
+        quote: 'Two things are infinite: the universe and human stupidity; and I\'m not sure about the universe.',
+        choices: ['Thomas Edison', 'Albert Einstein', 'Robert Oppenheimer', 'Nikola Tesla'],
+        answer: 'Albert Einstein'
+    },  
+    {
+        quote: 'Nobody ever figures out what life is all about, and it doesn\'t matter. Explore the world. Nearly everything is really interesting if you go into it deeply enough.',
+        choices: ['Thomas Edison', 'Richard Feynman', 'Albert Einstein', 'Nikola Tesla'],
+        answer: 'Richard Feynman'
+    },  
+    {
+        quote: 'The first principle is that you must not fool yourself and you are the easiest person to fool.',
+        choices: ['Thomas Edison', 'Richard Feynman', 'Albert Einstein', 'Nikola Tesla'],
+        answer: 'Richard Feynman'
+    },   
+    {
+        quote: 'No one can make you feel inferior without your consent.',
+        choices: ['Eleanor Roosevelt', 'Richard Feynman', 'Albert Einstein', 'Niccolo Machiavelli'],
+        answer: 'Eleanor Roosevelt'
+    }, 
+    {
+        quote: 'To live is the rarest thing in the world. Most people exist, that is all.',
+        choices: ['Eleanor Roosevelt', 'Oscar Wilde', 'Madonna', 'Niccolo Machiavelli'],
+        answer: 'Oscar Wilde'
+    },     
+    {
+        quote: 'To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment.',
+        choices: ['Eleanor Roosevelt', 'Maya Angelou', 'Marylin Monroe', 'Ralph Waldo Emerson'],
+        answer: 'Ralph Waldo Emerson'
+    },     
+    {
+        quote: 'A journey of a thousand leagues begins beneath one’s feet.',
+        choices: ['Alan Watts', 'Lao Tzu', 'Confucius', 'Virgil'],
+        answer: 'Lao Tzu'
+    },     
+    {
+        quote: 'Small minds are concerned with the extraordinary, great minds with the ordinary.',
+        choices: ['Albert Einstein', 'Oscar Wilde', 'Blaise Pascal', 'Mark Twain'],
+        answer: 'Blaise Pascal'
+    },     
+    {
+        quote: 'I am so clever that sometimes I don\'t understand a single word of what I am saying.',
+        choices: ['Eleanor Roosevelt', 'Oscar Wilde', 'Mae West', 'Dr. Seuss'],
+        answer: 'Oscar Wilde'
+    },                                                                                                                                        
 ]

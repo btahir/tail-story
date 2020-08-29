@@ -13,9 +13,9 @@ import {
   PinterestIcon
 } from "react-share";
 
-const MAX_SCORE = 20;
+const MAX_SCORE = 50;
 
-console.log(QUIZ_DATA.length)
+// console.log(QUIZ_DATA.length)
 
 function Pro() {  
   const [quiz, setQuiz] = useState(QUIZ_DATA[0]);
