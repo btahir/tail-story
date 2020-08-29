@@ -13,7 +13,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Quizuotes`,
-    description: `Quizuotes`,
+    description: `Take the Quotes Quiz. Guess the author of the quote.`,
     author: `@deepwhitman`,
   },
   plugins: [
