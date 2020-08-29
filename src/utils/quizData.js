@@ -1,19 +1,19 @@
 export const QUIZ_DATA = [
     {
-        quote: 'There is only one thing in the world worse than being talked about, and that is not being talked about.',
-        choices: ['Oscar Wilde', 'William Shakespear', 'John F. Kennedy', 'Donald Trump'],
-        answer: 'Oscar Wilde'
-    },
+        quote: 'Two roads diverged in a wood and I — I took the one less traveled by, and that has made all the difference.',
+        choices: ['Emily Dickinson', 'Robert Frost', 'T.S. Elliot', 'William Shakespear'],
+        answer: 'Robert Frost'
+    },    
     {
         quote: 'Your time is limited, so don\'t waste it living someone else\'s life. Don\'t be trapped by dogma – which is living with the results of other people\'s thinking.',
         choices: ['Jesus Christ', 'Marilyn Monroe', 'Steve Jobs', 'Albert Einstein'],
         answer: 'Steve Jobs'
     },
     {
-        quote: 'If you look at what you have in life, you\'ll always have more. If you look at what you don\'t have in life, you\'ll never have enough.',
-        choices: ['Mary Angelou', 'Oprah Winfrey', 'Kim Kardashion', 'Dalai Lama'],
-        answer: 'Oprah Winfrey'
-    },
+        quote: 'In spite of everything I still believe that people are really good at heart.',
+        choices: ['Viktor Frankl', 'Anne Frank', 'Nelson Mandela', 'Winston Churchill'],
+        answer: 'Anne Frank'
+    }, 
     {
         quote: 'I came, I saw, I conquered.',
         choices: ['Napolean Bonaparte', 'John Lennon', 'Barack Obama', 'Julius Caesar'],

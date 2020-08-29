@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import QuizCard from '../components/QuizCard';
-import { QUIZ_DATA } from "../utils/quizData";
+import { QUIZ_DATA } from "../utils/quizDataPro";
 
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
@@ -15,7 +15,9 @@ import {
 
 const MAX_SCORE = 10;
 
-function IndexPage() {  
+console.log(QUIZ_DATA.length)
+
+function Pro() {  
   const [quiz, setQuiz] = useState(QUIZ_DATA[0]);
   const [quizIndex, setQuizIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -48,8 +50,8 @@ function IndexPage() {
   return (
     <Layout>
       <SEO title="Home" />
-      <div className="text-center text-2xl font-bold tracking-wide" >Welcome To Quizuotes</div>
-      <div className="text-center text-lg font-light mt-4" >Take our quiz. Guess the author of the quote.</div>
+      <div className="text-center text-2xl font-bold tracking-wide" >Welcome To Quizuotes Pro</div>
+      <div className="text-center text-lg font-light mt-4" >Take our <b>100</b> quotes quiz. Guess the author of the quote.</div>
       <div className="text-center mt-20">
         {quizDone ?
           <div>
@@ -96,4 +98,4 @@ function IndexPage() {
   );
 }
 
-export default IndexPage;
+export default Pro;
