@@ -48,8 +48,8 @@ function Pro() {
   return (
     <Layout>
       <SEO title="Home" />
-      <div className="text-center text-2xl font-bold tracking-wide" >Welcome To Quizuotes Pro</div>
-      <div className="text-center text-lg font-light mt-4" >Take our <b>Pro</b> quotes quiz. Guess the author of the quote.</div>
+      <div className="text-center text-2xl font-bold tracking-wide" >Take Our 50+ Quote Quotes Quiz</div>
+      <div className="text-center text-lg font-light mt-4" >Guess the author of the quote.</div>
       <div className="text-center mt-20">
         {quizDone ?
           <div>
