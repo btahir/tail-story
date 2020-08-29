@@ -19,7 +19,7 @@ function IndexPage() {
   const [quiz, setQuiz] = useState(QUIZ_DATA[0]);
   const [quizIndex, setQuizIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const [quizDone, setQuizDone] = useState(false);
+  const [quizDone, setQuizDone] = useState(true);
 
   useEffect(() => {
 
@@ -45,8 +45,8 @@ function IndexPage() {
     return `${perc.toString()}%`
   }
 
-  const shareUrl = "google.com";
-  const socialTitle = "Test Title";
+  const shareUrl = "https://quizuotes.netlify.app";
+  const socialTitle = `Take the Quizuotes quiz and guess the author of famous sayings. I got ${getScorePerc()}.`;
 
 
   return (
@@ -78,7 +78,7 @@ function IndexPage() {
                 <PinterestShareButton
                   url={shareUrl}
                   media={'https://cdn.pixabay.com/photo/2019/05/22/22/28/brainstorm-4222728_960_720.jpg'}
-                  description={'Guess who said this!'}
+                  description={socialTitle}
                   className="focus:outline-none"
                 >
                   <PinterestIcon size={32} round />
