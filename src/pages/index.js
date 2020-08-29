@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import QuizCard from '../components/QuizCard';
 import { QUIZ_DATA } from "../utils/quizData";
 
@@ -13,17 +13,15 @@ import {
   PinterestIcon
 } from "react-share";
 
-const MAX_SCORE = 2;
+const MAX_SCORE = 10;
+
+console.log(QUIZ_DATA.length)
 
 function IndexPage() {  
   const [quiz, setQuiz] = useState(QUIZ_DATA[0]);
   const [quizIndex, setQuizIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [quizDone, setQuizDone] = useState(false);
-
-  useEffect(() => {
-
-  }, [])
 
   const handleAnswer = (answerStatus) => {
     // update score
