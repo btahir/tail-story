@@ -15,8 +15,6 @@ import {
 
 const MAX_SCORE = 50;
 
-// console.log(QUIZ_DATA.length)
-
 function Pro() {  
   const [quiz, setQuiz] = useState(QUIZ_DATA[0]);
   const [quizIndex, setQuizIndex] = useState(0);
