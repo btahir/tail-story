@@ -51,12 +51,18 @@ function IndexPage() {
 
   return (
     <Layout>
-      <SEO title="Home" />      
+      <SEO title="Home" />
       <div className="text-center text-2xl font-bold tracking-wide" >Welcome To Surprising Quotes</div>
       <div className="text-center text-lg font-light italic mt-4" >Take the quiz. Guess who said this.</div>
       <div className="text-center mt-20">
         {quizDone ?
-          <div className="text-2xl leading-relaxed font-semibold">You scored <span className="text-teal-600 font-extrabold">{getScorePerc()}</span></div>
+          <div>
+            <div className="text-2xl leading-relaxed font-semibold">You scored <span className="text-teal-600 font-extrabold">{getScorePerc()}</span></div>
+            <div>
+              <button>Share</button>
+              <button>Unlock 100 Questions</button>
+            </div>
+          </div>
           : <QuizCard data={quiz} handleAnswer={handleAnswer} />
         }
       </div>    
