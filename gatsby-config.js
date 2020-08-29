@@ -64,6 +64,15 @@ module.exports = {
       },
     },   
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-139206114-2',
+        // this option places the tracking script into the head of the DOM
+        head: true,
+        anonymize: true,
+      },
+    },    
+    {
       resolve:`gatsby-plugin-webpack-size`,
       options: {
         // Set to true to show bundle sizes in development mode as well

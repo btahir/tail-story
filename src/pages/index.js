@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import QuizCard from '../components/QuizCard';
+import { QUIZ_DATA } from "../utils/quizData";
 
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
@@ -14,23 +15,11 @@ import {
 
 const MAX_SCORE = 2;
 
-function IndexPage() {
-  const DATA = [
-    {
-      quote: 'There is only one thing in the world worse than being talked about, and that is not being talked about.',
-      choices: ['Oscar Wilde', 'William Shakespear', 'John F. Kennedy', 'Donald Trump'],
-      answer: 'Oscar Wilde'
-    },
-    {
-      quote: 'Another quote',
-      choices: ['Oscar Wilde', 'William Shakespear', 'John F. Kennedy', 'Donald Trump'],
-      answer: 'Oscar Wilde'
-    },
-  ]
-  const [quiz, setQuiz] = useState(DATA[0]);
+function IndexPage() {  
+  const [quiz, setQuiz] = useState(QUIZ_DATA[0]);
   const [quizIndex, setQuizIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const [quizDone, setQuizDone] = useState(true);
+  const [quizDone, setQuizDone] = useState(false);
 
   useEffect(() => {
 
@@ -44,7 +33,7 @@ function IndexPage() {
     let newIdx = quizIndex + 1;
     if (newIdx < MAX_SCORE) {
       // update quiz    
-      setQuiz(DATA[newIdx])
+      setQuiz(QUIZ_DATA[newIdx])
       setQuizIndex(newIdx)
     } else {
       setQuizDone(true)

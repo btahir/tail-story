@@ -1,10 +1,8 @@
 import { graphql, useStaticQuery, Link } from "gatsby";
 import React, { useState } from "react";
-import { auth, useAuth } from "gatsby-theme-firebase";
 
 function Header() {
   const [isExpanded, toggleExpansion] = useState(false);
-  const { isLoggedIn } = useAuth();
   const { site } = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -60,10 +58,6 @@ function Header() {
               route: `/about`,
               title: `About`,
             },
-            {
-              route: `/contact`,
-              title: `Contact`,
-            }
           ].map((link) => (
             <Link
               className="block mt-4 no-underline md:inline-block md:mt-0 md:ml-6"
