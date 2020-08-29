@@ -63,8 +63,8 @@ function IndexPage() {
   return (
     <Layout>
       <SEO title="Home" />
-      <div className="text-center text-2xl font-bold tracking-wide" >Welcome To Surprising Quotes</div>
-      <div className="text-center text-lg font-light mt-4" >Take the quiz. Guess who said this.</div>
+      <div className="text-center text-2xl font-bold tracking-wide" >Welcome To Quizuotes</div>
+      <div className="text-center text-lg font-light mt-4" >Take our quiz. Guess who said the quote.</div>
       <div className="text-center mt-20">
         {quizDone ?
           <div>
