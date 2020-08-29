@@ -73,7 +73,7 @@ function Header() {
               rel="noopener noreferrer"
               className="block mt-4 no-underline md:inline-block md:mt-0 md:ml-6 text-teal-400 font-semibold"
               >
-                Upgrade
+                Unlock 100 Quotes
             </a>          
         </nav>
       </div>
