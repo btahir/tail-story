@@ -85,7 +85,7 @@ function IndexPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-teal-400 hover:bg-teal-600 text-white font-bold py-2 px-4 m-4 rounded-full focus:outline-none max-w-sm mt-8 mx-auto">
-                  Upgrade To Unlock The 100 Quotes Quiz
+                  Upgrade To Unlock The 50 Quotes Quiz
               </a>
             </div>
           </div>

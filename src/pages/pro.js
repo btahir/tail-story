@@ -51,7 +51,7 @@ function Pro() {
     <Layout>
       <SEO title="Home" />
       <div className="text-center text-2xl font-bold tracking-wide" >Welcome To Quizuotes Pro</div>
-      <div className="text-center text-lg font-light mt-4" >Take our <b>100</b> quotes quiz. Guess the author of the quote.</div>
+      <div className="text-center text-lg font-light mt-4" >Take our <b>Pro</b> quotes quiz. Guess the author of the quote.</div>
       <div className="text-center mt-20">
         {quizDone ?
           <div>
@@ -81,14 +81,7 @@ function Pro() {
                 >
                   <PinterestIcon size={32} round />
                 </PinterestShareButton>
-              </div>
-              <a 
-                href="https://gum.co/tIODA" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-teal-400 hover:bg-teal-600 text-white font-bold py-2 px-4 m-4 rounded-full focus:outline-none max-w-sm mt-8 mx-auto">
-                  Upgrade To Unlock The 100 Quotes Quiz
-              </a>
+              </div>              
             </div>
           </div>
           : <QuizCard data={quiz} handleAnswer={handleAnswer} />
