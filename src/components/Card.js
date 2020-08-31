@@ -1,7 +1,8 @@
 import React from "react";
+import {navigate} from "gatsby";
 
 function Card({ item }) {
-	const {title, description, tags, createdAt, starCount } = item;
+	const {id, title, description, tags, createdAt, starCount } = item;
 	
 	function numberWithCommas(x) {
 		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -9,12 +10,16 @@ function Card({ item }) {
 
 	const formattedStarCount = numberWithCommas(starCount);
 
+	const handleClick = () => {
+		navigate(`/projects/${id}`)
+	}
+
 	return (
-		<div className="rounded overflow-hidden m-4">
+		<div className="rounded overflow-hidden m-4 hover:bg-teal-100">
 			<div className="flex justify-between">
 				<div className="flex flex-col w-2/3">
 					<div className="px-6 py-4">
-						<div className="font-bold text-xl mb-2">{title}</div>
+						<button onClick={handleClick} className="font-bold cursor-pointer text-xl mb-2 focus:outline-none">{title}</button>
 						<p className="text-gray-700 text-base">
 							{description}
 						</p>
