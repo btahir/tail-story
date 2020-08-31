@@ -7,7 +7,7 @@ import Header from "./Header";
 function Layout({ children }) {
   const themeState = useContext(GlobalStateContext);
 
-  let style = themeState.theme === 'light' ? 'flex flex-col min-h-screen font-sans text-gray-900 bg-gray-100' : 'flex flex-col min-h-screen font-sans text-gray-100 bg-gray-800';
+  let style = themeState.theme === 'light' ? 'flex flex-col min-h-screen font-sans text-gray-900 bg-white' : 'flex flex-col min-h-screen font-sans text-gray-100 bg-gray-800';
 
   return (
     <div className={style}>
