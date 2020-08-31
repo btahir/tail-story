@@ -13,25 +13,29 @@ const DATA = [
     title: 'ImageMin API',
     description: 'I spun up a FastAPI server using the base docker image and deployed an API to compress images.',
     tags: ['python','docker','image compression','opencv','api'],
-    image: 'https://upload.wikimedia.org/wikipedia/commons/b/b2/JPEG_compression_Example.jpg'
+    createdAt: 'Sun Aug 30 2020',
+    starCount: 123,
   },
   {
     title: 'Funnier Reddit',
     description: 'I used React and Redux to build a Reddit clone. It\'s way slicker and funnier.',
     tags: ['react','redux','javascript','web app'],
-    image: 'https://preview.redd.it/ko4ukq2qu9i51.jpg?width=960&crop=smart&auto=webp&s=11c0a6a788d8b27a55bc6ae81252a6de00653170'
+    createdAt: 'Sat July 21 2019',
+    starCount: 5,
   },
   {
     title: 'Covid Dating',
     description: 'I built a covid dating app. You can submit Covid negative resuls and get verified and then go on dates. Weird.',
     tags: ['java','sql','social media','vue'],
-    image: 'https://cdn.pixabay.com/photo/2017/07/31/11/23/people-2557411_960_720.jpg'
+    createdAt: 'Thur June 21 2020',
+    starCount: 4216,
   },
   {
     title: 'Hotdog NotHotdog App',
     description: 'I deployed a ML model using a Flask API that categorizes things into Hotdogs and Not Hotdogs. The client side is built using React.',
     tags: ['python','machine learning','computer vision','flask','react'],
-    image: 'https://cdn.pixabay.com/photo/2016/03/05/20/13/america-1238707_960_720.jpg'
+    createdAt: 'Mon Aug 21 2020',
+    starCount: 23,
   },      
 ]
 
@@ -94,7 +98,7 @@ function IndexPage() {
           </svg>
         </button>
       </div>  
-      <div className="mt-16 flex flex-wrap ">
+      <div className="mt-16 flex flex-col">
         {filteredData.map((el, index) => <Card key={index} item={el} />)}        
       </div>        
     </Layout>
