@@ -7,13 +7,13 @@ import Tooltip from '@material-ui/core/Tooltip';
 function ProfileIcons(props) {
   return (
     <div className="mt-6">
-      <Tooltip title="Creator Profile">
+      <Tooltip title="LinkedIn Profile">
       <LinkedInIcon className="cursor-pointer mx-4" fontSize="large" />
       </Tooltip>
-      <Tooltip title="Message Creator">
+      <Tooltip title="Message Them">
       <MailIcon className="cursor-pointer mx-4" fontSize="large" />
       </Tooltip>
-      <Tooltip title="Source Code">
+      <Tooltip title="Github Profile">
       <GitHubIcon className="cursor-pointer mx-4" fontSize="large" />
       </Tooltip>
     </div>

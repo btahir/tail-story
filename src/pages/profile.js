@@ -5,16 +5,35 @@ import SEO from "../components/SEO";
 import ProfileIcons from "../components/ProfileIcons";
 import ProfileAvatar from "../components/ProfileAvatar";
 import Tag from "../components/Tag";
+import Card from "../components/Card";
 
 const DATA = {
-  tags: ['User experience','VueJS','TailwindCSS','React','Painting']
+  tags: ['User experience','VueJS','TailwindCSS','React','Painting'],
+  projects: [
+    {
+      id: 123,
+      title: 'ImageMin API',
+      description: 'I spun up a FastAPI server using the base docker image and deployed an API to compress images.',
+      tags: ['python','docker','image compression','opencv','api'],
+      createdAt: 'Sun Aug 30 2020',
+      starCount: 123,
+    },
+    {
+      id: 124,
+      title: 'Funnier Reddit',
+      description: 'I used React and Redux to build a Reddit clone. It\'s way slicker and funnier.',
+      tags: ['react','redux','javascript','web app'],
+      createdAt: 'Sat July 21 2019',
+      starCount: 5,
+    },    
+  ]
 }
 
 function Profile() {
   return (
     <Layout>
       <SEO title="Profile" />
-      <div className="bg-white my-12 pb-6 w-full flex justify-evenly">
+      <div className="bg-white my-12 pb-6 w-full flex flex-col">
         <ProfileAvatar />
         <div className="flex flex-col items-center">
           <ProfileIcons />
@@ -25,6 +44,9 @@ function Profile() {
           </div>
         </div>
       </div>
+      <div className="mt-16 flex flex-col">
+        {DATA.projects.map((el, index) => <Card key={index} item={el} />)}        
+      </div>      
     </Layout>
   );
 }
