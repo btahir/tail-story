@@ -6,6 +6,7 @@ import ProfileIcons from "../components/ProfileIcons";
 import ProfileAvatar from "../components/ProfileAvatar";
 import Tag from "../components/Tag";
 import Card from "../components/Card";
+import { navigate } from "gatsby";
 
 const DATA = {
   tags: ['User experience','VueJS','TailwindCSS','React','Painting'],
@@ -33,7 +34,11 @@ function Profile() {
   return (
     <Layout>
       <SEO title="Profile" />
-      <div className="bg-white my-12 pb-6 w-full flex flex-col">
+      <div className="flex justify-center">
+      <button onClick={() => navigate('/edit-profile')} className="text-indigo-600 py-1 px-2 text-2xl font-semibold tracking-wide hover:bg-indigo-100 focus:outline-none m-2">Edit</button>
+      <button className="text-indigo-600 py-1 px-2 text-2xl font-semibold tracking-wide hover:bg-indigo-100 focus:outline-none m-2">Preview</button>
+      </div>
+      <div className="bg-white my-12 pb-6 w-full flex flex-col">          
         <ProfileAvatar />
         <div className="flex flex-col items-center">
           <ProfileIcons />
