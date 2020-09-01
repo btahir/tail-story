@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { numberWithCommas } from "../utils/helpers";
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import ProjectIcons from './ProjectIcons';
+import Tag from './Tag';
 
 const DATA = {
 	id: 123,
@@ -28,22 +29,22 @@ const ProjectDetail = ({ projectID }) => {
 				<div className="text-teal-900 font-extrabold leading-loose text-2xl text-center">{projectData.title}</div>
 				<ProjectIcons />
 			</div>
-			<div className="mt-16 text-gray-700">
+			<div className="mt-8 flex justify-around border-b-2 py-2 border-gray-100">
+				<div>
+					Last Updated: <span className="text-gray-600">{projectData.createdAt}</span>
+				</div>
+				<div className="flex">
+					<StarBorderIcon />
+					<div className="ml-1">{formattedStarCount}</div>
+				</div>
+			</div>
+			<div className="mt-12 text-gray-700">
 				{projectData.description}
 			</div>
-			<div className="flex justify-evenly  my-8">
-				<div className="px-6 pt-4 pb-2">
-					{projectData.tags.map((tag, index) =>
-						<span key={index} className="inline-block bg-teal-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{tag}</span>
-					)}
-				</div>
-				<div className="flex flex-col ">
-					<div className="flex">
-						<StarBorderIcon />
-						<div className="ml-1">{formattedStarCount}</div>
-					</div>
-					<div className="text-gray-600">{projectData.createdAt}</div>
-				</div>
+			<div className="px-6 pt-4 pb-2 mt-4 text-center">
+				{projectData.tags.map((tag, index) =>
+					<Tag key={index} item={tag} />
+				)}
 			</div>
 		</div>
 	)
