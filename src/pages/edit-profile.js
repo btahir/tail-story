@@ -103,9 +103,9 @@ const EditProfile = () => {
 
   return (
     <Layout>
-      <SEO title="Edit-Profile" />
-      <div>Edit Profile</div>
-      <form onSubmit={handleSubmit} className="flex flex-col mt-16 max-w-md">
+      <SEO title="Edit-Profile" />      
+      <form onSubmit={handleSubmit} className="flex flex-col mt-16 max-w-md mx-auto">
+        <div>Choose Your Avatar</div>
         <div className="mb-8">
           <TextField
             id="creator-name"
