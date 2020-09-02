@@ -9,6 +9,8 @@ const EditProfile = () => {
   const [linkedin, setLinkedIn] = useState('');
   const [github, setGithub] = useState('');
   const [email, setEmail] = useState('');
+  const [description, setDescription] = useState('');
+  const [skills, setSkills] = useState('');
   const [isNameError, setIsNameError] = useState(false);
   const [nameError, setNameError] = useState('');
   const [isJobError, setIsjobError] = useState(false);
@@ -19,6 +21,10 @@ const EditProfile = () => {
   const [githubError, setGithubError] = useState('');
   const [isEmailError, setIsEmailError] = useState(false);
   const [emailError, setEmailError] = useState('');
+  const [isDescriptionError, setIsDescriptionError] = useState(false);
+  const [descriptionError, setDescriptionError] = useState('');
+  const [isSkillsError, setIsSkillsError] = useState(false);
+  const [skillsError, setSkillsError] = useState('');
 
   const validateEmail = (email) => {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -41,6 +47,10 @@ const EditProfile = () => {
     if (github.length < 1) {
       setIsGithubInError(true)
       setGithubError('This can\'t be blank')
+    }
+    if (description.length < 100) {
+      setIsDescriptionError(true)
+      setDescriptionError('Description needs to be at least 100 characters')
     }
 
     if (!linkedin.startsWith('https://www.linkedin.com/in/') && !linkedin.startsWith('https://linkedin.com/in/')) {
@@ -68,12 +78,19 @@ const EditProfile = () => {
     setGithubError('')
     setIsEmailError(false)
     setEmailError('')
+    setIsDescriptionError(false)
+    setDescriptionError('')
+    setIsSkillsError(false)
+    setSkillsError('')
 
   }
 
   const handleSubmit = (event) => {
     event.preventDefault()
     clearForm()
+
+    let skillArray = skills.split(",")
+    console.log(skillArray)
 
     // validate
     const val = validate();
@@ -88,8 +105,8 @@ const EditProfile = () => {
     <Layout>
       <SEO title="Edit-Profile" />
       <div>Edit Profile</div>
-      <form onSubmit={handleSubmit} className="flex flex-col mt-16 max-w-md mx-auto">
-        <div className="mb-4">
+      <form onSubmit={handleSubmit} className="flex flex-col mt-16 max-w-md">
+        <div className="mb-8">
           <TextField
             id="creator-name"
             fullWidth
@@ -99,7 +116,7 @@ const EditProfile = () => {
             onChange={(event) => setName(event.target.value)}
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-8">
           <TextField
             id="job-title"
             fullWidth
@@ -109,7 +126,7 @@ const EditProfile = () => {
             onChange={(event) => setJob(event.target.value)}
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-8">
           <TextField
             id="linkedin-profile"
             fullWidth
@@ -119,7 +136,7 @@ const EditProfile = () => {
             onChange={(event) => setLinkedIn(event.target.value)}
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-8">
           <TextField
             id="github-profile"
             fullWidth
@@ -129,7 +146,7 @@ const EditProfile = () => {
             onChange={(event) => setGithub(event.target.value)}
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-8">
           <TextField
             id="email"
             fullWidth
@@ -139,7 +156,33 @@ const EditProfile = () => {
             onChange={(event) => setEmail(event.target.value)}
           />
         </div>
-        <button type="submit" className="mx-auto mt-16 w-32 bg-indigo-600 text-white py-1 px-2 rounded focus:outline-none">Save</button>
+        <div className="mb-8">
+          <TextField
+            id="description"
+            fullWidth
+            multiline
+            rows={4}
+            variant="outlined"
+            label="A Little Blurb About You"
+            error={isDescriptionError}
+            helperText={descriptionError}
+            onChange={(event) => setDescription(event.target.value)}
+          />
+        </div>  
+        <div className="mb-8">
+          <TextField
+            id="description"
+            fullWidth
+            multiline
+            rows={2}
+            variant="outlined"
+            label="Skills - Separate With Commas (Maximum: 5)"
+            error={isSkillsError}
+            helperText={skillsError}
+            onChange={(event) => setSkills(event.target.value)}
+          />
+        </div>                
+        <button type="submit" className="mt-16 w-32 bg-indigo-600 text-white py-1 px-2 rounded focus:outline-none">Save</button>
       </form>
     </Layout>
   );
