@@ -9,6 +9,7 @@ const DATA = {
 	title: 'ImageMin API Using FastAPI',
 	description: 'I spun up a FastAPI server using the base docker image and deployed an API to compress images.',
 	tags: ['python', 'docker', 'image compression', 'opencv', 'api'],
+	author: '124222',
 	createdAt: 'Sun Aug 30 2020',
 	starCount: 1293,
 }

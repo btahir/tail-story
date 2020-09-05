@@ -13,11 +13,11 @@ function Card({ item }) {
 	}
 
 	return (
-		<div className="rounded overflow-hidden m-4 hover:bg-gray-100">
+		<div className="rounded px-2 overflow-hidden m-4 hover:bg-gray-100">
 			<div className="flex flex-col sm:flex-row sm:justify-between">
 				<div className="flex flex-col sm:w-2/3">
 					<div className="px-6 py-4">
-						<button onClick={handleClick} className="font-bold cursor-pointer text-xl text-teal-900 mb-2 focus:outline-none">{title}</button>
+						<button onClick={handleClick} className="font-bold cursor-pointer text-xl text-gray-800 mb-2 focus:outline-none">{title}</button>
 						<p className="text-gray-700 text-base">
 							{description}
 						</p>

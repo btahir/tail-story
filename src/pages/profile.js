@@ -7,8 +7,6 @@ import ProfileAvatar from "../components/ProfileAvatar";
 import Tag from "../components/Tag";
 import Card from "../components/Card";
 import { navigate } from "gatsby";
-import Button from '@material-ui/core/Button';
-import EditIcon from '@material-ui/icons/Edit';
 
 const DATA = {
   tags: ['User experience', 'VueJS', 'TailwindCSS', 'React', 'Painting'],
@@ -18,6 +16,7 @@ const DATA = {
       title: 'ImageMin API',
       description: 'I spun up a FastAPI server using the base docker image and deployed an API to compress images.',
       tags: ['python', 'docker', 'image compression', 'opencv', 'api'],
+      author: '124222',
       createdAt: 'Sun Aug 30 2020',
       starCount: 123,
     },
@@ -26,10 +25,17 @@ const DATA = {
       title: 'Funnier Reddit',
       description: 'I used React and Redux to build a Reddit clone. It\'s way slicker and funnier.',
       tags: ['react', 'redux', 'javascript', 'web app'],
+      author: '124222',
       createdAt: 'Sat July 21 2019',
       starCount: 5,
     },
   ]
+}
+
+const handleAddProject = () => {
+  if (DATA.projects.length >= 3) {
+    alert('Cannot add more than 3 projects!')
+  }
 }
 
 function Profile() {
@@ -37,8 +43,8 @@ function Profile() {
     <Layout>
       <SEO title="Profile" />
       <div className="flex justify-center">
-        <button onClick={() => navigate('/edit-profile')} className="text-indigo-600 py-1 px-2 text-2xl font-semibold tracking-wide hover:bg-indigo-100 focus:outline-none m-2">Edit</button>
-        <button className="text-indigo-600 py-1 px-2 text-2xl font-semibold tracking-wide hover:bg-indigo-100 focus:outline-none m-2">Preview</button>
+        <button onClick={() => navigate('/edit-profile')} className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">Edit</button>
+        <button className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">Preview</button>
       </div>
       <div className="bg-white my-12 pb-6 w-full flex flex-col">
         <ProfileAvatar />
@@ -52,15 +58,7 @@ function Profile() {
         </div>
       </div>
       <div className="text-center">
-        <Button
-          variant="contained"
-          color="primary"
-          className="focus:outline-none"
-          size="small"
-          startIcon={<EditIcon />}
-        >
-          Update Projects
-      </Button>
+      <button onClick={handleAddProject} className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">Add Project</button>
       </div>
       <div className="mt-16 flex flex-col">
         {DATA.projects.map((el, index) => <Card key={index} item={el} />)}
