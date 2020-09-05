@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
@@ -8,6 +8,8 @@ import Tag from "../components/Tag";
 import Card from "../components/Card";
 import AddProjectBtn from "../components/AddProjectBtn";
 import { navigate } from "gatsby";
+import { getUserDetails } from '../utils/firebaseActions';
+import { auth, useAuth } from "gatsby-theme-firebase";
 
 const DATA = {
   tags: ['User experience', 'VueJS', 'TailwindCSS', 'React', 'Painting'],
@@ -33,6 +35,7 @@ const DATA = {
   ]
 }
 
+
 const handleAddProject = (title,description,github,demo,tagArray) => {
   console.log(title,description,github,demo,tagArray)
   if (DATA.projects.length >= 3) {
@@ -41,6 +44,27 @@ const handleAddProject = (title,description,github,demo,tagArray) => {
 }
 
 function Profile() {
+
+  const { profile } = useAuth();
+
+  const [name,setName] = useState('');
+  const [jobTitle,setJobTitle] = useState('');
+
+  useEffect(() => {
+  if(profile) {
+    const fireData = getUserDetails(profile.uid)
+    fireData.then(res => {
+      if(res.displayName) {
+        setName(res.displayName)
+      }
+      if(res.jobTitle) {
+        setJobTitle(res.jobTitle)
+      }
+    })
+  }
+
+  },[profile])
+
   return (
     <Layout>
       <SEO title="Profile" />
@@ -49,7 +73,7 @@ function Profile() {
         <button className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">Preview</button>
       </div>
       <div className="bg-white my-12 pb-6 w-full flex flex-col">
-        <ProfileAvatar />
+        <ProfileAvatar name={name} jobTitle={jobTitle} />
         <div className="flex flex-col items-center">
           <ProfileIcons />
           <div className="mt-6 pt-3 flex flex-wrap mx-6">

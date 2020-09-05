@@ -31,3 +31,28 @@ export const getStripeSubscription = async (id) => {
     }
 
 }
+
+export const getUserDetails = (id) => {
+    return firestore.collection("users").doc(id).get()
+        .then(doc => doc.data())
+}
+
+export const updateUserDetails = async (user) => {
+    let firestoreUserData = {
+        displayName: user.name,
+        jobTitle: user.jobTitle,
+        githubURL: user.githubURL,
+        linkedinURL: user.linkedinURL,
+        profileEmail: user.email,
+        description: user.description,
+        skillTags: user.skillTags
+    }
+    await firestore.collection("users").doc(user.id).set(firestoreUserData, { merge: true })
+        .then(function () {
+            return true;
+        })
+        .catch(function (error) {
+            console.error("Error writing document: ", error);
+            return false;
+        });
+}
