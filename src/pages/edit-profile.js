@@ -17,7 +17,7 @@ const EditProfile = () => {
   const [jobError, setJobError] = useState('');
   const [isLinkedInError, setIsLinkedInError] = useState(false);
   const [linkedInError, setLinkedInError] = useState('');
-  const [isGithubError, setIsGithubInError] = useState(false);
+  const [isGithubError, setIsGithubError] = useState(false);
   const [githubError, setGithubError] = useState('');
   const [isEmailError, setIsEmailError] = useState(false);
   const [emailError, setEmailError] = useState('');
@@ -45,7 +45,7 @@ const EditProfile = () => {
       setLinkedInError('This can\'t be blank')
     }
     if (github.length < 1) {
-      setIsGithubInError(true)
+      setIsGithubError(true)
       setGithubError('This can\'t be blank')
     }
     if (description.length < 100) {
@@ -58,7 +58,7 @@ const EditProfile = () => {
       setLinkedInError('Invalid url. Should be something like https://www.linkedin.com/in/[USERNAME]')
     }
     if (!github.startsWith('https://www.github.com/') && !github.startsWith('https://github.com/')) {
-      setIsGithubInError(true)
+      setIsGithubError(true)
       setGithubError('Invalid url. Should be something like https://github.com/[USERNAME]')
     }
     if (email.length > 0 && !validateEmail(email)) {
@@ -74,7 +74,7 @@ const EditProfile = () => {
     setJobError('')
     setIsLinkedInError(false)
     setLinkedInError('')
-    setIsGithubInError(false)
+    setIsGithubError(false)
     setGithubError('')
     setIsEmailError(false)
     setEmailError('')
@@ -89,8 +89,7 @@ const EditProfile = () => {
     event.preventDefault()
     clearForm()
 
-    let skillArray = skills.split(",")
-    console.log(skillArray)
+    const skillArray = skills.split(",")
 
     // validate
     const val = validate();

@@ -6,6 +6,7 @@ import ProfileIcons from "../components/ProfileIcons";
 import ProfileAvatar from "../components/ProfileAvatar";
 import Tag from "../components/Tag";
 import Card from "../components/Card";
+import AddProjectBtn from "../components/AddProjectBtn";
 import { navigate } from "gatsby";
 
 const DATA = {
@@ -32,7 +33,8 @@ const DATA = {
   ]
 }
 
-const handleAddProject = () => {
+const handleAddProject = (title,description,github,demo,tagArray) => {
+  console.log(title,description,github,demo,tagArray)
   if (DATA.projects.length >= 3) {
     alert('Cannot add more than 3 projects!')
   }
@@ -58,7 +60,7 @@ function Profile() {
         </div>
       </div>
       <div className="text-center">
-      <button onClick={handleAddProject} className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">Add Project</button>
+        {DATA.projects.length < 3 ? <AddProjectBtn handleSubmit={handleAddProject} /> : <div className="text-xl font-semibold text-indigo-600">All Projects Added</div>}
       </div>
       <div className="mt-16 flex flex-col">
         {DATA.projects.map((el, index) => <Card key={index} item={el} />)}
