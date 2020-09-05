@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { numberWithCommas } from "../utils/helpers";
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import ProjectIcons from './ProjectIcons';
+import DeleteProjectAlert from './DeleteProjectAlert';
 import Tag from './Tag';
 
 const DATA = {
@@ -16,6 +17,7 @@ const DATA = {
 
 const ProjectDetail = ({ projectID }) => {
 	const [projectData, setProjectData] = useState(DATA);
+	// const [delProjectModal, setDelProjectModal] = useState(false);
 
 	useEffect(() => {
 		// fetch project data. use props for id.
@@ -24,10 +26,18 @@ const ProjectDetail = ({ projectID }) => {
 
 	const formattedStarCount = numberWithCommas(projectData.starCount);
 
+	const handleProjectDelete = () => {
+		console.log('delete it')
+	}
+
 	return (
 		<div>
 			<div className="flex flex-col text-center">
-				<div className="text-teal-900 font-extrabold leading-loose text-2xl text-center">{projectData.title}</div>
+				<div className="mb-4">
+					<button className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">Edit</button>
+					<DeleteProjectAlert handleSubmit={handleProjectDelete} />
+				</div>				
+				<div className="text-gray-800 font-extrabold leading-loose text-2xl text-center">{projectData.title}</div>
 				<ProjectIcons />
 			</div>
 			<div className="mt-8 flex justify-around border-b-2 py-2 border-gray-100">
