@@ -1,15 +1,18 @@
 import React from "react";
 import { navigate } from "gatsby";
-import { numberWithCommas } from "../utils/helpers";
-import StarBorderIcon from '@material-ui/icons/StarBorder';
+import { firestoreTimeStampConvert } from "../utils/helpers";
+import GitHubIcon from '@material-ui/icons/GitHub';
 import Tag from "./Tag";
 
 function Card({ item }) {
-	const { id, title, description, tags, createdAt, starCount } = item;
-	const formattedStarCount = numberWithCommas(starCount);
+	const { projectId, title, description, tagArray, createdAt, github } = item;
 
 	const handleClick = () => {
-		navigate(`/projects/${id}`)
+		navigate(`/projects/${projectId}`)
+	}
+
+	const summary = () => {
+		return `${description.substring(0, 200)}...`;
 	}
 
 	return (
@@ -19,20 +22,19 @@ function Card({ item }) {
 					<div className="px-6 py-4">
 						<button onClick={handleClick} className="font-bold cursor-pointer text-xl text-gray-800 mb-2 focus:outline-none">{title}</button>
 						<p className="text-gray-700 text-base">
-							{description}
+							{summary()}
 						</p>
 					</div>
 				</div>
 				<div className="flex items-center justify-between px-6 sm:px-0 sm:flex-col sm:justify-center">
-					<div className="flex my-2">
-						<StarBorderIcon />
-						<div className="ml-1">{formattedStarCount}</div>
-					</div>
-					<div className="text-gray-600">{createdAt}</div>
+					<a href={github} target="_blank" rel="noreferrer" className="flex my-2">
+						<GitHubIcon />
+					</a>
+					<div className="text-gray-600">{firestoreTimeStampConvert(createdAt)}</div>
 				</div>
 			</div>
 			<div className="px-6 pt-4 pb-2">
-				{tags.map((tag, index) =>
+				{tagArray.map((tag, index) =>
 					<Tag key={index} item={tag} />
 				)}
 			</div>

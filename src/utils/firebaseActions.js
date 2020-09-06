@@ -1,4 +1,4 @@
-import { firestore } from "gatsby-theme-firebase";
+import { firebase, firestore } from "gatsby-theme-firebase";
 
 export const createNewUser = (user) => {
     let firestoreUserData = {
@@ -26,7 +26,7 @@ export const getStripeSubscription = async (id) => {
             .get().then(doc => doc.data().stripeSubscriptionPlan)
         return plan
     }
-    catch(err) {
+    catch (err) {
         return null
     }
 
@@ -55,4 +55,35 @@ export const updateUserDetails = async (user) => {
             console.error("Error writing document: ", error);
             return false;
         });
+}
+
+export const addProject = async (project) => {
+    await firestore.collection("projects").add({
+        ...project,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    })
+        .then(function () {
+            return true;
+        })
+        .catch(function (error) {
+            console.error("Error writing document: ", error);
+            return false;
+        });
+}
+
+export const getUserProjects = async (id) => {
+    let projects = []
+    await firestore.collection("projects").where("creatorId", "==", id)
+        .get()
+        .then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+                // doc.data() is never undefined for query doc snapshots
+                projects.push(doc.data())
+            });
+        })
+        .catch(function (error) {
+            console.log("Error getting documents: ", error);
+        });
+
+    return projects
 }
