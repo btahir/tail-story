@@ -7,10 +7,7 @@ function IndexPage() {
 
   return (
     <Layout>
-      <SEO
-        keywords={[`gatsby`, `tailwind`, `react`, `tailwindcss`]}
-        title="Home"
-      />
+      <SEO title="Home" />
       <div>
         Hello
       </div>

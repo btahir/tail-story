@@ -4,18 +4,22 @@ import PersonIcon from '@material-ui/icons/Person';
 import LiveTvIcon from '@material-ui/icons/LiveTv';
 import Tooltip from '@material-ui/core/Tooltip';
 
-function ProjectIcons(props) {
+function ProjectIcons({ github, demo }) {
   return (
     <div className="mt-6">
       <Tooltip title="Creator Profile">
-      <PersonIcon className="cursor-pointer mx-4" fontSize="large" />
+        <PersonIcon className="cursor-pointer mx-4" fontSize="large" />
       </Tooltip>
       <Tooltip title="Source Code">
-      <GitHubIcon className="cursor-pointer mx-4" fontSize="large" />
+        <a href={github} target="_blank" rel="noreferrer">
+          <GitHubIcon className="cursor-pointer mx-4" fontSize="large" />
+        </a>
       </Tooltip>
       <Tooltip title="Live Demo">
-      <LiveTvIcon className="cursor-pointer mx-4" fontSize="large" />
-      </Tooltip>      
+        <a href={demo} target="_blank" rel="noreferrer">
+          <LiveTvIcon className="cursor-pointer mx-4" fontSize="large" />
+        </a>
+      </Tooltip>
     </div>
   )
 }

@@ -11,6 +11,8 @@ import { navigate } from "gatsby";
 const InitialData = {
 	id: 123,
 	title: '',
+	github: '',
+	demo: '',
 	description: '',
 	tagArray: [],
 	createdAt: { seconds: 0, nanoseconds: 0 }
@@ -64,7 +66,7 @@ const ProjectDetail = ({ projectID }) => {
 					</div>
 				</div>
 				<div className="text-gray-800 font-extrabold leading-loose text-2xl text-center">{projectData.title}</div>
-				<ProjectIcons />
+				<ProjectIcons github={projectData.github} demo={projectData.demo} />
 			</div>
 			<div className="mt-8 text-gray-700 px-2">
 				{projectData.description}

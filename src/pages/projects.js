@@ -3,7 +3,7 @@ import React from "react";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
 import ProjectDetail from "../components/ProjectDetail";
-import Main from "../components/Main";
+import MainProject from "../components/MainProject";
 import { Router } from "@reach/router";
 
 function Projects() {
@@ -12,7 +12,7 @@ function Projects() {
 		<Layout>
 			<SEO title="Projects" />
 			<Router basepath="/projects">
-				<Main path="/" />
+				<MainProject path="/" />
 				<ProjectDetail path=":projectID" />
 			</Router>
 		</Layout>

@@ -10,10 +10,10 @@ const ProfileAvatar = ({ name, jobTitle, description }) => {
         <h1 className="text-lg text-center font-semibold">
           {name}
         </h1>
-        <p className="text-sm text-gray-800 text-center">
+        <p className="text-sm text-gray-600 text-center">
           {jobTitle}
         </p>
-        <p className="text-gray-600 max-w-xl text-justify mx-auto my-4 px-4">
+        <p className="text-gray-800 max-w-xl text-justify mx-auto my-4 px-4">
           {description}
         </p>        
       </div>

@@ -1,12 +1,14 @@
 import { firebase, firestore } from "gatsby-theme-firebase";
 
 export const createNewUser = (user) => {
+    const profileId = Date.now().toString()
     const firestoreUserData = {
-        'photoURL': user.photoURL,
-        'displayName': user.displayName,
-        'email': user.email,
-        'emailVerified': user.emailVerified,
-        'createdAt': user.metadata.creationTime,
+        profileId: profileId,
+        photoURL: user.photoURL,
+        displayName: user.displayName,
+        email: user.email,
+        emailVerified: user.emailVerified,
+        createdAt: user.metadata.creationTime,
     }
     // extract relevant data out of user object
     // store user in a user collection in Firestore
@@ -38,7 +40,7 @@ export const getUserDetails = (id) => {
 }
 
 export const updateUserDetails = async (user) => {
-    let firestoreUserData = {
+    const firestoreUserData = {
         displayName: user.name,
         jobTitle: user.jobTitle,
         githubURL: user.githubURL,

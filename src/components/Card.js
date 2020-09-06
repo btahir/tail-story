@@ -21,7 +21,7 @@ function Card({ item }) {
 				<div className="flex flex-col sm:w-2/3">
 					<div className="px-6 py-4">
 						<button onClick={handleClick} className="font-bold cursor-pointer text-xl text-gray-800 mb-2 focus:outline-none">{title}</button>
-						<p className="text-gray-700 text-base">
+						<p className="text-gray-700 text-justify">
 							{summary()}
 						</p>
 					</div>
