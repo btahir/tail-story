@@ -80,7 +80,7 @@ function Main() {
           </svg>
         </button>
       </div>  
-      <div className="mt-16 flex flex-col">
+      <div className="mt-16 flex flex-col bg-gray-100">
         {filteredData.map((el, index) => <Card key={index} item={el} />)}        
       </div>        
     </>
