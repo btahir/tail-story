@@ -5,8 +5,9 @@ import ProjectIcons from './ProjectIcons';
 import DeleteProjectAlert from './DeleteProjectAlert';
 import Tag from './Tag';
 import { useAuth } from "gatsby-theme-firebase";
-import { getProjectDetail } from "../utils/firebaseActions";
+import { getProjectDetail, deleteProject } from "../utils/firebaseActions";
 import { firestoreTimeStampConvert } from "../utils/helpers";
+import { navigate } from "gatsby";
 
 const InitialData = {
 	id: 123,
@@ -37,8 +38,9 @@ const ProjectDetail = ({ projectID }) => {
 
 	// const formattedStarCount = numberWithCommas(projectData.starCount);
 
-	const handleProjectDelete = () => {
-		console.log('delete it')
+	const handleProjectDelete = async () => {
+		await deleteProject(projectData.key)
+		navigate('/profile')
 	}
 
 	return (

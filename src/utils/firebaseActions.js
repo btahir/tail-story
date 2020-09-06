@@ -106,18 +106,27 @@ export const getAllProjects = async (id) => {
 }
 
 export const getProjectDetail = async (projectId) => {
-    let fireProjects = {}
+    let fireProject = {}
     await firestore.collection("projects")
         .where("projectId", "==", parseInt(projectId))
         .get()
         .then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
                 // doc.data() is never undefined for query doc snapshots
-                fireProjects = doc.data()
+                fireProject = doc.data()
+                fireProject['key'] = doc.id
             });
         })
         .catch(function (error) {
             console.log("Error getting documents: ", error);
         });
-    return fireProjects
+    return fireProject
+}
+
+export const deleteProject = (projectKey) => {
+    firestore.collection("projects").doc(projectKey).delete().then(function () {
+        console.log("Project successfully deleted!");
+    }).catch(function (error) {
+        console.error("Error removing document: ", error);
+    });
 }
