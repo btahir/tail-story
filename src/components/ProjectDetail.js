@@ -54,7 +54,7 @@ const ProjectDetail = ({ projectID }) => {
 
 	return (
 		<div>
-			<div className="flex flex-col text-center">
+			<div className="flex flex-col text-center border-b-2 border-gray-100 pb-4">
 				<div className="flex justify-center mb-4">
 					<div className="w-16">
 						<UpdateProjectBtn btnTitle="Edit" projectData={projectData} handleSubmit={handleProjectEdit} />
@@ -66,22 +66,18 @@ const ProjectDetail = ({ projectID }) => {
 				<div className="text-gray-800 font-extrabold leading-loose text-2xl text-center">{projectData.title}</div>
 				<ProjectIcons />
 			</div>
-			<div className="mt-8 flex justify-around border-b-2 py-2 border-gray-100">
-				<div>
-					Last Updated: <span className="text-gray-600">{firestoreTimeStampConvert(projectData.createdAt)}</span>
-				</div>
-				<div className="flex">
-					{/* <StarBorderIcon />
-					<div className="ml-1">{formattedStarCount}</div> */}
-				</div>
-			</div>
-			<div className="mt-12 text-gray-700">
+			<div className="mt-8 text-gray-700 px-2">
 				{projectData.description}
 			</div>
-			<div className="px-6 pt-4 pb-2 mt-4 text-center">
-				{projectData.tagArray.map((tag, index) =>
-					<Tag key={index} item={tag} />
-				)}
+			<div className="px-6 pt-4 pb-2 mt-4 flex justify-around">
+				<div>
+					{projectData.tagArray.map((tag, index) =>
+						<Tag key={index} item={tag} />
+					)}
+				</div>
+				<div>
+					Submitted: <span className="text-gray-600">{firestoreTimeStampConvert(projectData.createdAt)}</span>
+				</div>
 			</div>
 		</div>
 	)
