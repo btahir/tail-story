@@ -88,9 +88,9 @@ const EditProfile = () => {
       setGithubError('This can\'t be blank')
       err = true
     }
-    if (description.length < 100) {
+    if (description.length < 50) {
       setIsDescriptionError(true)
-      setDescriptionError('Description needs to be at least 100 characters')
+      setDescriptionError('Description needs to be at least 50 characters')
       err = true
     }
 

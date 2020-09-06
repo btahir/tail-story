@@ -13,7 +13,7 @@ const ProfileAvatar = ({ name, jobTitle, description }) => {
         <p className="text-sm text-gray-800 text-center">
           {jobTitle}
         </p>
-        <p className="text-sm text-gray-600 text-justified my-4 px-4">
+        <p className="text-gray-600 max-w-xl text-justify mx-auto my-4 px-4">
           {description}
         </p>        
       </div>
