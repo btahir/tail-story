@@ -4,17 +4,27 @@ import MailIcon from '@material-ui/icons/Mail';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import Tooltip from '@material-ui/core/Tooltip';
 
-function ProfileIcons(props) {
+function ProfileIcons({ github, linkedin, email }) {
   return (
     <div className="mt-6">
       <Tooltip title="LinkedIn Profile">
-      <LinkedInIcon className="cursor-pointer mx-4" fontSize="large" />
+        <a href={linkedin} target="_blank" rel="noreferrer">
+          <LinkedInIcon className="cursor-pointer mx-4" fontSize="large" />
+        </a>
       </Tooltip>
-      <Tooltip title="Message Them">
-      <MailIcon className="cursor-pointer mx-4" fontSize="large" />
-      </Tooltip>
+      {email === '' ?
+        null
+        :
+        <Tooltip title="Message Them">
+          <a href={`mailto:${email}`}>
+            <MailIcon className="cursor-pointer mx-4" fontSize="large" />
+          </a>
+        </Tooltip>
+      }
       <Tooltip title="Github Profile">
-      <GitHubIcon className="cursor-pointer mx-4" fontSize="large" />
+        <a href={github} target="_blank" rel="noreferrer">
+          <GitHubIcon className="cursor-pointer mx-4" fontSize="large" />
+        </a>
       </Tooltip>
     </div>
   )

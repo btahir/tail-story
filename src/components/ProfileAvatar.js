@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProfileAvatar = ({name, jobTitle}) => {
+const ProfileAvatar = ({ name, jobTitle, description }) => {
   return (
     <div>
       <div className="shadow mx-auto h-32 w-32 border-white rounded-full overflow-hidden border-4">
@@ -9,10 +9,13 @@ const ProfileAvatar = ({name, jobTitle}) => {
       <div className="mt-4">
         <h1 className="text-lg text-center font-semibold">
           {name}
-          </h1>
-        <p className="text-sm text-gray-600 text-center">
+        </h1>
+        <p className="text-sm text-gray-800 text-center">
           {jobTitle}
-          </p>
+        </p>
+        <p className="text-sm text-gray-600 text-justified my-4">
+          {description}
+        </p>        
       </div>
     </div>
   )

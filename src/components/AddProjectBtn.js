@@ -91,8 +91,8 @@ export default function AddProjectBtn({ handleSubmit }) {
   };
 
   return (
-    <button className="bg-indigo-600 py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">
-      <div className="text-white font-semibold" onClick={handleClickOpen}>Add Project (Max: 3)</div>
+    <div className="bg-indigo-600 py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 w-64 mx-auto">
+      <button className="text-white font-semibold focus:outline-none" onClick={handleClickOpen}>Add Project (Max: 3)</button>
       <Dialog 
         fullWidth maxWidth='lg' 
         open={open} 
@@ -171,6 +171,6 @@ export default function AddProjectBtn({ handleSubmit }) {
           </Button>
         </DialogActions>
       </Dialog>
-    </button>
+    </div>
   );
 }
