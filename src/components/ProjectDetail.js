@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { numberWithCommas } from "../utils/helpers";
-import StarBorderIcon from '@material-ui/icons/StarBorder';
 import ProjectIcons from './ProjectIcons';
 import DeleteProjectAlert from './DeleteProjectAlert';
 import Tag from './Tag';
+import UpdateProjectBtn from "./UpdateProjectBtn";
 import { useAuth } from "gatsby-theme-firebase";
-import { getProjectDetail, deleteProject } from "../utils/firebaseActions";
+import { getProjectDetail, deleteProject, updateProjectDetails } from "../utils/firebaseActions";
 import { firestoreTimeStampConvert } from "../utils/helpers";
 import { navigate } from "gatsby";
 
@@ -14,42 +13,56 @@ const InitialData = {
 	title: '',
 	description: '',
 	tagArray: [],
-	createdAt: {seconds: 0, nanoseconds: 0}
+	createdAt: { seconds: 0, nanoseconds: 0 }
 }
 
 const ProjectDetail = ({ projectID }) => {
 	const { profile } = useAuth();
-	const [projectData, setProjectData] = useState(InitialData);	
-	const [isProjectValid, setIsProjectValid] = useState(true);
+	const [projectData, setProjectData] = useState(InitialData);
 
 	useEffect(() => {
 		// fetch project data. use props for id.
-		if(profile) {
+		if (profile) {
 			getProjectDetail(projectID)
-			.then(res => {
-				if(res === undefined || !Object.keys(res).length) {
-					setIsProjectValid(false)
-				} else {
-					setProjectData(res)
-				}
-			})
+				.then(res => {
+					if (res !== undefined && Object.keys(res).length) {
+						setProjectData(res)
+					}
+				})
 		}
-	}, [profile])
-
-	// const formattedStarCount = numberWithCommas(projectData.starCount);
+	}, [profile, projectID])
 
 	const handleProjectDelete = async () => {
 		await deleteProject(projectData.key)
 		navigate('/profile')
 	}
 
+	const handleProjectEdit = (title, description, github, demo, tagArray) => {
+		// update state
+		setProjectData({
+			...projectData,
+			title,
+			description,
+			github,
+			demo,
+			tagArray
+		})
+
+		// update firestore
+		updateProjectDetails(projectData.key, title, description, github, demo, tagArray)
+	}
+
 	return (
 		<div>
 			<div className="flex flex-col text-center">
-				<div className="mb-4">
-					<button className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">Edit</button>
-					<DeleteProjectAlert handleSubmit={handleProjectDelete} />
-				</div>				
+				<div className="flex justify-center mb-4">
+					<div className="w-16">
+						<UpdateProjectBtn btnTitle="Edit" projectData={projectData} handleSubmit={handleProjectEdit} />
+					</div>
+					<div className="w-24">
+						<DeleteProjectAlert handleSubmit={handleProjectDelete} />
+					</div>
+				</div>
 				<div className="text-gray-800 font-extrabold leading-loose text-2xl text-center">{projectData.title}</div>
 				<ProjectIcons />
 			</div>

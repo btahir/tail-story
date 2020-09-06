@@ -1,7 +1,7 @@
 import { firebase, firestore } from "gatsby-theme-firebase";
 
 export const createNewUser = (user) => {
-    let firestoreUserData = {
+    const firestoreUserData = {
         'photoURL': user.photoURL,
         'displayName': user.displayName,
         'email': user.email,
@@ -128,5 +128,20 @@ export const deleteProject = (projectKey) => {
         console.log("Project successfully deleted!");
     }).catch(function (error) {
         console.error("Error removing document: ", error);
+    });
+}
+
+export const updateProjectDetails = (projectKey, title, description, github, demo, tagArray) => {
+    const firestoreProjectData = {
+        title: title,
+        description: description,
+        github: github,
+        demo: demo,
+        tagArray: tagArray
+    }
+    firestore.collection("projects").doc(projectKey).set(firestoreProjectData, { merge: true }).then(function () {
+
+    }).catch(function (error) {
+        console.error("Error updating document: ", error);
     });
 }

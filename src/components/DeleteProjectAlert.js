@@ -21,10 +21,10 @@ export default function DeleteProjectAlert({ handleSubmit }) {
 	};
 
 	return (
-		<div className="inline"> 
-			<button onClick={handleClickOpen} className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">
+		<div className=""> 
+			<button onClick={handleClickOpen} className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none">
 				Delete
-          </button>
+			</button>
 			<Dialog
 				open={open}
 				onClose={handleClose}

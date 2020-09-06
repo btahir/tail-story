@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -6,7 +6,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-export default function AddProjectBtn({ handleSubmit }) {
+export default function UpdateProjectBtn({ btnTitle, projectData, handleSubmit }) {
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -23,6 +23,16 @@ export default function AddProjectBtn({ handleSubmit }) {
   const [demoError, setDemoError] = useState('');
   const [isTagsError, setIsTagsError] = useState(false);
   const [tagsError, setTagsError] = useState('');
+
+  useEffect(() => {
+    if(projectData) {
+      setTitle(projectData.title)
+      setDescription(projectData.description)
+      setGithub(projectData.github)
+      setDemo(projectData.demo)
+      setTags(projectData.tagArray)
+    }
+  }, [projectData])
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -85,14 +95,14 @@ export default function AddProjectBtn({ handleSubmit }) {
     const formErrors = validate()
     if(!formErrors) {
       handleClose()
-      const tagArray = tags.split(",")
+      const tagArray = typeof(tags) === 'string' ? tags.split(",") : tags
       handleSubmit(title,description,github,demo,tagArray)
     }    
   };
 
   return (
-    <div className="bg-indigo-600 py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 w-64 mx-auto">
-      <button className="text-white font-semibold focus:outline-none" onClick={handleClickOpen}>Add Project (Max: 3)</button>
+    <div className="bg-indigo-600 py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700">
+      <button className="text-white font-semibold focus:outline-none" onClick={handleClickOpen}>{btnTitle}</button>
       <Dialog 
         fullWidth maxWidth='lg' 
         open={open} 

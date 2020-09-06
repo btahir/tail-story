@@ -2,45 +2,6 @@ import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import { getAllProjects } from "../utils/firebaseActions";
 
-const DATA = [
-  {
-    id: 123,
-    title: 'ImageMin API',
-    description: 'I spun up a FastAPI server using the base docker image and deployed an API to compress images.',
-    tags: ['python','docker','image compression','opencv','api'],
-    author: '124222',
-    createdAt: 'Sun Aug 30 2020',
-    starCount: 123,
-  },
-  {
-    id: 124,
-    title: 'Funnier Reddit',
-    description: 'I used React and Redux to build a Reddit clone. It\'s way slicker and funnier.',
-    tags: ['react','redux','javascript','web app'],
-    author: '124222',
-    createdAt: 'Sat July 21 2019',
-    starCount: 5,
-  },
-  {
-    id: 125,
-    title: 'Covid Dating',
-    description: 'I built a covid dating app. You can submit Covid negative resuls and get verified and then go on dates. Weird.',
-    tags: ['java','sql','social media','vue'],
-    author: '1242898',
-    createdAt: 'Thur June 21 2020',
-    starCount: 4216,
-  },
-  {
-    id: 126,
-    title: 'Hotdog NotHotdog App',
-    description: 'I deployed a ML model using a Flask API that categorizes things into Hotdogs and Not Hotdogs. The client side is built using React.',
-    tags: ['python','machine learning','computer vision','flask','react'],
-    author: '124254554',
-    createdAt: 'Mon Aug 21 2020',
-    starCount: 23,
-  },      
-]
-
 function Main() {
   const [filteredData, setFilteredData] = useState([]);
 

@@ -6,7 +6,7 @@ import ProfileIcons from "../components/ProfileIcons";
 import ProfileAvatar from "../components/ProfileAvatar";
 import Tag from "../components/Tag";
 import Card from "../components/Card";
-import AddProjectBtn from "../components/AddProjectBtn";
+import UpdateProjectBtn from "../components/UpdateProjectBtn";
 import { navigate } from "gatsby";
 import { getUserDetails, addProject, getUserProjects } from '../utils/firebaseActions';
 import { useAuth } from "gatsby-theme-firebase";
@@ -53,19 +53,19 @@ function Profile() {
           setSkills(res.skillTags)
         }
       })
-      
+
       // get project data
       getUserProjects(profile.uid).then(res => setProjects(res))
 
     }
   }, [profile])
 
-  const handleAddProject = async (title, description, github, demo, tagArray) => {  
+  const handleAddProject = async (title, description, github, demo, tagArray) => {
     if (projects.length >= 3) {
       alert('Cannot add more than 3 projects!')
     } else {
       const projectId = Date.now()
-      await addProject({creatorId, projectId, title, description, github, demo, tagArray})
+      await addProject({ creatorId, projectId, title, description, github, demo, tagArray })
       window.location.reload()
     }
   }
@@ -78,16 +78,16 @@ function Profile() {
         <button className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">Preview</button>
       </div>
       <div className="bg-white my-12 pb-6 w-full flex flex-col">
-        <ProfileAvatar 
-          name={name} 
-          jobTitle={jobTitle} 
+        <ProfileAvatar
+          name={name}
+          jobTitle={jobTitle}
           description={description}
         />
         <div className="flex flex-col items-center">
-          <ProfileIcons 
-            github={github} 
-            linkedin={linkedin} 
-            email={email} 
+          <ProfileIcons
+            github={github}
+            linkedin={linkedin}
+            email={email}
           />
           <div className="mt-6 pt-3 flex flex-wrap mx-6">
             {skills.map((obj, index) =>
@@ -97,7 +97,16 @@ function Profile() {
         </div>
       </div>
       <div className="text-center">
-        {projects.length < 3 ? <AddProjectBtn handleSubmit={handleAddProject} /> : <div className="text-xl font-semibold text-indigo-600">All Projects Added</div>}
+        {projects.length < 3 ?
+          <div className="w-56 mx-auto">
+            <UpdateProjectBtn
+              btnTitle='Add Project (Max: 3)'
+              handleSubmit={handleAddProject}
+            />
+          </div>
+          :
+          <div className="text-xl font-semibold text-indigo-600">All Projects Added</div>
+        }
       </div>
       <div className="mt-16 flex flex-col bg-gray-100">
         {projects.map((el, index) => <Card key={index} item={el} />)}
