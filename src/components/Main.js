@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./Card";
+import { getAllProjects } from "../utils/firebaseActions";
 
 const DATA = [
   {
@@ -41,24 +42,30 @@ const DATA = [
 ]
 
 function Main() {
-  const [filteredData, setFilteredData] = useState(DATA);
+  const [filteredData, setFilteredData] = useState([]);
+
+  useEffect(() => {
+    getAllProjects().then(res => setFilteredData(res))
+  }, [])
 
   const filterResults = (searchTerm) => {
     if(searchTerm === '') {
-      setFilteredData( DATA )
+      getAllProjects().then(res => setFilteredData(res))
       return
     }
     let results = []
-    DATA.forEach(el => (
-      el.tags.forEach(tag => {
-        if (searchTerm === tag) {
-          results.push(el)
-          setFilteredData( results )
-        } else {
-          setFilteredData( [] )
-        }
-      })
-    ))
+    getAllProjects().then((res) => {
+      res.forEach(el => (
+        el.tagArray.forEach(tag => {
+          if (searchTerm === tag) {
+            results.push(el)
+            setFilteredData( results )
+          } else {
+            setFilteredData( [] )
+          }
+        })
+      ))
+    })
   }
 
   return (
