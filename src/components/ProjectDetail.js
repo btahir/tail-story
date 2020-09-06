@@ -4,27 +4,38 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import ProjectIcons from './ProjectIcons';
 import DeleteProjectAlert from './DeleteProjectAlert';
 import Tag from './Tag';
+import { useAuth } from "gatsby-theme-firebase";
+import { getProjectDetail } from "../utils/firebaseActions";
+import { firestoreTimeStampConvert } from "../utils/helpers";
 
-const DATA = {
+const InitialData = {
 	id: 123,
-	title: 'ImageMin API Using FastAPI',
-	description: 'I spun up a FastAPI server using the base docker image and deployed an API to compress images.',
-	tags: ['python', 'docker', 'image compression', 'opencv', 'api'],
-	author: '124222',
-	createdAt: 'Sun Aug 30 2020',
-	starCount: 1293,
+	title: '',
+	description: '',
+	tagArray: [],
+	createdAt: {seconds: 0, nanoseconds: 0}
 }
 
 const ProjectDetail = ({ projectID }) => {
-	const [projectData, setProjectData] = useState(DATA);
-	// const [delProjectModal, setDelProjectModal] = useState(false);
+	const { profile } = useAuth();
+	const [projectData, setProjectData] = useState(InitialData);	
+	const [isProjectValid, setIsProjectValid] = useState(true);
 
 	useEffect(() => {
 		// fetch project data. use props for id.
-		setProjectData(DATA)
-	}, [])
+		if(profile) {
+			getProjectDetail(projectID)
+			.then(res => {
+				if(res === undefined || !Object.keys(res).length) {
+					setIsProjectValid(false)
+				} else {
+					setProjectData(res)
+				}
+			})
+		}
+	}, [profile])
 
-	const formattedStarCount = numberWithCommas(projectData.starCount);
+	// const formattedStarCount = numberWithCommas(projectData.starCount);
 
 	const handleProjectDelete = () => {
 		console.log('delete it')
@@ -42,18 +53,18 @@ const ProjectDetail = ({ projectID }) => {
 			</div>
 			<div className="mt-8 flex justify-around border-b-2 py-2 border-gray-100">
 				<div>
-					Last Updated: <span className="text-gray-600">{projectData.createdAt}</span>
+					Last Updated: <span className="text-gray-600">{firestoreTimeStampConvert(projectData.createdAt)}</span>
 				</div>
 				<div className="flex">
-					<StarBorderIcon />
-					<div className="ml-1">{formattedStarCount}</div>
+					{/* <StarBorderIcon />
+					<div className="ml-1">{formattedStarCount}</div> */}
 				</div>
 			</div>
 			<div className="mt-12 text-gray-700">
 				{projectData.description}
 			</div>
 			<div className="px-6 pt-4 pb-2 mt-4 text-center">
-				{projectData.tags.map((tag, index) =>
+				{projectData.tagArray.map((tag, index) =>
 					<Tag key={index} item={tag} />
 				)}
 			</div>

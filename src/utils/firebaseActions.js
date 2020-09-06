@@ -104,3 +104,20 @@ export const getAllProjects = async (id) => {
 
     return projects
 }
+
+export const getProjectDetail = async (projectId) => {
+    let fireProjects = {}
+    await firestore.collection("projects")
+        .where("projectId", "==", parseInt(projectId))
+        .get()
+        .then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+                // doc.data() is never undefined for query doc snapshots
+                fireProjects = doc.data()
+            });
+        })
+        .catch(function (error) {
+            console.log("Error getting documents: ", error);
+        });
+    return fireProjects
+}
