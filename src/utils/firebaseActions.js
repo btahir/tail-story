@@ -110,7 +110,7 @@ export const getAllProjects = async (id) => {
 export const getProjectDetail = async (projectId) => {
     let fireProject = {}
     await firestore.collection("projects")
-        .where("projectId", "==", parseInt(projectId))
+        .where("projectId", "==", projectId)
         .get()
         .then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
@@ -151,7 +151,7 @@ export const updateProjectDetails = (projectKey, title, description, github, dem
 export const getPublicUserKey = async (profileId) => {
     let docId = ''
     await firestore.collection("users")
-        .where("profileId", "==", profileId.toString())
+        .where("profileId", "==", profileId)
         .get()
         .then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {

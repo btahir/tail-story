@@ -14,7 +14,9 @@ const InitialData = {
 	github: '',
 	demo: '',
 	description: '',
+	profileId: '',
 	tagArray: [],
+
 	createdAt: { seconds: 0, nanoseconds: 0 }
 }
 
@@ -66,7 +68,7 @@ const ProjectDetail = ({ projectId }) => {
 					</div>
 				</div>
 				<div className="text-gray-800 font-extrabold leading-loose text-2xl text-center">{projectData.title}</div>
-				<ProjectIcons github={projectData.github} demo={projectData.demo} />
+				<ProjectIcons profileId={projectData.profileId} github={projectData.github} demo={projectData.demo} />
 			</div>
 			<div className="mt-8 text-gray-700 px-2">
 				{projectData.description}

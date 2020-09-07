@@ -3,12 +3,13 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import PersonIcon from '@material-ui/icons/Person';
 import LiveTvIcon from '@material-ui/icons/LiveTv';
 import Tooltip from '@material-ui/core/Tooltip';
+import { navigate } from "gatsby";
 
-function ProjectIcons({ github, demo }) {
+function ProjectIcons({ profileId, github, demo }) {
   return (
     <div className="mt-6">
       <Tooltip title="Creator Profile">
-        <PersonIcon className="cursor-pointer mx-4" fontSize="large" />
+        <PersonIcon onClick={() => navigate(`/profile/${profileId}`)} className="cursor-pointer mx-4" fontSize="large" />
       </Tooltip>
       <Tooltip title="Source Code">
         <a href={github} target="_blank" rel="noreferrer">

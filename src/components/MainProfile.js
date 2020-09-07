@@ -65,7 +65,7 @@ function MainProfile() {
       alert('Cannot add more than 3 projects!')
     } else {
       const projectId = Date.now().toString()
-      await addProject({ creatorId, projectId, title, description, github, demo, tagArray })
+      await addProject({ creatorId, profileId, projectId, title, description, github, demo, tagArray })
       window.location.reload()
     }
   }
