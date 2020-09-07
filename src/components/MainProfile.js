@@ -13,6 +13,7 @@ function MainProfile() {
 
   const { profile } = useAuth();
 
+  const [profileId, setProfileId] = useState('');
   const [name, setName] = useState('');
   const [jobTitle, setJobTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -29,9 +30,12 @@ function MainProfile() {
       // get user data
       const fireUserData = getUserDetails(profile.uid)
       fireUserData.then(res => {
+        if (res.profileId) {
+          setProfileId(res.profileId)
+        }
         if (res.displayName) {
           setName(res.displayName)
-        }
+        }        
         if (res.jobTitle) {
           setJobTitle(res.jobTitle)
         }
@@ -51,10 +55,8 @@ function MainProfile() {
           setSkills(res.skillTags)
         }
       })
-
       // get project data
       getUserProjects(profile.uid).then(res => setProjects(res))
-
     }
   }, [profile])
 
@@ -72,7 +74,7 @@ function MainProfile() {
     <div>
       <div className="flex justify-center">
         <button onClick={() => navigate('/edit-profile')} className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">Edit</button>
-        <button onClick={() => navigate('/profile/123')} className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">Preview</button>
+        <button onClick={() => navigate(`/profile/${profileId}`)} className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">Preview</button>
       </div>
       <div className="bg-white my-12 pb-6 w-full flex flex-col">
         <ProfileAvatar

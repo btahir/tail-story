@@ -4,14 +4,9 @@ import ProfileIcons from "./ProfileIcons";
 import ProfileAvatar from "./ProfileAvatar";
 import Tag from "./Tag";
 import Card from "./Card";
-import { navigate } from "gatsby";
-import { getUserDetails, getUserProjects } from '../utils/firebaseActions';
-import { useAuth } from "gatsby-theme-firebase";
+import { getPublicUserKey, getUserDetails, getUserProjects } from '../utils/firebaseActions';
 
-const PublicProfile = ({profileID}) => {
-
-  const { profile } = useAuth();
-
+const PublicProfile = ({ profileId }) => {
   const [name, setName] = useState('');
   const [jobTitle, setJobTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -19,43 +14,43 @@ const PublicProfile = ({profileID}) => {
   const [linkedin, setLinkedin] = useState('');
   const [email, setEmail] = useState('');
   const [skills, setSkills] = useState([]);
-  const [creatorId, setCreatorId] = useState('');
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    if (profile) {
-      setCreatorId(profile.uid)
-      // get user data
-      const fireUserData = getUserDetails(profile.uid)
-      fireUserData.then(res => {
-        if (res.displayName) {
-          setName(res.displayName)
-        }
-        if (res.jobTitle) {
-          setJobTitle(res.jobTitle)
-        }
-        if (res.description) {
-          setDescription(res.description)
-        }
-        if (res.githubURL) {
-          setGithub(res.githubURL)
-        }
-        if (res.linkedinURL) {
-          setLinkedin(res.linkedinURL)
-        }
-        if (res.profileEmail) {
-          setEmail(res.profileEmail)
-        }
-        if (res.skillTags) {
-          setSkills(res.skillTags)
-        }
-      })
+    // get user data
+    const profileKey = getPublicUserKey(profileId)
+    profileKey.then(resKey => {
+      if (resKey) {
+        const fireUserData = getUserDetails(resKey)
+        fireUserData.then(res => {
+          if (res.displayName) {
+            setName(res.displayName)
+          }
+          if (res.jobTitle) {
+            setJobTitle(res.jobTitle)
+          }
+          if (res.description) {
+            setDescription(res.description)
+          }
+          if (res.githubURL) {
+            setGithub(res.githubURL)
+          }
+          if (res.linkedinURL) {
+            setLinkedin(res.linkedinURL)
+          }
+          if (res.profileEmail) {
+            setEmail(res.profileEmail)
+          }
+          if (res.skillTags) {
+            setSkills(res.skillTags)
+          }
+        })
 
-      // get project data
-      getUserProjects(profile.uid).then(res => setProjects(res))
-
-    }
-  }, [profile])
+        // get project data
+        getUserProjects(resKey).then(res => setProjects(res))
+      }
+    })
+  }, [profileId])
 
   return (
     <div>

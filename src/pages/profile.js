@@ -13,7 +13,7 @@ function Profile() {
       <SEO title="Profile" />
       <Router basepath="/profile">
         <MainProfile path="/" />
-        <PublicProfile path=":profileID" />
+        <PublicProfile path=":profileId" />
       </Router>
     </Layout>
   );

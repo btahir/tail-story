@@ -18,21 +18,21 @@ const InitialData = {
 	createdAt: { seconds: 0, nanoseconds: 0 }
 }
 
-const ProjectDetail = ({ projectID }) => {
+const ProjectDetail = ({ projectId }) => {
 	const { profile } = useAuth();
 	const [projectData, setProjectData] = useState(InitialData);
 
 	useEffect(() => {
 		// fetch project data. use props for id.
 		if (profile) {
-			getProjectDetail(projectID)
+			getProjectDetail(projectId)
 				.then(res => {
 					if (res !== undefined && Object.keys(res).length) {
 						setProjectData(res)
 					}
 				})
 		}
-	}, [profile, projectID])
+	}, [profile, projectId])
 
 	const handleProjectDelete = async () => {
 		await deleteProject(projectData.key)

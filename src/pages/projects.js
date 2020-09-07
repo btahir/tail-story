@@ -13,7 +13,7 @@ function Projects() {
 			<SEO title="Projects" />
 			<Router basepath="/projects">
 				<MainProject path="/" />
-				<ProjectDetail path=":projectID" />
+				<ProjectDetail path=":projectId" />
 			</Router>
 		</Layout>
 	);

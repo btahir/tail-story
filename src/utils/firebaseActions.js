@@ -147,3 +147,20 @@ export const updateProjectDetails = (projectKey, title, description, github, dem
         console.error("Error updating document: ", error);
     });
 }
+
+export const getPublicUserKey = async (profileId) => {
+    let docId = ''
+    await firestore.collection("users")
+        .where("profileId", "==", profileId.toString())
+        .get()
+        .then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+                // doc.data() is never undefined for query doc snapshots
+                docId = doc.id
+            });
+        })
+        .catch(function (error) {
+            console.log("Error getting documents: ", error);
+        });
+    return docId
+}
