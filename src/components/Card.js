@@ -16,7 +16,7 @@ function Card({ item }) {
 	}
 
 	return (
-		<div className="rounded overflow-hidden px-6 py-4">
+		<div className="rounded overflow-hidden px-6 py-4 border-b-2 border-gray-200">
 			<div className="flex flex-col sm:flex-row sm:justify-between">
 				<div className="flex flex-col sm:w-2/3">
 					<div className="px-6 py-4">

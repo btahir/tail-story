@@ -14,6 +14,7 @@ const InitialData = {
 	github: '',
 	demo: '',
 	description: '',
+	creatorId: '',
 	profileId: '',
 	tagArray: [],
 
@@ -21,16 +22,22 @@ const InitialData = {
 }
 
 const ProjectDetail = ({ projectId }) => {
-	const { profile } = useAuth();
 	const [projectData, setProjectData] = useState(InitialData);
+	const [isCreator, setIsCreator] = useState(false);
+
+	const { profile } = useAuth();
 
 	useEffect(() => {
-		// fetch project data. use props for id.
 		if (profile) {
+			// fetch project data. use props for id.
 			getProjectDetail(projectId)
 				.then(res => {
 					if (res !== undefined && Object.keys(res).length) {
 						setProjectData(res)
+						// find out if its creator or public
+						if (res.creatorId === profile.uid) {
+							setIsCreator(true)
+						}
 					}
 				})
 		}
@@ -59,14 +66,18 @@ const ProjectDetail = ({ projectId }) => {
 	return (
 		<div>
 			<div className="flex flex-col text-center border-b-2 border-gray-100 pb-4">
-				<div className="flex justify-center mb-4">
-					<div className="w-16">
-						<UpdateProjectBtn btnTitle="Edit" projectData={projectData} handleSubmit={handleProjectEdit} />
+				{isCreator ?
+					<div className="flex justify-center mb-4">
+						<div className="w-16">
+							<UpdateProjectBtn btnTitle="Edit" projectData={projectData} handleSubmit={handleProjectEdit} />
+						</div>
+						<div className="w-24">
+							<DeleteProjectAlert handleSubmit={handleProjectDelete} />
+						</div>
 					</div>
-					<div className="w-24">
-						<DeleteProjectAlert handleSubmit={handleProjectDelete} />
-					</div>
-				</div>
+					:
+					null
+				}
 				<div className="text-gray-800 font-extrabold leading-loose text-2xl text-center">{projectData.title}</div>
 				<ProjectIcons profileId={projectData.profileId} github={projectData.github} demo={projectData.demo} />
 			</div>
