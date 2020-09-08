@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
 import TextField from "@material-ui/core/TextField";
-import { getProfileDetails, updateUserDetails, uploadProfileImage } from "../utils/firebaseActions";
+import { getProfileDetails, updateProfileDetails, uploadProfileImage } from "../utils/firebaseActions";
 import { getCroppedImg } from "../utils/canvasUtils";
 import { useAuth } from "gatsby-theme-firebase";
 import { navigate } from "gatsby";
@@ -195,7 +195,7 @@ const EditProfile = () => {
     // validate
     const val = validate();
     if (!val) {
-      await updateUserDetails({
+      await updateProfileDetails({
         id: profile.uid,
         name: name,
         jobTitle: job,

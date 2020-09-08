@@ -63,7 +63,7 @@ export const getProfileDetails = (id) => {
         })
 }
 
-export const updateUserDetails = async (user) => {
+export const updateProfileDetails = async (user) => {
     const firestoreUserData = {
         displayName: user.name,
         jobTitle: user.jobTitle,
