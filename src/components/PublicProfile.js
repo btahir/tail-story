@@ -4,7 +4,7 @@ import ProfileIcons from "./ProfileIcons";
 import ProfileAvatar from "./ProfileAvatar";
 import Tag from "./Tag";
 import Card from "./Card";
-import { getPublicUserKey, getUserDetails, getUserProjects } from '../utils/firebaseActions';
+import { getPublicUserKey, getProfileDetails, getUserProjects } from '../utils/firebaseActions';
 
 const PublicProfile = ({ profileId }) => {
   const [name, setName] = useState('');
@@ -22,7 +22,7 @@ const PublicProfile = ({ profileId }) => {
     const profileKey = getPublicUserKey(profileId)
     profileKey.then(resKey => {
       if (resKey) {
-        const fireUserData = getUserDetails(resKey)
+        const fireUserData = getProfileDetails(resKey)
         fireUserData.then(res => {
           if (res.displayName) {
             setName(res.displayName)

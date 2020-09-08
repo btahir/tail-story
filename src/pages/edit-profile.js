@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
 import TextField from "@material-ui/core/TextField";
-import { getUserDetails, updateUserDetails, uploadProfileImage } from "../utils/firebaseActions";
+import { getProfileDetails, updateUserDetails, uploadProfileImage } from "../utils/firebaseActions";
 import { getCroppedImg } from "../utils/canvasUtils";
 import { useAuth } from "gatsby-theme-firebase";
 import { navigate } from "gatsby";
@@ -53,7 +53,7 @@ const EditProfile = () => {
 
   useEffect(() => {
     if (profile) {
-      const fireData = getUserDetails(profile.uid)
+      const fireData = getProfileDetails(profile.uid)
       fireData.then(res => {
         if (res.displayName) {
           setName(res.displayName)

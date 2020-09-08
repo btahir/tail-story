@@ -3,10 +3,9 @@ import defaultImg from "../images/default-img.png";
 
 const storage = firebase.storage();
 
-export const createNewUser = (user) => {
+export const createNewUser = async (user) => {
     const profileId = Date.now().toString()
     const firestoreUserData = {
-        profileId: profileId,
         photoURL: user.photoURL,
         displayName: user.displayName,
         email: user.email,
@@ -15,14 +14,24 @@ export const createNewUser = (user) => {
     }
     // extract relevant data out of user object
     // store user in a user collection in Firestore
-    firestore.collection("users").doc(user.uid).set(firestoreUserData, { merge: true })
+    await firestore.collection("users").doc(user.uid).set(firestoreUserData, { merge: true })
         .then(function () {
-            return true;
+            
         })
         .catch(function (error) {
             console.error("Error writing document: ", error);
             return false;
         });
+    
+    // add info to profile
+    await firestore.collection("profile").doc(user.uid).set({profileId: profileId}, { merge: true })
+    .then(function () {
+        return true;
+    })
+    .catch(function (error) {
+        console.error("Error writing document: ", error);
+        return false;
+    });   
 }
 
 export const getStripeSubscription = async (id) => {
@@ -37,20 +46,20 @@ export const getStripeSubscription = async (id) => {
 
 }
 
-export const getUserDetails = (id) => {
-    return firestore.collection("users").doc(id).get()
+export const getProfileDetails = (id) => {
+    return firestore.collection("profile").doc(id).get()
         .then(doc => {
             let res = doc.data()
             // get profile image      
-            return storage.ref().child(`profileImages/${res.profileId}.jpg`).getDownloadURL().then(function(url) {
+            return storage.ref().child(`profileImages/${res.profileId}.jpg`).getDownloadURL().then(function (url) {
                 res = { ...res, profileImageSrc: url }
                 return res
-            }).
-            catch((err) => {
-                res = { ...res, profileImageSrc: defaultImg }
-                return res
             })
-            
+                .catch((err) => {
+                    res = { ...res, profileImageSrc: defaultImg }
+                    return res
+                })
+
         })
 }
 
@@ -64,7 +73,7 @@ export const updateUserDetails = async (user) => {
         description: user.description,
         skillTags: user.skillTags
     }
-    await firestore.collection("users").doc(user.id).set(firestoreUserData, { merge: true })
+    await firestore.collection("profile").doc(user.id).set(firestoreUserData, { merge: true })
         .then(function () {
             return true;
         })
@@ -165,7 +174,7 @@ export const updateProjectDetails = (projectKey, title, description, github, dem
 
 export const getPublicUserKey = async (profileId) => {
     let docId = ''
-    await firestore.collection("users")
+    await firestore.collection("profile")
         .where("profileId", "==", profileId)
         .get()
         .then(function (querySnapshot) {
@@ -184,7 +193,7 @@ export const uploadProfileImage = async (id, imgBlob) => {
     const blob = await fetch(imgBlob).then(r => r.blob());
     const storageRef = firebase.storage().ref(`profileImages/${id}.jpg`);
 
-    storageRef.put(blob).then(function() {
+    storageRef.put(blob).then(function () {
         // console.log('Uploaded a blob or file!');
-      });
+    });
 }

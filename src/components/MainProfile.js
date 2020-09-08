@@ -6,7 +6,7 @@ import Tag from "./Tag";
 import Card from "./Card";
 import UpdateProjectBtn from "./UpdateProjectBtn";
 import { navigate } from "gatsby";
-import { getUserDetails, addProject, getUserProjects } from '../utils/firebaseActions';
+import { getProfileDetails, addProject, getUserProjects } from '../utils/firebaseActions';
 import { useAuth } from "gatsby-theme-firebase";
 
 function MainProfile() {
@@ -29,8 +29,8 @@ function MainProfile() {
     if (profile) {
       setCreatorId(profile.uid)
       // get user data
-      const fireUserData = getUserDetails(profile.uid)
-      fireUserData.then(res => {
+      const fireProfileData = getProfileDetails(profile.uid)
+      fireProfileData.then(res => {
         if (res.profileId) {
           setProfileId(res.profileId)
         }
@@ -59,6 +59,7 @@ function MainProfile() {
           setSkills(res.skillTags)
         }
       })
+
       // get project data
       getUserProjects(profile.uid).then(res => setProjects(res))
     }
