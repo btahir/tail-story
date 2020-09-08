@@ -15,6 +15,7 @@ const PublicProfile = ({ profileId }) => {
   const [email, setEmail] = useState('');
   const [skills, setSkills] = useState([]);
   const [projects, setProjects] = useState([]);
+  const [profileImageSrc, setProfileImageSrc] = useState('');
 
   useEffect(() => {
     // get user data
@@ -32,6 +33,9 @@ const PublicProfile = ({ profileId }) => {
           if (res.description) {
             setDescription(res.description)
           }
+          if (res.profileImageSrc) {
+            setProfileImageSrc(res.profileImageSrc)
+          }          
           if (res.githubURL) {
             setGithub(res.githubURL)
           }
@@ -59,6 +63,7 @@ const PublicProfile = ({ profileId }) => {
           name={name}
           jobTitle={jobTitle}
           description={description}
+          profileImageSrc={profileImageSrc}
         />
         <div className="flex flex-col items-center">
           <ProfileIcons
