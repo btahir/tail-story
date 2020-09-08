@@ -1,10 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
 import TextField from "@material-ui/core/TextField";
 import { getUserDetails, updateUserDetails } from "../utils/firebaseActions";
+import { getCroppedImg } from "../utils/canvasUtils";
 import { useAuth } from "gatsby-theme-firebase";
 import { navigate } from "gatsby";
+import Slider from '@material-ui/core/Slider';
+import Button from '@material-ui/core/Button';
+import Cropper from 'react-easy-crop';
+
+function readFile(file) {
+  return new Promise(resolve => {
+    const reader = new FileReader()
+    reader.addEventListener('load', () => resolve(reader.result), false)
+    reader.readAsDataURL(file)
+  })
+}
 
 const EditProfile = () => {
   const { profile } = useAuth();
@@ -30,36 +42,69 @@ const EditProfile = () => {
   const [descriptionError, setDescriptionError] = useState('');
   const [isSkillsError, setIsSkillsError] = useState(false);
   const [skillsError, setSkillsError] = useState('');
+  const [crop, setCrop] = useState({ x: 0, y: 0 });
+  const [rotation, setRotation] = useState(0);
+  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
+  const [croppedImage, setCroppedImage] = useState(null);
+  const [zoom, setZoom] = useState(1);
+  const [imageSrc, setImageSrc] = useState(null);
+  const [updateAvatar, setUpdateAvatar] = useState(false);
 
   useEffect(() => {
-    if(profile) {
+    if (profile) {
       const fireData = getUserDetails(profile.uid)
       fireData.then(res => {
-        if(res.displayName) {
+        if (res.displayName) {
           setName(res.displayName)
         }
-        if(res.jobTitle) {
+        if (res.jobTitle) {
           setJob(res.jobTitle)
         }
-        if(res.description) {
+        if (res.description) {
           setDescription(res.description)
-        }       
-        if(res.githubURL) {
+        }
+        if (res.githubURL) {
           setGithub(res.githubURL)
-        }       
-        if(res.linkedinURL) {
+        }
+        if (res.linkedinURL) {
           setLinkedIn(res.linkedinURL)
-        }   
-        if(res.profileEmail) {
+        }
+        if (res.profileEmail) {
           setEmail(res.profileEmail)
-        }   
-        if(res.skillTags) {
+        }
+        if (res.skillTags) {
           setSkills(res.skillTags.join(','))
-        }                
+        }
       })
     }
-  
-    },[profile])
+
+  }, [profile])
+
+  const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
+    setCroppedAreaPixels(croppedAreaPixels)
+  }, [])
+
+  const showCroppedImage = useCallback(async () => {
+    try {
+      const croppedImage = await getCroppedImg(
+        imageSrc,
+        croppedAreaPixels,
+        rotation
+      )
+      setCroppedImage(croppedImage)
+      setUpdateAvatar(false)
+    } catch (e) {
+      console.error(e)
+    }
+  }, [imageSrc, croppedAreaPixels, rotation])
+
+  const onFileChange = async e => {
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0]
+      let imageDataUrl = await readFile(file)
+      setImageSrc(imageDataUrl)
+    }
+  }
 
   const validateEmail = (email) => {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -143,11 +188,11 @@ const EditProfile = () => {
         id: profile.uid,
         name: name,
         jobTitle: job,
-        description:description,
+        description: description,
         githubURL: github,
         linkedinURL: linkedin,
-        email:email,
-        skillTags:skillArray
+        email: email,
+        skillTags: skillArray
       })
       navigate('/profile')
     }
@@ -156,8 +201,59 @@ const EditProfile = () => {
   return (
     <Layout>
       <SEO title="Edit-Profile" />
-      <form onSubmit={handleSubmit} className="flex flex-col mt-16 max-w-md mx-auto">
-        <div>Choose Your Avatar</div>
+      <form onSubmit={handleSubmit} className="flex flex-col mt-16 mx-auto max-w-lg">
+        {updateAvatar ?
+          (imageSrc ?
+            <div className="flex flex-col mb-16 mx-auto">
+              <div className="relative h-64 w-64">
+                <Cropper
+                  image={imageSrc}
+                  crop={crop}
+                  zoom={zoom}
+                  cropSize={{ width: 128, height: 128 }}
+                  // aspectRatio={4 / 3}
+                  showGrid={false}
+                  cropShape="round"
+                  onCropChange={setCrop}
+                  onCropComplete={onCropComplete}
+                  onZoomChange={setZoom}
+                />
+              </div>
+              <div className="controls">
+                <Slider
+                  value={zoom}
+                  min={1}
+                  max={3}
+                  step={0.1}
+                  aria-labelledby="Zoom"
+                  onChange={(e, zoom) => setZoom(zoom)}
+                />
+                <div className="flex justify-evenly">
+                  <Button
+                    onClick={showCroppedImage}
+                    variant="contained"
+                    color="primary"
+                  >
+                    Save
+                </Button>
+                  <Button
+                    onClick={() => setImageSrc(null)}
+                    variant="contained"
+                    color="secondary"
+                  >
+                    Reset
+                </Button>
+                </div>
+              </div>
+            </div>
+            : 
+            <input className="mb-16" type="file" onChange={onFileChange} accept="image/*" />
+          )
+        :
+          <button onClick={() => {setUpdateAvatar(true)}} className="shadow mx-auto h-32 w-32 mb-16 border-white rounded-full overflow-hidden border-4">
+            <img className="object-cover w-full h-full" alt="profile-avatar" src={croppedImage} />
+          </button>
+        }
         <div className="mb-8">
           <TextField
             id="creator-name"
