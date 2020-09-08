@@ -233,8 +233,8 @@ const EditProfile = () => {
               <div className="controls">
                 <Slider
                   value={zoom}
-                  min={1}
-                  max={3}
+                  min={0}
+                  max={2}
                   step={0.1}
                   aria-labelledby="Zoom"
                   onChange={(e, zoom) => setZoom(zoom)}
