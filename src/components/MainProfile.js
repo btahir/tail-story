@@ -22,6 +22,7 @@ function MainProfile() {
   const [email, setEmail] = useState('');
   const [skills, setSkills] = useState([]);
   const [creatorId, setCreatorId] = useState('');
+  const [profileImageSrc, setProfileImageSrc] = useState('');
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
@@ -41,6 +42,9 @@ function MainProfile() {
         }
         if (res.description) {
           setDescription(res.description)
+        }
+        if (res.profileImageSrc) {
+          setProfileImageSrc(res.profileImageSrc)
         }
         if (res.githubURL) {
           setGithub(res.githubURL)
@@ -81,6 +85,7 @@ function MainProfile() {
           name={name}
           jobTitle={jobTitle}
           description={description}
+          profileImageSrc={profileImageSrc}
         />
         <div className="flex flex-col items-center">
           <ProfileIcons

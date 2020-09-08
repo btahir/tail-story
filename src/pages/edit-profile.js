@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
 import TextField from "@material-ui/core/TextField";
-import { getUserDetails, updateUserDetails } from "../utils/firebaseActions";
+import { getUserDetails, updateUserDetails, uploadProfileImage } from "../utils/firebaseActions";
 import { getCroppedImg } from "../utils/canvasUtils";
 import { useAuth } from "gatsby-theme-firebase";
 import { navigate } from "gatsby";
@@ -22,6 +22,7 @@ const EditProfile = () => {
   const { profile } = useAuth();
 
   const [name, setName] = useState('');
+  const [profileId, setProfileId] = useState('');
   const [job, setJob] = useState('');
   const [linkedin, setLinkedIn] = useState('');
   const [github, setGithub] = useState('');
@@ -43,7 +44,7 @@ const EditProfile = () => {
   const [isSkillsError, setIsSkillsError] = useState(false);
   const [skillsError, setSkillsError] = useState('');
   const [crop, setCrop] = useState({ x: 0, y: 0 });
-  const [rotation, setRotation] = useState(0);
+  const [rotation,] = useState(0);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
   const [croppedImage, setCroppedImage] = useState(null);
   const [zoom, setZoom] = useState(1);
@@ -57,6 +58,9 @@ const EditProfile = () => {
         if (res.displayName) {
           setName(res.displayName)
         }
+        if (res.profileId) {
+          setProfileId(res.profileId)
+        }        
         if (res.jobTitle) {
           setJob(res.jobTitle)
         }
@@ -69,6 +73,9 @@ const EditProfile = () => {
         if (res.linkedinURL) {
           setLinkedIn(res.linkedinURL)
         }
+        if (res.profileImageSrc) {
+          setCroppedImage(res.profileImageSrc)
+        }        
         if (res.profileEmail) {
           setEmail(res.profileEmail)
         }
@@ -91,8 +98,12 @@ const EditProfile = () => {
         croppedAreaPixels,
         rotation
       )
+      console.log(croppedImage)
       setCroppedImage(croppedImage)
       setUpdateAvatar(false)
+
+      // update firebase storage
+      uploadProfileImage(profileId, croppedImage)
     } catch (e) {
       console.error(e)
     }

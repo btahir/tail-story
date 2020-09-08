@@ -1,4 +1,7 @@
 import { firebase, firestore } from "gatsby-theme-firebase";
+import defaultImg from "../images/default-img.png";
+
+const storage = firebase.storage();
 
 export const createNewUser = (user) => {
     const profileId = Date.now().toString()
@@ -36,7 +39,19 @@ export const getStripeSubscription = async (id) => {
 
 export const getUserDetails = (id) => {
     return firestore.collection("users").doc(id).get()
-        .then(doc => doc.data())
+        .then(doc => {
+            let res = doc.data()
+            // get profile image      
+            return storage.ref().child(`profileImages/${res.profileId}.jpg`).getDownloadURL().then(function(url) {
+                res = { ...res, profileImageSrc: url }
+                return res
+            }).
+            catch((err) => {
+                res = { ...res, profileImageSrc: defaultImg }
+                return res
+            })
+            
+        })
 }
 
 export const updateUserDetails = async (user) => {
@@ -163,4 +178,13 @@ export const getPublicUserKey = async (profileId) => {
             console.log("Error getting documents: ", error);
         });
     return docId
+}
+
+export const uploadProfileImage = async (id, imgBlob) => {
+    const blob = await fetch(imgBlob).then(r => r.blob());
+    const storageRef = firebase.storage().ref(`profileImages/${id}.jpg`);
+
+    storageRef.put(blob).then(function() {
+        // console.log('Uploaded a blob or file!');
+      });
 }
