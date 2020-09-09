@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import SEO from "../components/SEO";
 import TextField from "@material-ui/core/TextField";
 import { getProfileDetails, updateProfileDetails, uploadProfileImage } from "../utils/firebaseActions";
+import { convertArrayToObject } from "../utils/helpers";
 import { getCroppedImg } from "../utils/canvasUtils";
 import { useAuth } from "gatsby-theme-firebase";
 import { navigate } from "gatsby";
@@ -79,7 +80,7 @@ const EditProfile = () => {
           setEmail(res.profileEmail)
         }
         if (res.skillTags) {
-          setSkills(res.skillTags.join(','))
+          setSkills(Object.keys(res.skillTags).join(','))
         }
       })
     }
@@ -188,7 +189,7 @@ const EditProfile = () => {
     event.preventDefault()
     clearForm()
 
-    const skillArray = skills.split(",")
+    const skillObject = convertArrayToObject(skills.split(","))
 
     // validate
     const val = validate();
@@ -201,7 +202,7 @@ const EditProfile = () => {
         githubURL: github,
         linkedinURL: linkedin,
         email: email,
-        skillTags: skillArray
+        skillTags: skillObject
       })
       navigate('/profile')
     }

@@ -57,7 +57,7 @@ function MainProfile() {
           setEmail(res.profileEmail)
         }
         if (res.skillTags) {
-          setSkills(res.skillTags)
+          setSkills(Object.keys(res.skillTags))
         }
       })
 

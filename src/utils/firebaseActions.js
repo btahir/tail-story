@@ -70,8 +70,7 @@ export const updateProfileDetails = async (user) => {
         githubURL: user.githubURL,
         linkedinURL: user.linkedinURL,
         profileEmail: user.email,
-        description: user.description,
-        skillTags: user.skillTags
+        description: user.description        
     }
     await firestore.collection("profile").doc(user.id).set(firestoreUserData, { merge: true })
         .then(function () {
@@ -81,6 +80,16 @@ export const updateProfileDetails = async (user) => {
             console.error("Error writing document: ", error);
             return false;
         });
+
+    // update tags without merge
+    await firestore.collection("profile").doc(user.id).update({skillTags: user.skillTags})
+        .then(function () {
+            return true;
+        })
+        .catch(function (error) {
+            console.error("Error writing document: ", error);
+            return false;
+        });        
 }
 
 export const addProject = async (project) => {
