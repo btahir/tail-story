@@ -7,7 +7,7 @@ import Card from "./Card";
 import UpdateProjectBtn from "./UpdateProjectBtn";
 import { navigate } from "gatsby";
 import { getProfileDetails, addProject, getUserProjects } from "../utils/firebaseActions";
-import { convertArrayToObject, convertObjectToArray } from "../utils/helpers";
+import { convertArrayToObject } from "../utils/helpers";
 import { useAuth } from "gatsby-theme-firebase";
 
 function MainProfile() {

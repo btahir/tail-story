@@ -140,10 +140,79 @@ export const getAllProjects = async () => {
     return projects
 }
 
+const generateSearchTerms = (searchTerm) => {
+    const searchTermArray = searchTerm.split(' ')
+    let search1 = ''
+    let search2 = ''
+    let search3 = ''
+    let search4 = ''
+    let search5 = ''
+
+    if(searchTermArray.length === 1) {
+        search1 = searchTermArray[0]
+        search2 = searchTermArray[0]
+        search3 = searchTermArray[0]
+        search4 = searchTermArray[0]
+        search5 = searchTermArray[0]
+    } 
+    if(searchTermArray.length === 2) {
+        search1 = searchTermArray[0]
+        search2 = searchTermArray[1]
+        search3 = searchTermArray[0]
+        search4 = searchTermArray[0]
+        search5 = searchTermArray[0]
+    }
+    if(searchTermArray.length === 3) {
+        search1 = searchTermArray[0]
+        search2 = searchTermArray[1]
+        search3 = searchTermArray[2]
+        search4 = searchTermArray[0]
+        search5 = searchTermArray[0]
+    }
+    if(searchTermArray.length === 4) {
+        search1 = searchTermArray[0]
+        search2 = searchTermArray[1]
+        search3 = searchTermArray[2]
+        search4 = searchTermArray[3]
+        search5 = searchTermArray[0]
+    }  
+    if(searchTermArray.length === 5) {
+        search1 = searchTermArray[0]
+        search2 = searchTermArray[1]
+        search3 = searchTermArray[2]
+        search4 = searchTermArray[3]
+        search5 = searchTermArray[4]
+    }
+    
+    if (search1 === '') {
+        search1 = searchTermArray[0]
+    }
+    if (search2 === '') {
+        search2 = searchTermArray[0]
+    }    
+    if (search3 === '') {
+        search3 = searchTermArray[0]
+    }
+    if (search4 === '') {
+        search4 = searchTermArray[0]
+    }
+    if (search5 === '') {
+        search5 = searchTermArray[0]
+    }
+
+    return [search1,search2,search3,search4,search5]
+}
+
 export const getSearchedProjects = async (searchTerm) => {
     let projects = []
+    const [search1,search2,search3,search4,search5] = generateSearchTerms(searchTerm)
+
     await firestore.collection("projects")        
-        .where("projectTags", "array-contains-any", [searchTerm])
+        .where(`projectTags.${search1}`, "==", true)
+        .where(`projectTags.${search2}`, "==", true)
+        .where(`projectTags.${search3}`, "==", true)
+        .where(`projectTags.${search4}`, "==", true)
+        .where(`projectTags.${search5}`, "==", true)
         .get()
         .then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
