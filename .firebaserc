@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "your-project"
+    "default": "project-job-ba358",
+    "project-job": "project-job-ba358"
   }
 }
