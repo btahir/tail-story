@@ -6,7 +6,8 @@ import Tag from "./Tag";
 import Card from "./Card";
 import UpdateProjectBtn from "./UpdateProjectBtn";
 import { navigate } from "gatsby";
-import { getProfileDetails, addProject, getUserProjects } from '../utils/firebaseActions';
+import { getProfileDetails, addProject, getUserProjects } from "../utils/firebaseActions";
+import { convertArrayToObject, convertObjectToArray } from "../utils/helpers";
 import { useAuth } from "gatsby-theme-firebase";
 
 function MainProfile() {
@@ -36,7 +37,7 @@ function MainProfile() {
         }
         if (res.displayName) {
           setName(res.displayName)
-        }        
+        }
         if (res.jobTitle) {
           setJobTitle(res.jobTitle)
         }
@@ -70,7 +71,9 @@ function MainProfile() {
       alert('Cannot add more than 3 projects!')
     } else {
       const projectId = Date.now().toString()
-      await addProject({ creatorId, profileId, projectId, title, description, github, demo, tagArray })
+      const projectTags = convertArrayToObject(tagArray)
+
+      await addProject({ creatorId, profileId, projectId, title, description, github, demo, projectTags })
       window.location.reload()
     }
   }

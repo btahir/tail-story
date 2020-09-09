@@ -5,7 +5,7 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import Tag from "./Tag";
 
 function Card({ item }) {
-	const { projectId, title, description, tagArray, createdAt, github } = item;
+	const { projectId, title, description, projectTags, createdAt, github } = item;
 
 	const handleClick = () => {
 		navigate(`/projects/${projectId}`)
@@ -34,7 +34,7 @@ function Card({ item }) {
 				</div>
 			</div>
 			<div className="px-6 pt-4 pb-2">
-				{tagArray.map((tag, index) =>
+				{Object.keys(projectTags).map((tag, index) =>
 					<Tag key={index} item={tag} />
 				)}
 			</div>

@@ -30,7 +30,7 @@ export default function UpdateProjectBtn({ btnTitle, projectData, handleSubmit }
       setDescription(projectData.description)
       setGithub(projectData.github)
       setDemo(projectData.demo)
-      setTags(projectData.tagArray)
+      setTags(Object.keys(projectData.projectTags))
     }
   }, [projectData])
 

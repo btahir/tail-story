@@ -5,7 +5,7 @@ import Tag from './Tag';
 import UpdateProjectBtn from "./UpdateProjectBtn";
 import { useAuth } from "gatsby-theme-firebase";
 import { getProjectDetail, deleteProject, updateProjectDetails } from "../utils/firebaseActions";
-import { firestoreTimeStampConvert } from "../utils/helpers";
+import { firestoreTimeStampConvert, convertArrayToObject } from "../utils/helpers";
 import { navigate } from "gatsby";
 
 const InitialData = {
@@ -16,7 +16,7 @@ const InitialData = {
 	description: '',
 	creatorId: '',
 	profileId: '',
-	tagArray: [],
+	projectTags: [],
 
 	createdAt: { seconds: 0, nanoseconds: 0 }
 }
@@ -48,7 +48,8 @@ const ProjectDetail = ({ projectId }) => {
 		navigate('/profile')
 	}
 
-	const handleProjectEdit = (title, description, github, demo, tagArray) => {
+	const handleProjectEdit = (title, description, github, demo, projectTagsArray) => {
+		const projectTagsObject = convertArrayToObject(projectTagsArray)
 		// update state
 		setProjectData({
 			...projectData,
@@ -56,11 +57,11 @@ const ProjectDetail = ({ projectId }) => {
 			description,
 			github,
 			demo,
-			tagArray
+			projectTags: projectTagsObject
 		})
 
 		// update firestore
-		updateProjectDetails(projectData.key, title, description, github, demo, tagArray)
+		updateProjectDetails(projectData.key, title, description, github, demo, projectTagsObject)
 	}
 
 	return (
@@ -86,7 +87,7 @@ const ProjectDetail = ({ projectId }) => {
 			</div>
 			<div className="px-6 pt-4 pb-2 mt-4 flex justify-around">
 				<div>
-					{projectData.tagArray.map((tag, index) =>
+					{Object.keys(projectData.projectTags).map((tag, index) =>
 						<Tag key={index} item={tag} />
 					)}
 				</div>

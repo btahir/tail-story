@@ -114,9 +114,27 @@ export const getUserProjects = async (id) => {
     return projects
 }
 
-export const getAllProjects = async (id) => {
+export const getAllProjects = async () => {
     let projects = []
     await firestore.collection("projects")
+        .get()
+        .then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+                // doc.data() is never undefined for query doc snapshots
+                projects.push(doc.data())
+            });
+        })
+        .catch(function (error) {
+            console.log("Error getting documents: ", error);
+        });
+
+    return projects
+}
+
+export const getSearchedProjects = async (searchTerm) => {
+    let projects = []
+    await firestore.collection("projects")        
+        .where("projectTags", "array-contains-any", [searchTerm])
         .get()
         .then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
@@ -157,19 +175,25 @@ export const deleteProject = (projectKey) => {
     });
 }
 
-export const updateProjectDetails = (projectKey, title, description, github, demo, tagArray) => {
+export const updateProjectDetails = (projectKey, title, description, github, demo, projectTags) => {
     const firestoreProjectData = {
         title: title,
         description: description,
         github: github,
-        demo: demo,
-        tagArray: tagArray
+        demo: demo        
     }
     firestore.collection("projects").doc(projectKey).set(firestoreProjectData, { merge: true }).then(function () {
 
     }).catch(function (error) {
         console.error("Error updating document: ", error);
     });
+
+    // update tags without merge
+    firestore.collection("projects").doc(projectKey).update({projectTags:projectTags}).then(function () {
+
+    }).catch(function (error) {
+        console.error("Error updating document: ", error);
+    });    
 }
 
 export const getPublicUserKey = async (profileId) => {

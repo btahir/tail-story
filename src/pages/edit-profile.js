@@ -44,7 +44,6 @@ const EditProfile = () => {
   const [isSkillsError, setIsSkillsError] = useState(false);
   const [skillsError, setSkillsError] = useState('');
   const [crop, setCrop] = useState({ x: 0, y: 0 });
-  const [rotation,] = useState(0);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
   const [croppedImage, setCroppedImage] = useState(null);
   const [zoom, setZoom] = useState(1);
@@ -96,9 +95,8 @@ const EditProfile = () => {
       const croppedImage = await getCroppedImg(
         imageSrc,
         croppedAreaPixels,
-        rotation
+        0
       )
-      console.log(croppedImage)
       setCroppedImage(croppedImage)
       setUpdateAvatar(false)
 
@@ -107,7 +105,7 @@ const EditProfile = () => {
     } catch (e) {
       console.error(e)
     }
-  }, [imageSrc, croppedAreaPixels, rotation])
+  }, [imageSrc, croppedAreaPixels, profileId])
 
   const onFileChange = async e => {
     if (e.target.files && e.target.files.length > 0) {
@@ -231,6 +229,7 @@ const EditProfile = () => {
                 />
               </div>
               <div className="controls">
+                <div className="text-xs text-center py-2 font-light text-gray-900"></div>
                 <Slider
                   value={zoom}
                   min={0}
@@ -238,15 +237,15 @@ const EditProfile = () => {
                   step={0.1}
                   aria-labelledby="Zoom"
                   onChange={(e, zoom) => setZoom(zoom)}
-                />
-                <div className="flex justify-evenly">
+                />                
+                <div className="flex justify-evenly">                  
                   <Button
                     onClick={showCroppedImage}
                     variant="contained"
                     color="primary"
                   >
                     Save
-                </Button>
+                  </Button>
                   <Button
                     onClick={() => setImageSrc(null)}
                     variant="contained"
