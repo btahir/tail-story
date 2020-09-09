@@ -77,6 +77,11 @@ export default function UpdateProjectBtn({ btnTitle, projectData, handleSubmit }
       setTagsError('This can\'t be blank')
       err = true
     }
+    if (tags.split(',').length > 5) {
+      setIsTagsError(true)
+      setTagsError('Can\'t have more than 5 tags')
+      err = true
+    }    
     if (!github.startsWith('https://www.github.com/') && !github.startsWith('https://github.com/')) {
       setIsGithubError(true)
       setGithubError('Invalid URL. Should be something like https://github.com/[USERNAME]')
