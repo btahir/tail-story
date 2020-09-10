@@ -46,19 +46,26 @@ function IndexPage() {
 			</div>
 
 			<div className="">
-				<div className="flex flex-wrap max-w-6xl mx-auto my-24">
+				<div className="flex flex-wrap max-w-6xl mx-auto md:my-12 lg:my-24">
 					<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
 						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Lorem ipsum dolor sit amet</h3>
 						<p className="text-gray-500 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.</p>
 					</div>
 					<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6" src="https://images.unsplash.com/photo-1599469803986-a6811c726ca7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="main-img" />
 				</div>
-				<div className="flex flex-wrap flex-col-reverse sm:flex-row max-w-6xl mx-auto my-24">
+				<div className="flex flex-wrap flex-col-reverse sm:flex-row max-w-6xl mx-auto md:my-12 lg:my-24">
 					<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6" src="https://images.unsplash.com/photo-1599469803986-a6811c726ca7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="main-img" />
 					<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
 						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Lorem ipsum dolor sit amet</h3>
 						<p className="text-gray-500 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.</p>
 					</div>
+				</div>
+				<div className="flex flex-wrap max-w-6xl mx-auto md:my-12 lg:my-24">
+					<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
+						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Lorem ipsum dolor sit amet</h3>
+						<p className="text-gray-500 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.</p>
+					</div>
+					<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6" src="https://images.unsplash.com/photo-1599469803986-a6811c726ca7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="main-img" />
 				</div>
 			</div>
 
