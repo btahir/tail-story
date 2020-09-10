@@ -65,7 +65,7 @@ const ProjectDetail = ({ projectId }) => {
 	}
 
 	return (
-		<div>
+		<div className="max-w-6xl mx-auto">
 			<div className="flex flex-col text-center border-b-2 border-gray-100 pb-4">
 				{isCreator ?
 					<div className="flex justify-center mb-4">

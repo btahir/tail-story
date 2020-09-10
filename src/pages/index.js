@@ -8,7 +8,7 @@ function IndexPage() {
 	return (
 		<Layout>
 			<SEO title="Home" />
-			<main className="mx-auto mt-10 px-6 bg-gradient-to-t from-indigo-200">
+			<main className="mx-auto mt-10 px-6 pb-12 bg-gradient-to-t from-indigo-200">
 				<div className="text-center">
 					<h2 className="text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl">
 						Data to enrich your
@@ -45,7 +45,7 @@ function IndexPage() {
 				</div>
 			</div>
 
-			<div className="py-12">
+			<div className="">
 				<div className="flex flex-wrap max-w-6xl mx-auto my-24">
 					<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
 						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Lorem ipsum dolor sit amet</h3>

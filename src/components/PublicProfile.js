@@ -57,7 +57,7 @@ const PublicProfile = ({ profileId }) => {
   }, [profileId])
 
   return (
-    <div>
+    <div className="max-w-6xl mx-auto">
       <div className="bg-white my-12 pb-6 w-full flex flex-col">
         <ProfileAvatar
           name={name}

@@ -80,7 +80,7 @@ function MainProfile() {
   }
 
   return (
-    <div>
+    <div className="max-w-6xl mx-auto">
       <div className="flex justify-center">
         <button onClick={() => navigate('/edit-profile')} className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">Edit</button>
         <button onClick={() => navigate(`/profile/${profileId}`)} className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">Preview</button>

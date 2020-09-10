@@ -38,7 +38,7 @@ function Main() {
   };
 
   return (
-    <>
+    <div className="max-w-6xl mx-auto">
       <div className="pt-2 relative mx-auto text-gray-600 text-center w-full sm:w-1/2">
         <input className="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none w-full"
           onKeyDown={(event) => filterResults(event)} type="search" name="search" placeholder="Search" />
@@ -60,7 +60,7 @@ function Main() {
         rowsPerPage={rowsPerPage}
         onChangeRowsPerPage={handleChangeRowsPerPage}
       />
-    </>
+    </div>
   );
 }
 
