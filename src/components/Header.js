@@ -63,12 +63,16 @@ function Header() {
               title: `Projects`,
             },
             {
-              route: `/contact`,
-              title: `Contact`,
+              route: `/about`,
+              title: `About`,
             },
+            {
+              route: `/faq`,
+              title: `FAQ`,
+            },            
           ].map((link) => (
             <Link
-              className="block mt-4 no-underline md:inline-block md:mt-0 md:ml-6"
+              className="block mt-4 no-underline md:inline-block md:mt-0 md:ml-8 font-medium text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
               key={link.title}
               to={link.route}
             >
@@ -78,13 +82,13 @@ function Header() {
           {isLoggedIn ?
             <>
               <Link
-                className="block mt-4 no-underline md:inline-block md:mt-0 md:ml-6"
+                className="block mt-4 no-underline md:inline-block md:mt-0 md:ml-8 font-medium text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
                 to="/profile"
               >
                 Profile
               </Link>
               <button
-                className="block mt-4 no-underline md:inline-block md:mt-0 md:ml-6"
+                className="block mt-4 no-underline md:inline-block md:mt-0 md:ml-8 font-medium text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out"
                 onClick={() => auth.signOut()}
               >
                 Sign Out
@@ -92,7 +96,7 @@ function Header() {
             </>
             :
             <Link
-              className="block mt-4 no-underline md:inline-block md:mt-0 md:ml-6"
+              className="block mt-4 no-underline md:inline-block md:mt-0 md:ml-8 font-medium text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out"
               to="/login"
             >
               Login
