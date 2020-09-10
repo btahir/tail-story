@@ -8,7 +8,7 @@ function IndexPage() {
 	return (
 		<Layout>
 			<SEO title="Home" />
-			<main className="mx-auto max-w-screen-xl px-4 mt-10 px-6">
+			<main className="mx-auto mt-10 px-6 bg-gradient-to-t from-indigo-200">
 				<div className="text-center">
 					<h2 className="text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl">
 						Data to enrich your
@@ -25,18 +25,27 @@ function IndexPage() {
               </button>
 						</div>
 						<div className="mt-3 sm:mt-0 sm:ml-3">
-							<button className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+							<button className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-700 bg-white hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
 								Live demo
               </button>
 						</div>
 					</div>
 				</div>
-				<div className="mt-6 md:mt-10">
+				<div className="mt-6 md:mt-10 pb-20">
 					<img className="h-56 w-full object-contain sm:h-72 md:h-96 lg:h-120" src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80" alt="main-img" />
 				</div>
 			</main>
 
-			<div className="mt-12 py-12">
+			{/* divider */}
+			<div className="relative">
+				<div className="custom-shape-divider-bottom-1599718217">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+						<path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" className="shape-fill"></path>
+					</svg>
+				</div>
+			</div>
+
+			<div className="py-12">
 				<div className="flex flex-wrap max-w-6xl mx-auto my-24">
 					<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
 						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Lorem ipsum dolor sit amet</h3>
@@ -44,16 +53,16 @@ function IndexPage() {
 					</div>
 					<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6" src="https://images.unsplash.com/photo-1599469803986-a6811c726ca7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="main-img" />
 				</div>
-				<div className="flex flex-wrap flex-col-reverse sm:flex-row max-w-6xl mx-auto mt-24">
-				<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6" src="https://images.unsplash.com/photo-1599469803986-a6811c726ca7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="main-img" />
+				<div className="flex flex-wrap flex-col-reverse sm:flex-row max-w-6xl mx-auto my-24">
+					<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6" src="https://images.unsplash.com/photo-1599469803986-a6811c726ca7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="main-img" />
 					<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
 						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Lorem ipsum dolor sit amet</h3>
 						<p className="text-gray-500 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.</p>
 					</div>
-				</div>				
+				</div>
 			</div>
 
-			<div className="mt-12 py-8">
+			<div className="bg-gray-100 py-8">
 				<div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="lg:text-center">
 						<p className="text-base leading-6 text-indigo-600 font-semibold tracking-wide uppercase">Transactions</p>
