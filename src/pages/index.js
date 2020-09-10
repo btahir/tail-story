@@ -77,10 +77,10 @@ function IndexPage() {
 				<div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="lg:text-center">
 						<h3 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
-							A better way to send money
+							A better way to hire
             </h3>
-						<p className="mt-4 max-w-2xl text-xl leading-7 text-gray-500 lg:mx-auto">
-							Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in accusamus quisquam.
+						<p className="mt-4 max-w-2xl text-xl leading-7 text-gray-600 lg:mx-auto">
+							Find awesome developers by focusing on the work they have done.
 						</p>
 					</div>
 
@@ -96,9 +96,9 @@ function IndexPage() {
 										</div>
 									</div>
 									<div className="ml-4">
-										<h4 className="text-lg leading-6 font-medium text-gray-900">Competitive exchange rates</h4>
-										<p className="mt-2 text-base leading-6 text-gray-500">
-											Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
+										<h4 className="text-lg leading-6 font-medium text-gray-900">Better matches</h4>
+										<p className="mt-2 text-base leading-6 text-gray-600">
+											Find developers who are well versed in the technology stack you want to use and who have built projects that are close to what you want to build.
 										</p>
 									</div>
 								</div>
@@ -113,9 +113,9 @@ function IndexPage() {
 										</div>
 									</div>
 									<div className="ml-4">
-										<h4 className="text-lg leading-6 font-medium text-gray-900">No hidden fees</h4>
-										<p className="mt-2 text-base leading-6 text-gray-500">
-											Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
+										<h4 className="text-lg leading-6 font-medium text-gray-900">Find hidden gems</h4>
+										<p className="mt-2 text-base leading-6 text-gray-600">
+											Discover talented developers who are being ignored because of outdated hiring practices and biases.
 										</p>
 									</div>
 								</div>
@@ -130,9 +130,9 @@ function IndexPage() {
 										</div>
 									</div>
 									<div className="ml-4">
-										<h4 className="text-lg leading-6 font-medium text-gray-900">Transfers are instant</h4>
-										<p className="mt-2 text-base leading-6 text-gray-500">
-											Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
+										<h4 className="text-lg leading-6 font-medium text-gray-900">Great value</h4>
+										<p className="mt-2 text-base leading-6 text-gray-600">
+											Get rising stars on your team for reasonable rates before they become super stars.
 										</p>
 									</div>
 								</div>
@@ -147,9 +147,9 @@ function IndexPage() {
 										</div>
 									</div>
 									<div className="ml-4">
-										<h4 className="text-lg leading-6 font-medium text-gray-900">Mobile notifications</h4>
-										<p className="mt-2 text-base leading-6 text-gray-500">
-											Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
+										<h4 className="text-lg leading-6 font-medium text-gray-900">Faster onboarding</h4>
+										<p className="mt-2 text-base leading-6 text-gray-600">
+											Hire developers who can hit the ground running since they have already built something you want.
 										</p>
 									</div>
 								</div>
@@ -164,7 +164,7 @@ function IndexPage() {
 					<h2 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
 						Ready to dive in?
 						<br />
-						<span className="text-indigo-600">Start your free trial today.</span>
+						<span className="text-indigo-600">Start exploring projects.</span>
 					</h2>
 					<div className="mt-8 flex lg:flex-shrink-0 lg:mt-0">
 						<div className="inline-flex rounded-md shadow">
