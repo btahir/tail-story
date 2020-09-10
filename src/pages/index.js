@@ -17,7 +17,7 @@ function IndexPage() {
 					</h2>
 					<p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:text-xl">
 						Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.
-            </p>
+          </p>
 					<div className="mt-5 sm:mt-8 sm:flex sm:justify-center">
 						<div className="rounded-md shadow">
 							<button className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
@@ -36,7 +36,24 @@ function IndexPage() {
 				</div>
 			</main>
 
-			<div className="mt-12 py-6 bg-gray-100">
+			<div className="mt-12 py-12">
+				<div className="flex flex-wrap max-w-6xl mx-auto my-24">
+					<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
+						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Lorem ipsum dolor sit amet</h3>
+						<p className="text-gray-500 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.</p>
+					</div>
+					<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6" src="https://images.unsplash.com/photo-1599469803986-a6811c726ca7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="main-img" />
+				</div>
+				<div className="flex flex-wrap flex-col-reverse sm:flex-row max-w-6xl mx-auto mt-24">
+				<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6" src="https://images.unsplash.com/photo-1599469803986-a6811c726ca7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="main-img" />
+					<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
+						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Lorem ipsum dolor sit amet</h3>
+						<p className="text-gray-500 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.</p>
+					</div>
+				</div>				
+			</div>
+
+			<div className="mt-12 py-8">
 				<div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="lg:text-center">
 						<p className="text-base leading-6 text-indigo-600 font-semibold tracking-wide uppercase">Transactions</p>
