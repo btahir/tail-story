@@ -2,6 +2,10 @@ import React from "react";
 
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
+import mainImg from "../images/main-img.svg";
+import howItWorks1 from "../images/how-it-works-1.svg";
+import howItWorks2 from "../images/how-it-works-2.svg";
+import howItWorks3 from "../images/how-it-works-3.svg";
 
 function IndexPage() {
 
@@ -11,12 +15,12 @@ function IndexPage() {
 			<main className="mx-auto mt-10 px-6 pb-12 bg-gradient-to-t from-indigo-200">
 				<div className="text-center">
 					<h2 className="text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl">
-						Data to enrich your
+						Find the perfect developer
             <br />
-						<span className="text-indigo-600">online business</span>
+						<span className="text-indigo-600">through projects</span>
 					</h2>
-					<p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:text-xl">
-						Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.
+					<p className="mt-3 text-base text-gray-600 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:text-xl">
+						Hire people based on the work they've actually done rather than irrelevant and outdated credentials.
           </p>
 					<div className="mt-5 sm:mt-8 sm:flex sm:justify-center">
 						<div className="rounded-md shadow">
@@ -26,13 +30,13 @@ function IndexPage() {
 						</div>
 						<div className="mt-3 sm:mt-0 sm:ml-3">
 							<button className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-700 bg-white hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
-								Live demo
+								Learn more
               </button>
 						</div>
 					</div>
 				</div>
-				<div className="mt-6 md:mt-10 pb-20">
-					<img className="h-56 w-full object-contain sm:h-72 md:h-96 lg:h-120" src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80" alt="main-img" />
+				<div className="mt-6 md:mt-10 pb-20 md:mt-12">
+					<img className="h-56 w-full object-contain sm:h-72 md:h-96 lg:h-120" src={mainImg} alt="main-img" />
 				</div>
 			</main>
 
@@ -48,31 +52,30 @@ function IndexPage() {
 			<div className="">
 				<div className="flex flex-wrap max-w-6xl mx-auto md:my-12 lg:my-24">
 					<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
-						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Lorem ipsum dolor sit amet</h3>
-						<p className="text-gray-500 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.</p>
+						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Search for projects</h3>
+						<p className="text-gray-500 mb-8">Find projects that match what you want to do.</p>
 					</div>
-					<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6" src="https://images.unsplash.com/photo-1599469803986-a6811c726ca7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="main-img" />
+					<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6" src={howItWorks1} alt="how-it-works-1" />
 				</div>
 				<div className="flex flex-wrap flex-col-reverse sm:flex-row max-w-6xl mx-auto md:my-12 lg:my-24">
-					<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6" src="https://images.unsplash.com/photo-1599469803986-a6811c726ca7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="main-img" />
+					<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6"  src={howItWorks2} alt="how-it-works-2" />
 					<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
-						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Lorem ipsum dolor sit amet</h3>
-						<p className="text-gray-500 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.</p>
+						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Get more details</h3>
+						<p className="text-gray-500 mb-8">Find out more about the project and its creator.</p>
 					</div>
 				</div>
 				<div className="flex flex-wrap max-w-6xl mx-auto md:my-12 lg:my-24">
 					<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
-						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Lorem ipsum dolor sit amet</h3>
-						<p className="text-gray-500 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.</p>
+						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Connect with the developer</h3>
+						<p className="text-gray-500 mb-8">Contact the project creator with opportunities if you feel like it is a good fit.</p>
 					</div>
-					<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6" src="https://images.unsplash.com/photo-1599469803986-a6811c726ca7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="main-img" />
+					<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6"  src={howItWorks3} alt="how-it-works-3" />
 				</div>
 			</div>
 
 			<div className="bg-gray-100 py-8">
 				<div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="lg:text-center">
-						<p className="text-base leading-6 text-indigo-600 font-semibold tracking-wide uppercase">Transactions</p>
 						<h3 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
 							A better way to send money
             </h3>
