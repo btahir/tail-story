@@ -4,7 +4,7 @@
 /*! purgecss end ignore */
 @tailwind utilities;
 
-.custom-shape-divider-bottom-1599718217 {
+.custom-shape-divider-bottom {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -14,13 +14,12 @@
   transform: rotate(180deg);
 }
 
-.custom-shape-divider-bottom-1599718217 svg {
-  /* position: relative; */
+.custom-shape-divider-bottom svg {
   display: block;
   width: calc(120% + 1.3px);
   height: 100px;
 }
 
-.custom-shape-divider-bottom-1599718217 .shape-fill {
+.custom-shape-divider-bottom .shape-fill {
   fill: #FFFFFF;
 }
