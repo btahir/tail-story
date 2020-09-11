@@ -38,19 +38,20 @@ function Header() {
           </h1>
         </Link>
 
-        <button
-          className="flex items-center block px-3 py-2 rounded md:hidden"
-          onClick={() => toggleExpansion(!isExpanded)}
-        >
-          <svg
-            className="w-3 h-3 fill-current"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <title>Menu</title>
-            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-          </svg>
-        </button>
+        {isExpanded
+          ?
+          <button onClick={() => toggleExpansion(!isExpanded)} type="button" className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out" aria-label="Close menu">
+            <svg className="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          :
+          <button onClick={() => toggleExpansion(!isExpanded)} type="button" className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out" id="main-menu" aria-label="Main menu" aria-haspopup="true">
+            <svg className="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        }
 
         <nav
           className={`${
@@ -69,7 +70,7 @@ function Header() {
             {
               route: `/faq`,
               title: `FAQ`,
-            },            
+            },
           ].map((link) => (
             <Link
               className="block mt-4 no-underline md:inline-block md:mt-0 md:ml-8 font-medium text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"

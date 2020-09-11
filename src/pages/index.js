@@ -15,22 +15,22 @@ function IndexPage() {
 			<main className="mx-auto mt-10 px-6 pb-12 bg-gradient-to-t from-indigo-200">
 				<div className="text-center">
 					<h2 className="text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl">
-						Find the perfect developer
+						Find great developers through
             <br />
-						<span className="text-indigo-600">through projects</span>
+						<span className="text-indigo-600">great projects</span>
 					</h2>
 					<p className="mt-3 text-base text-gray-600 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:text-xl">
-						Hire people based on the work they've actually done rather than irrelevant and outdated credentials.
+						Hire people based on the work they have actually done rather than irrelevant and outdated credentials
           </p>
 					<div className="mt-5 sm:mt-8 sm:flex sm:justify-center">
 						<div className="rounded-md shadow">
 							<button className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
-								Get started
+								Get Started
               </button>
 						</div>
 						<div className="mt-3 sm:mt-0 sm:ml-3">
 							<button className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-700 bg-white hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
-								Learn more
+								Explore Projects
               </button>
 						</div>
 					</div>
@@ -53,21 +53,25 @@ function IndexPage() {
 				<div className="flex flex-wrap max-w-6xl mx-auto md:my-12 lg:my-24">
 					<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
 						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Search for projects</h3>
-						<p className="text-gray-500 mb-8">Find projects that match what you want to do.</p>
+						<p className="text-gray-600 mb-8">
+							Rather than trying to find someone with X years of experience in Y language, we flip the script. 
+							Find projects that are close to the work you need done.</p>
 					</div>
 					<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6" src={howItWorks1} alt="how-it-works-1" />
 				</div>
 				<div className="flex flex-wrap flex-col-reverse sm:flex-row max-w-6xl mx-auto md:my-12 lg:my-24">
 					<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6"  src={howItWorks2} alt="how-it-works-2" />
 					<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
-						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Get more details</h3>
-						<p className="text-gray-500 mb-8">Find out more about the project and its creator.</p>
+						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">See if its a good fit</h3>
+						<p className="text-gray-600 mb-8">
+							Find out more about the project and its creator. See if you resonate with the work done and if 
+							the technology stack used aligns with your reqirements.</p>
 					</div>
 				</div>
 				<div className="flex flex-wrap max-w-6xl mx-auto md:my-12 lg:my-24">
 					<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
 						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Connect with the developer</h3>
-						<p className="text-gray-500 mb-8">Contact the project creator with opportunities if you feel like it is a good fit.</p>
+						<p className="text-gray-600 mb-8">If you feel like this could be a good match, you can go ahead and contact the project creator to discuss any opportunities.</p>
 					</div>
 					<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6"  src={howItWorks3} alt="how-it-works-3" />
 				</div>
@@ -169,13 +173,13 @@ function IndexPage() {
 					<div className="mt-8 flex lg:flex-shrink-0 lg:mt-0">
 						<div className="inline-flex rounded-md shadow">
 							<button className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
-								Get started
+								Get Started
 								</button>
 						</div>
 						<div className="ml-3 inline-flex rounded-md shadow">
 							<button className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
-								Learn more
-								</button>
+								Explore Projects
+							</button>
 						</div>
 					</div>
 				</div>
