@@ -68,8 +68,8 @@ function Header() {
               title: `About`,
             },
             {
-              route: `/faq`,
-              title: `FAQ`,
+              route: `/developers`,
+              title: `Developers`,
             },
           ].map((link) => (
             <Link
