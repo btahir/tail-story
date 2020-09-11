@@ -51,7 +51,7 @@ const SocialLogins: React.FunctionComponent<{
           <GoogleIcon sx={{ mr: 1 }} size={18} /> Sign in with Google
         </SocialLoginButton>
       )}
-      {enableTwitter && (
+      {/* {enableTwitter && (
         <SocialLoginButton
           onClick={async () => {
             try {
@@ -65,7 +65,7 @@ const SocialLogins: React.FunctionComponent<{
         >
           <TwitterIcon sx={{ mr: 1 }} size={18} /> Sign in with Twitter
         </SocialLoginButton>
-      )}
+      )} */}
       {enableFacebook && (
         <SocialLoginButton
           onClick={async () => {

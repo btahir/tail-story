@@ -1,7 +1,7 @@
 const colors = {
   text: "#4A4A4A",
   background: "#FFF",
-  primary: "#4FD1C5",
+  primary: "#5A67D8",
   muted: "#F1F1F1",
   green: "#23D160",
   blue: "#209CEE",

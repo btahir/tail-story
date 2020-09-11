@@ -30,23 +30,21 @@ function AboutPage() {
         help mitigate this gap is project based hiring.
         <br /><br />The idea is simple. Usually an employer starts with a perfect candidate in mind and tries to match them to an available job. We think there is utiility in flipping this script.
         So rather than the perfect candidate, search for projects that closely match your requirements. If you have to build a React app with a Python Flask API backend, then search for projects that
-        have those. And then, if you like what you see, contact the developer who created them.
-        <br /><br />There are inherent advantages to this approach.
-        You match with better candidates. Turns out the person who's already built a React app with a Python Flask API is very likely a good candidate.
-        By focusing on what they have done, you get to the meat of the requirements and filter for the right developer.
-        <br /><br /> They hit the ground running. Since they have already done projects that are similar to your requirements, they will onboard faster and be able to contribute faster.
-        <br /><br /> You can discover hidden gems. There are a lot of great developers who are ignored by HR of big companies because they don't fit the image they have in their head of
-        what a developer at their company should be like. This can be a wide variety of things such as their education background (they went to a bootcamp bleh).
+        have those. And then, if you like what you see, contact the developer who created them. There are inherent advantages to this approach.
+        <br /><br /><b>You match with better candidates.</b> Turns out the person who's already built a React app with a Python Flask API is very likely a good candidate for bulding a React App with a Python Flask API.
+        By focusing on what they have done, you can filter for the right developer.
+        <br /><br /> <b>They hit the ground running.</b> Since they have already done projects that are similar to your requirements, they will onboard faster and be able to contribute faster.
+        <br /><br /> <b>You can discover hidden gems.</b> There are a lot of great developers who are ignored by HR of big companies because they don't fit their image of
+        what a developer at their company should be like e.g. they went to a coding bootcamp instead of having a CS degree.
       </p>
       <h3 className="my-8 text-center text-4xl tracking-tight leading-10 font-bold text-gray-900 sm:leading-none">
           Not for everyone
       </h3>   
       <p className="mt-12 text-lg text-gray-700">
         We realize this is not a universal solution and not for everyone. We don't expect the FAANG companies to drop their established hiring practices and adopt
-        this philosophy. For a lot of bigger companies, the algo-fueled multi-month process makes sense. Engineers are essentially cogs in a massive machine doing one or two things
-        really well. The recruiters at FAANG aren't usually looking for a React guy who also knows Flask.
-        <br /><br /> Where we see this approach really working is for smaller companies and for short term hires. For those use cases, often time employers are looking for 
-        developers to do a project or two. And project based hiring is ideal for finding that developer who can execute.
+        this philosophy. For a lot of bigger companies, the algo-fueled multi-month hiring process makes sense.
+        <br /><br /> Where we see this approach really working is for smaller companies and for short term hires / contract roles. For those use cases, often time employers are looking for 
+        developers to do a project or two. And project based hiring is ideal for finding that developer who can execute effectively on that project.
 
       </p>   
       </section>

@@ -13,7 +13,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Project Job`,
-    description: `Project job`,
+    description: `Find great developers through great projects`,
     author: `@deepwhitman`,
   },
   plugins: [
@@ -42,7 +42,7 @@ module.exports = {
         short_name: `starter`,
         start_url: `/`,
         background_color: fullConfig.theme.colors.white,
-        theme_color: fullConfig.theme.colors.teal["400"],
+        theme_color: fullConfig.theme.colors.indigo["600"],
         display: `minimal-ui`,
         icon: `src/images/icon.svg`,
         icon_options: {
