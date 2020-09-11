@@ -6,25 +6,49 @@ import SEO from "../components/SEO";
 function AboutPage() {
   return (
     <Layout>
-      <SEO
-        keywords={[`gatsby`, `tailwind`, `react`, `tailwindcss`]}
-        title="About"
-      />
+      <SEO title="About" />
+      <section className="mt-6 w-5/6 max-w-4xl mx-auto">
+        <h2 className="text-center text-4xl tracking-tight leading-10 font-bold text-gray-900 sm:text-5xl sm:leading-none">
+          What's this about?
+      </h2>
+        <p className="mt-16 text-lg text-gray-700">
+          We keep hearing it: hiring is broken.
+        <br /><br /> Managers keep getting frustrated when its taking months to hire good talent. Often - when new hires come onboard it turns out to be a mismatch
+        leading to even more frustration and waste of resources.
+        <br />< br /> Meanwhile developers are endlessly complaining, for valid reasons, about not getting noticed and having to go through gate keepers that
+        have a very surface level understanding of the project requirements. Often - when they do get a chance, the dreaded algo-full interview process prevents them from joining
+        a team they would have otherwise conributed greatly to.
+        <br /><br /> Everyone says we need to change this situation, yet the information gap between employer and potential employee is stubbornly still there. In an age
+        of accelerating change where the speed of execution can often be the deciding factor in a company's success, and especially with the move towards remote work, the need to
+        fill this gap is more crucial than ever.
+      </p>
+        <h3 className="my-8 text-center text-4xl tracking-tight leading-10 font-bold text-gray-900 sm:leading-none">
+          Project Based Hiring
+      </h3>
+      <p className="mt-12 text-lg text-gray-700">
+        The hiring problem is a complicated one and there are a lot of parts that need fixing before we get to a much better state. We believe one solution that can
+        help mitigate this gap is project based hiring.
+        <br /><br />The idea is simple. Usually an employer starts with a perfect candidate in mind and tries to match them to an available job. We think there is utiility in flipping this script.
+        So rather than the perfect candidate, search for projects that closely match your requirements. If you have to build a React app with a Python Flask API backend, then search for projects that
+        have those. And then, if you like what you see, contact the developer who created them.
+        <br /><br />There are inherent advantages to this approach.
+        You match with better candidates. Turns out the person who's already built a React app with a Python Flask API is very likely a good candidate.
+        By focusing on what they have done, you get to the meat of the requirements and filter for the right developer.
+        <br /><br /> They hit the ground running. Since they have already done projects that are similar to your requirements, they will onboard faster and be able to contribute faster.
+        <br /><br /> You can discover hidden gems. There are a lot of great developers who are ignored by HR of big companies because they don't fit the image they have in their head of
+        what a developer at their company should be like. This can be a wide variety of things such as their education background (they went to a bootcamp bleh).
+      </p>
+      <h3 className="my-8 text-center text-4xl tracking-tight leading-10 font-bold text-gray-900 sm:leading-none">
+          Not for everyone
+      </h3>   
+      <p className="mt-12 text-lg text-gray-700">
+        We realize this is not a universal solution and not for everyone. We don't expect the FAANG companies to drop their established hiring practices and adopt
+        this philosophy. For a lot of bigger companies, the algo-fueled multi-month process makes sense. Engineers are essentially cogs in a massive machine doing one or two things
+        really well. The recruiters at FAANG aren't usually looking for a React guy who also knows Flask.
+        <br /><br /> Where we see this approach really working is for smaller companies and for short term hires. For those use cases, often time employers are looking for 
+        developers to do a project or two. And project based hiring is ideal for finding that developer who can execute.
 
-      <section className="flex flex-col items-center md:flex-row">
-        <div className="md:w-2/3 md:mr-8">
-          <blockquote className="pl-4 font-serif leading-loose text-justify border-l-4 border-gray-900">
-            The point is... to live one&apos;s life in the full complexity of
-            what one is, which is something much darker, more contradictory,
-            more of a maelstrom of impulses and passions, of cruelty, ecstacy,
-            and madness, than is apparent to the civilized being who glides on
-            the surface and fits smoothly into the world.
-          </blockquote>
-
-          <cite className="block mt-4 text-xs font-bold text-right uppercase">
-            – Thomas Nagel
-          </cite>
-        </div>
+      </p>   
       </section>
     </Layout>
   );
