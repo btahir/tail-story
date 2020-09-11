@@ -24,7 +24,7 @@ function DeveloperPage() {
           className="mt-12 w-full max-w-lg mx-auto"
           height="320"
           title="Scrilys Demo"
-          src="https://www.youtube.com/embed/jkBP3VcWv2g"
+          src="https://www.youtube.com/embed/s2LRgEUBEuM"
           frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
