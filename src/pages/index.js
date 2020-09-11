@@ -6,6 +6,7 @@ import mainImg from "../images/main-img.svg";
 import howItWorks1 from "../images/how-it-works-1.svg";
 import howItWorks2 from "../images/how-it-works-2.svg";
 import howItWorks3 from "../images/how-it-works-3.svg";
+import { navigate } from "gatsby";
 
 function IndexPage() {
 
@@ -24,13 +25,13 @@ function IndexPage() {
           </p>
 					<div className="mt-5 sm:mt-8 sm:flex sm:justify-center">
 						<div className="rounded-md shadow">
-							<button className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
-								Get Started
+							<button onClick={() => navigate("/projects")} className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+								Explore Projects
               </button>
 						</div>
 						<div className="mt-3 sm:mt-0 sm:ml-3">
-							<button className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-700 bg-white hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
-								Explore Projects
+							<button onClick={() => navigate("/profile")} className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-700 bg-white hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+								Build Portfolio
               </button>
 						</div>
 					</div>
@@ -172,13 +173,13 @@ function IndexPage() {
 					</h2>
 					<div className="mt-8 flex lg:flex-shrink-0 lg:mt-0">
 						<div className="inline-flex rounded-md shadow">
-							<button className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
-								Get Started
+							<button onClick={() => navigate("/projects")} className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
+								Explore Projects
 								</button>
 						</div>
 						<div className="ml-3 inline-flex rounded-md shadow">
-							<button className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
-								Explore Projects
+							<button onClick={() => navigate("/profile")} className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
+								Build Portfolio								 
 							</button>
 						</div>
 					</div>

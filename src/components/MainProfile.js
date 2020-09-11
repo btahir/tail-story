@@ -13,7 +13,7 @@ import { useAuth } from "gatsby-theme-firebase";
 
 function MainProfile() {
 
-  const { profile } = useAuth();
+  const { profile, isLoggedIn } = useAuth();
 
   const [profileId, setProfileId] = useState('');
   const [name, setName] = useState('');
@@ -80,48 +80,56 @@ function MainProfile() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto">
-      <div className="flex justify-center">
-        <button onClick={() => navigate('/edit-profile')} className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">Edit</button>
-        <button onClick={() => navigate(`/profile/${profileId}`)} className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">Preview</button>
-        {/* <button onClick={() =>  manageStripeSubscription(profile.uid)} className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">Manage Subscription</button> */}
-      </div>
-      <div className="bg-white my-12 pb-6 w-full flex flex-col">
-        <ProfileAvatar
-          name={name}
-          jobTitle={jobTitle}
-          description={description}
-          profileImageSrc={profileImageSrc}
-        />
-        <div className="flex flex-col items-center">
-          <ProfileIcons
-            github={github}
-            linkedin={linkedin}
-            email={email}
-          />
-          <div className="mt-6 pt-3 flex flex-wrap mx-6">
-            {skills.map((obj, index) =>
-              <Tag key={index} item={obj} />
-            )}
+    <>
+      {isLoggedIn ?
+        <div className="max-w-6xl mx-auto">
+          <div className="flex justify-center">
+            <button onClick={() => navigate('/edit-profile')} className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">Edit</button>
+            <button onClick={() => navigate(`/profile/${profileId}`)} className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">Preview</button>
+            {/* <button onClick={() =>  manageStripeSubscription(profile.uid)} className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">Manage Subscription</button> */}
+          </div>
+          <div className="bg-white my-12 pb-6 w-full flex flex-col">
+            <ProfileAvatar
+              name={name}
+              jobTitle={jobTitle}
+              description={description}
+              profileImageSrc={profileImageSrc}
+            />
+            <div className="flex flex-col items-center">
+              <ProfileIcons
+                github={github}
+                linkedin={linkedin}
+                email={email}
+              />
+              <div className="mt-6 pt-3 flex flex-wrap mx-6">
+                {skills.map((obj, index) =>
+                  <Tag key={index} item={obj} />
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="text-center">
+            {projects.length < 3 ?
+              <div className="w-56 mx-auto">
+                <UpdateProjectBtn
+                  btnTitle='Add Project (Max: 3)'
+                  handleSubmit={handleAddProject}
+                />
+              </div>
+              :
+              <div className="text-xl font-semibold text-indigo-600">All Projects Added</div>
+            }
+          </div>
+          <div className="mt-16 flex flex-col bg-gray-100">
+            {projects.map((el, index) => <Card key={index} item={el} />)}
           </div>
         </div>
-      </div>
-      <div className="text-center">
-        {projects.length < 3 ?
-          <div className="w-56 mx-auto">
-            <UpdateProjectBtn
-              btnTitle='Add Project (Max: 3)'
-              handleSubmit={handleAddProject}
-            />
-          </div>
-          :
-          <div className="text-xl font-semibold text-indigo-600">All Projects Added</div>
-        }
-      </div>
-      <div className="mt-16 flex flex-col bg-gray-100">
-        {projects.map((el, index) => <Card key={index} item={el} />)}
-      </div>
-    </div>
+        :
+        <div className="flex justify-center">
+          Please <button className="mx-2 text-indigo-600" onClick={() => navigate("/login")}> login</button> {' '} to access profile.
+        </div>
+      }
+    </>
   );
 }
 
