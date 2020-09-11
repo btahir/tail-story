@@ -1,5 +1,6 @@
 import { firebase, firestore } from "gatsby-theme-firebase";
 import defaultImg from "../images/default-img.png";
+import { navigate } from "gatsby";
 
 const storage = firebase.storage();
 
@@ -26,7 +27,7 @@ export const createNewUser = async (user) => {
     // add info to profile
     await firestore.collection("profile").doc(user.uid).set({profileId: profileId}, { merge: true })
     .then(function () {
-        return true;
+        navigate("/profile")
     })
     .catch(function (error) {
         console.error("Error writing document: ", error);

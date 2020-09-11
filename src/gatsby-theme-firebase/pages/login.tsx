@@ -26,7 +26,6 @@ const FormWithHandlers = () => {
           return
         } else {
           createNewUser(user);
-          navigate('/profile');
         }
       }}
       onSignUpSuccess={user => {

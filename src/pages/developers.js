@@ -15,11 +15,22 @@ function DeveloperPage() {
           Here is a quick overview of what you can do to build a portfolio on Project Job. 
           <br /><br />You can build a publicly shareable profile once you log in. The profile is empty but you can upload
           your image for a profile avatar and add some details of your job title and skills. 
-          <br /><br /> The bottom section has a list of your projects. You can add up to 3 projects to b featured in the projects list.
-          This is your chance to stand out so give a nice overview of what went into building that project. WHo knows if someone is looking for
+          <br /><br /> The bottom section has a list of your projects. You can add up to 3 projects to be featured in the projects list.
+          This is your chance to stand out so give a nice overview of what went into building that project. Who knows if someone is looking for
           a dev to build them something like that!
           <br /><br /> Here is a quick example of yours truly adding a project.
         </p>
+        <iframe
+          className="mt-12 w-full max-w-lg mx-auto"
+          height="320"
+          title="Scrilys Demo"
+          src="https://www.youtube.com/embed/jkBP3VcWv2g"
+          frameBorder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          webkitallowfullscreen="true"
+          mozallowfullscreen="true"
+        />
       </section>
     </Layout>
   );
