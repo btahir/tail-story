@@ -9,8 +9,21 @@ function DeveloperPage() {
       <SEO title="Developers" />
       <section className="mt-6 w-5/6 max-w-4xl mx-auto">
         <h2 className="text-center text-4xl tracking-tight leading-10 font-bold text-gray-900 sm:text-5xl sm:leading-none">
-          For Developers
-      </h2>
+          Get hired based on your work
+        </h2>
+        <p className="mt-16 text-lg text-gray-700">
+          We've all been there. Sending resumes down a black hole never to hear back. Dealing with HR people who are reading
+          off a checklist of requirements that they don't really understand. Going through months of algo-fueled interviews.
+          <br /><br /> The Software Engineer job process can be frustrating, challenging and often times unnecessarily painful.
+          We think project based hiring is one way to make it better. 
+          <br /><br /> If you love to code and have built awesome stuff, you should be able to leverage that to get a job. I mean, isn't that
+          at the end of the day what matters? Not your degree or if you can invert a binary tree on a white board, but the fact that you can actually do the job?
+          <br /><br /> Project Job's goal is to allow developers to be able to show case what they have built and ultimately match with employers who appreciate 
+          this.
+        </p>      
+        <h2 className="mt-12 text-center text-4xl tracking-tight leading-10 font-bold text-gray-900 sm:text-5xl sm:leading-none">
+          Build your portfolio
+        </h2>        
         <p className="mt-16 text-lg text-gray-700">
           Here is a quick overview of what you can do to build a portfolio on Project Job. 
           <br /><br />You can build a publicly shareable profile once you log in. The profile is empty but you can upload
@@ -31,6 +44,10 @@ function DeveloperPage() {
           webkitallowfullscreen="true"
           mozallowfullscreen="true"
         />
+        <p className="mt-16 text-lg text-gray-700">
+          And that's it! Your project is now part of our project listings. You can also share your profile as well as specific projects with the world. 
+          Who knows your future employer / cofounder / collaborator might be on the look out. :)
+        </p>        
       </section>
     </Layout>
   );

@@ -55,8 +55,8 @@ function IndexPage() {
 					<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
 						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Search for projects</h3>
 						<p className="text-gray-600 mb-8">
-							Rather than trying to find someone with X years of experience in Y language, we flip the script. 
-							Find projects that are similar to the work you need done.</p>
+							Rather than trying to find someone with a certain background that can execute on your project, we flip the script. 
+							Find projects that are similar to the work you need done and ultimately the right developer for your project.</p>
 					</div>
 					<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6" src={howItWorks1} alt="how-it-works-1" />
 				</div>
