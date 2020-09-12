@@ -27,20 +27,20 @@ const ProjectDetail = ({ projectId }) => {
 
 	const { profile } = useAuth();
 
-	useEffect(() => {
-		if (profile) {
-			// fetch project data. use props for id.
-			getProjectDetail(projectId)
-				.then(res => {
-					if (res !== undefined && Object.keys(res).length) {
-						setProjectData(res)
-						// find out if its creator or public
+	useEffect(() => {		
+		// fetch project data. use props for id.
+		getProjectDetail(projectId)
+			.then(res => {
+				if (res !== undefined && Object.keys(res).length) {
+					setProjectData(res)
+					// find out if its creator or public
+					if (profile) {
 						if (res.creatorId === profile.uid) {
 							setIsCreator(true)
 						}
 					}
-				})
-		}
+				}
+			})
 	}, [profile, projectId])
 
 	const handleProjectDelete = async () => {

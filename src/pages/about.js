@@ -28,7 +28,7 @@ function AboutPage() {
       <p className="mt-12 text-lg text-gray-700">
         The hiring problem is a complicated one and there are a lot of parts that need fixing before we get to a much better state. We believe one solution that can
         help mitigate this gap is project based hiring.
-        <br /><br />The idea is simple. Usually an employer starts with a perfect candidate in mind and tries to match them to an available job. We think there is utiility in flipping this script.
+        <br /><br />The idea is simple. Usually an employer starts with a perfect candidate in mind and tries to match them to an available job. We think there is utility in flipping this script.
         So rather than the perfect candidate, search for projects that closely match your requirements. If you have to build a React app with a Python Flask API backend, then search for projects that
         have those. And then, if you like what you see, contact the developer who created them. There are inherent advantages to this approach.
         <br /><br /><b>You match with better candidates.</b> Turns out the person who's already built a React app with a Python Flask API is very likely a good candidate for building a React App with a Python Flask API.
