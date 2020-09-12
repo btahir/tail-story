@@ -2,6 +2,8 @@ import React from "react";
 
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
+import happyImg from "../images/happy.svg";
+import buildImg from "../images/build.svg";
 
 function DeveloperPage() {
   return (
@@ -11,6 +13,7 @@ function DeveloperPage() {
         <h2 className="text-center text-4xl tracking-tight leading-10 font-bold text-gray-900 sm:text-5xl sm:leading-none">
           Get hired based on your work
         </h2>
+        <img src={happyImg} className="mx-auto w-full sm:w-1/2 sm:h-96 object-contain p-6" alt="happy-img" />
         <p className="mt-16 text-lg text-gray-700">
           We've all been there. Sending resumes down a black hole never to hear back. Dealing with HR people who are reading
           off a checklist of requirements that they don't really understand. Going through months of algo-fueled interviews.
@@ -21,9 +24,10 @@ function DeveloperPage() {
           <br /><br /> Project Job's goal is to allow developers to be able to show case what they have built and ultimately match with employers who appreciate 
           this.
         </p>      
-        <h2 className="mt-12 text-center text-4xl tracking-tight leading-10 font-bold text-gray-900 sm:text-5xl sm:leading-none">
+        <h2 className="mt-12 text-center mb-4 text-4xl tracking-tight leading-10 font-bold text-gray-900 sm:text-5xl sm:leading-none">
           Build your portfolio
-        </h2>        
+        </h2>      
+        <img src={buildImg} className="mx-auto w-full sm:w-1/2 sm:h-96 object-contain p-6" alt="happy-img" />  
         <p className="mt-16 text-lg text-gray-700">
           Here is a quick overview of what you can do to build a portfolio on Project Job. 
           <br /><br />You can build a publicly shareable profile once you log in. The profile is empty but you can upload
