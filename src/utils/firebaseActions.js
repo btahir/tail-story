@@ -97,9 +97,10 @@ const uploadProjectImage = async (imageId, imgBlob) => {
     const blob = await fetch(imgBlob).then(r => r.blob());
     const storageRef = firebase.storage().ref(`projectImages/${imageId}.jpg`);
 
-    storageRef.put(blob).then(function () {
+    await storageRef.put(blob).then(function () {
         // console.log('Uploaded a blob or file!');
     }); 
+    return
 }
 
 export const addProject = async (project, croppedImage) => {
@@ -116,7 +117,8 @@ export const addProject = async (project, croppedImage) => {
         });
 
     // add image to storage
-    uploadProjectImage(project.projectImageId, croppedImage)
+    await uploadProjectImage(project.projectImageId, croppedImage)
+    return
 }
 
 export const getUserProjects = async (id) => {
@@ -242,29 +244,31 @@ export const getSearchedProjects = async (searchTerm) => {
 
 export const getProjectDetail = async (projectId) => {
     let fireProject = {}
-    await firestore.collection("projects")
+    return await firestore.collection("projects")
         .where("projectId", "==", projectId)
         .get()
         .then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
                 // doc.data() is never undefined for query doc snapshots
                 fireProject = doc.data()
-                fireProject['key'] = doc.id
-                // get project image      
-                storage.ref().child(`projectImages/${fireProject.projectImageId}.jpg`).getDownloadURL().then(function (url) {
-                    fireProject['projectImageSrc'] = url
-                    return fireProject
-                })
-                .catch((err) => {
-                    fireProject['projectImageSrc'] = defaultImg
-                    return fireProject
-                })                
-            });
+                fireProject['key'] = doc.id             
+            })
         })
+        .then(res => {
+            // get project image      
+            return storage.ref().child(`projectImages/${fireProject.projectImageId}.jpg`).getDownloadURL().then(function (url) {
+                fireProject = { ...fireProject, projectImageSrc: url }
+                return fireProject
+            })
+            .catch((err) => {
+                // fireProject['projectImageSrc'] = defaultImg
+                fireProject = { ...fireProject, projectImageSrc: defaultImg }
+                return fireProject
+            })   
+        })       
         .catch(function (error) {
             console.log("Error getting documents: ", error);
         });
-    return fireProject
 }
 
 export const deleteProject = (projectKey) => {
@@ -275,7 +279,7 @@ export const deleteProject = (projectKey) => {
     });
 }
 
-export const updateProjectDetails = (projectKey, title, description, github, demo, projectTags, projectImageId, croppedImage) => {
+export const updateProjectDetails = async (projectKey, title, description, github, demo, projectTags, projectImageId, croppedImage) => {
     const firestoreProjectData = {
         title: title,
         description: description,
@@ -283,21 +287,22 @@ export const updateProjectDetails = (projectKey, title, description, github, dem
         demo: demo,
         projectImageId: projectImageId,        
     }
-    firestore.collection("projects").doc(projectKey).set(firestoreProjectData, { merge: true }).then(function () {
+    await firestore.collection("projects").doc(projectKey).set(firestoreProjectData, { merge: true }).then(function () {
 
     }).catch(function (error) {
         console.error("Error updating document: ", error);
     });
 
     // update tags without merge
-    firestore.collection("projects").doc(projectKey).update({projectTags:projectTags}).then(function () {
+    await firestore.collection("projects").doc(projectKey).update({projectTags:projectTags}).then(function () {
 
     }).catch(function (error) {
         console.error("Error updating document: ", error);
     });  
     
     // add image to storage
-    uploadProjectImage(projectImageId, croppedImage)    
+    await uploadProjectImage(projectImageId, croppedImage)    
+    return
 }
 
 export const getPublicUserKey = async (profileId) => {
@@ -324,5 +329,14 @@ export const uploadProfileImage = async (id, imgBlob) => {
     storageRef.put(blob).then(function () {
         // console.log('Uploaded a blob or file!');
     });
+}
+
+export const getProjectImage = async (projectImageId) => {
+    return await storage.ref().child(`projectImages/${projectImageId}.jpg`).getDownloadURL().then(function (url) {        
+        return url
+    })
+    .catch((err) => {
+        return defaultImg
+    })     
 }
 

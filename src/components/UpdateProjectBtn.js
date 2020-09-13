@@ -41,6 +41,8 @@ export default function UpdateProjectBtn({ btnTitle, projectData, handleSubmit }
       setGithub(projectData.github)
       setDemo(projectData.demo)
       setTags(Object.keys(projectData.projectTags))
+      setProjectImageId(projectData.projectImageId)
+      setCroppedImage(projectData.projectImageSrc)
     }
   }, [projectData])
 
@@ -161,12 +163,12 @@ export default function UpdateProjectBtn({ btnTitle, projectData, handleSubmit }
         {updateAvatar ?
           (imageSrc ?
             <div className="flex flex-col mb-16 mx-auto">
-              <div className="relative h-96 w-96">
+              <div className="relative h-64 w-64">
                 <Cropper
                   image={imageSrc}
                   crop={crop}
                   zoom={zoom}
-                  cropSize={{ width: 256, height: 256 }}
+                  cropSize={{ width: 128, height: 128 }}
                   // aspectRatio={4 / 3}
                   showGrid={false}
                   cropShape="rect"

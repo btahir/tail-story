@@ -24,7 +24,7 @@ const InitialData = {
 const ProjectDetail = ({ projectId }) => {
 	const [projectData, setProjectData] = useState(InitialData);
 	const [isCreator, setIsCreator] = useState(false);
-	const [projectImageId, setProjectImageId] = useState(null);
+	const [, setProjectImageId] = useState(null);
 	const [projectImageSrc, setProjectImageSrc] = useState(null);
 
 	const { profile } = useAuth();
@@ -35,14 +35,11 @@ const ProjectDetail = ({ projectId }) => {
 			.then(res => {				
 				if (res !== undefined && Object.keys(res).length) {
 					setProjectData(res)
-					console.log(res.projectImageSrc)
-					setProjectImageSrc(res.projectImageSrc)
 					// find out if its creator or public
 					if (res.projectImageId) {
 						setProjectImageId(res.projectImageId)
 					}		
 					if (res.projectImageSrc) {
-						console.log('res', res.projectImageSrc)
 						setProjectImageSrc(res.projectImageSrc)
 					}										
 					if (profile) {
@@ -59,7 +56,7 @@ const ProjectDetail = ({ projectId }) => {
 		navigate('/profile')
 	}
 
-	const handleProjectEdit = (title, description, github, demo, projectTagsArray, projectImageId, projectImageSrc) => {
+	const handleProjectEdit = async (title, description, github, demo, projectTagsArray, projectImageId, projectImageSrc) => {
 		const projectTagsObject = convertArrayToObject(projectTagsArray)
 		// update state
 		setProjectData({
@@ -72,7 +69,8 @@ const ProjectDetail = ({ projectId }) => {
 		})
 
 		// update firestore
-		updateProjectDetails(projectData.key, title, description, github, demo, projectTagsObject, projectImageId, projectImageSrc)
+		await updateProjectDetails(projectData.key, title, description, github, demo, projectTagsObject, projectImageId, projectImageSrc)
+		window.location.reload()
 	}
 
 	return (
