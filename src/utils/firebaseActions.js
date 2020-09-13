@@ -1,5 +1,5 @@
 import { firebase, firestore } from "gatsby-theme-firebase";
-import defaultImg from "../images/default-img.png";
+import defaultImg from "../images/default-img.svg";
 import { navigate } from "gatsby";
 
 const storage = firebase.storage();
@@ -331,8 +331,8 @@ export const uploadProfileImage = async (id, imgBlob) => {
     });
 }
 
-export const getProjectImage = async (projectImageId) => {
-    return await storage.ref().child(`projectImages/${projectImageId}.jpg`).getDownloadURL().then(function (url) {        
+export const getProjectImage = (projectImageId) => {
+    return storage.ref().child(`projectImages/${projectImageId}.jpg`).getDownloadURL().then(function (url) {        
         return url
     })
     .catch((err) => {
