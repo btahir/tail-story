@@ -67,14 +67,14 @@ function MainProfile() {
     }
   }, [profile])
 
-  const handleAddProject = async (title, description, github, demo, tagArray) => {
+  const handleAddProject = async (title, description, github, demo, tagArray, projectImageId, croppedImage) => {
     if (projects.length >= 3) {
       alert('Cannot add more than 3 projects!')
     } else {
       const projectId = Date.now().toString()
       const projectTags = convertArrayToObject(tagArray)
 
-      await addProject({ creatorId, profileId, projectId, title, description, github, demo, projectTags })
+      await addProject({ creatorId, profileId, projectId, title, description, github, demo, projectTags, projectImageId, croppedImage })
       window.location.reload()
     }
   }
