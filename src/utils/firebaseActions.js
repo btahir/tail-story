@@ -93,7 +93,16 @@ export const updateProfileDetails = async (user) => {
         });        
 }
 
-export const addProject = async (project) => {
+const uploadProjectImage = async (imageId, imgBlob) => {
+    const blob = await fetch(imgBlob).then(r => r.blob());
+    const storageRef = firebase.storage().ref(`projectImages/${imageId}.jpg`);
+
+    storageRef.put(blob).then(function () {
+        // console.log('Uploaded a blob or file!');
+    }); 
+}
+
+export const addProject = async (project, croppedImage) => {
     await firestore.collection("projects").add({
         ...project,
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
@@ -105,6 +114,9 @@ export const addProject = async (project) => {
             console.error("Error writing document: ", error);
             return false;
         });
+
+    // add image to storage
+    uploadProjectImage(project.projectImageId, croppedImage)
 }
 
 export const getUserProjects = async (id) => {
@@ -238,6 +250,15 @@ export const getProjectDetail = async (projectId) => {
                 // doc.data() is never undefined for query doc snapshots
                 fireProject = doc.data()
                 fireProject['key'] = doc.id
+                // get project image      
+                storage.ref().child(`projectImages/${fireProject.projectImageId}.jpg`).getDownloadURL().then(function (url) {
+                    fireProject['projectImageSrc'] = url
+                    return fireProject
+                })
+                .catch((err) => {
+                    fireProject['projectImageSrc'] = defaultImg
+                    return fireProject
+                })                
             });
         })
         .catch(function (error) {
@@ -254,12 +275,13 @@ export const deleteProject = (projectKey) => {
     });
 }
 
-export const updateProjectDetails = (projectKey, title, description, github, demo, projectTags) => {
+export const updateProjectDetails = (projectKey, title, description, github, demo, projectTags, projectImageId, croppedImage) => {
     const firestoreProjectData = {
         title: title,
         description: description,
         github: github,
-        demo: demo        
+        demo: demo,
+        projectImageId: projectImageId,        
     }
     firestore.collection("projects").doc(projectKey).set(firestoreProjectData, { merge: true }).then(function () {
 
@@ -272,7 +294,10 @@ export const updateProjectDetails = (projectKey, title, description, github, dem
 
     }).catch(function (error) {
         console.error("Error updating document: ", error);
-    });    
+    });  
+    
+    // add image to storage
+    uploadProjectImage(projectImageId, croppedImage)    
 }
 
 export const getPublicUserKey = async (profileId) => {
@@ -300,3 +325,4 @@ export const uploadProfileImage = async (id, imgBlob) => {
         // console.log('Uploaded a blob or file!');
     });
 }
+

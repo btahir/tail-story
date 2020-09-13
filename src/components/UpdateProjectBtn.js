@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Slider from '@material-ui/core/Slider';
+import Cropper from 'react-easy-crop';
+import { getCroppedImg, readFile } from "../utils/canvasUtils";
 
 export default function UpdateProjectBtn({ btnTitle, projectData, handleSubmit }) {
   const [open, setOpen] = useState(false);
@@ -23,9 +26,16 @@ export default function UpdateProjectBtn({ btnTitle, projectData, handleSubmit }
   const [demoError, setDemoError] = useState('');
   const [isTagsError, setIsTagsError] = useState(false);
   const [tagsError, setTagsError] = useState('');
+  const [crop, setCrop] = useState({ x: 0, y: 0 });
+  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
+  const [croppedImage, setCroppedImage] = useState(null);
+  const [projectImageId, setProjectImageId] = useState(null);
+  const [zoom, setZoom] = useState(1);
+  const [imageSrc, setImageSrc] = useState(null);
+  const [updateAvatar, setUpdateAvatar] = useState(false);  
 
-  useEffect(() => {
-    if(projectData) {
+  useEffect(() => {    
+    if(projectData) {      
       setTitle(projectData.title)
       setDescription(projectData.description)
       setGithub(projectData.github)
@@ -103,9 +113,40 @@ export default function UpdateProjectBtn({ btnTitle, projectData, handleSubmit }
     if(!formErrors) {
       handleClose()
       const tagArray = typeof(tags) === 'string' ? tags.split(",") : tags
-      handleSubmit(title,description,github,demo,tagArray)
+      handleSubmit(title,description,github,demo,tagArray,projectImageId,croppedImage)
     }    
   };
+
+  const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
+    setCroppedAreaPixels(croppedAreaPixels)
+  }, [])
+
+  const showCroppedImage = useCallback(async () => {
+    try {
+      const croppedImage = await getCroppedImg(
+        imageSrc,
+        croppedAreaPixels,
+        0
+      )
+      setCroppedImage(croppedImage)
+      setUpdateAvatar(false)
+
+      // update firebase storage
+      const randomId = "img_" + Date.now().toString()
+      setProjectImageId(randomId)
+      // uploadProjectImage(randomId, , croppedImage)
+    } catch (e) {
+      console.error(e)
+    }
+  }, [imageSrc, croppedAreaPixels])
+
+  const onFileChange = async e => {
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0]
+      let imageDataUrl = await readFile(file)
+      setImageSrc(imageDataUrl)
+    }
+  }  
 
   return (
     <div className="bg-indigo-600 py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700">
@@ -117,6 +158,59 @@ export default function UpdateProjectBtn({ btnTitle, projectData, handleSubmit }
         aria-labelledby="form-dialog-title"
       >
         <DialogTitle id="form-dialog-title">Project Info</DialogTitle>
+        {updateAvatar ?
+          (imageSrc ?
+            <div className="flex flex-col mb-16 mx-auto">
+              <div className="relative h-96 w-96">
+                <Cropper
+                  image={imageSrc}
+                  crop={crop}
+                  zoom={zoom}
+                  cropSize={{ width: 256, height: 256 }}
+                  // aspectRatio={4 / 3}
+                  showGrid={false}
+                  cropShape="rect"
+                  onCropChange={setCrop}
+                  onCropComplete={onCropComplete}
+                  onZoomChange={setZoom}
+                />
+              </div>
+              <div className="controls">
+                <div className="text-xs text-center py-2 font-light text-gray-900"></div>
+                <Slider
+                  value={zoom}
+                  min={0}
+                  max={2}
+                  step={0.1}
+                  aria-labelledby="Zoom"
+                  onChange={(e, zoom) => setZoom(zoom)}
+                />                
+                <div className="flex justify-evenly">                  
+                  <Button
+                    onClick={showCroppedImage}
+                    variant="contained"
+                    color="primary"
+                  >
+                    Save
+                  </Button>
+                  <Button
+                    onClick={() => setImageSrc(null)}
+                    variant="contained"
+                    color="secondary"
+                  >
+                    Reset
+                </Button>
+                </div>
+              </div>
+            </div>
+            : 
+            <input className="mb-16 ml-6" type="file" onChange={onFileChange} accept="image/*" />
+          )
+        :
+          <button onClick={() => {setUpdateAvatar(true)}} className="shadow mx-auto h-32 w-32 mb-16 border-white overflow-hidden border-4">
+            <img className="object-cover w-full h-full" alt="project-image" src={croppedImage} />
+          </button>
+        }        
         <DialogContent>
           <TextField
             margin="dense"

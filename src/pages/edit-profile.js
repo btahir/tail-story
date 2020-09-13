@@ -4,20 +4,12 @@ import SEO from "../components/SEO";
 import TextField from "@material-ui/core/TextField";
 import { getProfileDetails, updateProfileDetails, uploadProfileImage } from "../utils/firebaseActions";
 import { convertArrayToObject } from "../utils/helpers";
-import { getCroppedImg } from "../utils/canvasUtils";
+import { getCroppedImg, readFile } from "../utils/canvasUtils";
 import { useAuth } from "gatsby-theme-firebase";
 import { navigate } from "gatsby";
 import Slider from '@material-ui/core/Slider';
 import Button from '@material-ui/core/Button';
 import Cropper from 'react-easy-crop';
-
-function readFile(file) {
-  return new Promise(resolve => {
-    const reader = new FileReader()
-    reader.addEventListener('load', () => resolve(reader.result), false)
-    reader.readAsDataURL(file)
-  })
-}
 
 const EditProfile = () => {
   const { profile } = useAuth();

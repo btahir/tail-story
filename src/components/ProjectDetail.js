@@ -24,20 +24,31 @@ const InitialData = {
 const ProjectDetail = ({ projectId }) => {
 	const [projectData, setProjectData] = useState(InitialData);
 	const [isCreator, setIsCreator] = useState(false);
+	const [projectImageId, setProjectImageId] = useState(null);
+	const [projectImageSrc, setProjectImageSrc] = useState(null);
 
 	const { profile } = useAuth();
 
-	useEffect(() => {		
+	useEffect(() => {
 		// fetch project data. use props for id.
 		getProjectDetail(projectId)
-			.then(res => {
+			.then(res => {				
 				if (res !== undefined && Object.keys(res).length) {
 					setProjectData(res)
+					console.log(res.projectImageSrc)
+					setProjectImageSrc(res.projectImageSrc)
 					// find out if its creator or public
+					if (res.projectImageId) {
+						setProjectImageId(res.projectImageId)
+					}		
+					if (res.projectImageSrc) {
+						console.log('res', res.projectImageSrc)
+						setProjectImageSrc(res.projectImageSrc)
+					}										
 					if (profile) {
 						if (res.creatorId === profile.uid) {
 							setIsCreator(true)
-						}
+						}				
 					}
 				}
 			})
@@ -48,7 +59,7 @@ const ProjectDetail = ({ projectId }) => {
 		navigate('/profile')
 	}
 
-	const handleProjectEdit = (title, description, github, demo, projectTagsArray) => {
+	const handleProjectEdit = (title, description, github, demo, projectTagsArray, projectImageId, projectImageSrc) => {
 		const projectTagsObject = convertArrayToObject(projectTagsArray)
 		// update state
 		setProjectData({
@@ -61,7 +72,7 @@ const ProjectDetail = ({ projectId }) => {
 		})
 
 		// update firestore
-		updateProjectDetails(projectData.key, title, description, github, demo, projectTagsObject)
+		updateProjectDetails(projectData.key, title, description, github, demo, projectTagsObject, projectImageId, projectImageSrc)
 	}
 
 	return (
@@ -81,6 +92,9 @@ const ProjectDetail = ({ projectId }) => {
 				}
 				<div className="text-gray-800 font-extrabold leading-loose text-2xl text-center">{projectData.title}</div>
 				<ProjectIcons profileId={projectData.profileId} github={projectData.github} demo={projectData.demo} />
+			</div>
+			<div className="h-64 w-64 mx-auto my-12">
+				<img className="object-cover w-full h-full" src={projectImageSrc} alt="project-img" />
 			</div>
 			<div className="mt-8 text-gray-700 px-2">
 				{projectData.description}
