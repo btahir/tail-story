@@ -24,11 +24,9 @@ function Header() {
               </div>
             </div>
             <div className="hidden md:block md:ml-10 md:pr-4">
-              <Link to="/" className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Product</Link>
-              <Link to="/"className="ml-8 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Features</Link>
-              <Link to="/"className="ml-8 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Marketplace</Link>
-              <Link to="/"className="ml-8 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Company</Link>
-              <Link to="/"className="ml-8 font-medium text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out">Log in</Link>
+              <Link to="/about" className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">About</Link>
+              <Link to="/contact" className="ml-8 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Contact</Link>
+              <Link to="/"className="ml-8 font-medium text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out">Money</Link>
             </div>
           </nav>
         </div>
@@ -49,10 +47,9 @@ function Header() {
                 </div>
               </div>
               <div className="px-2 pt-2 pb-3">
-                <Link to="/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out" role="menuitem">Product</Link>
-                <Link to="/" className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out" role="menuitem">Features</Link>
-                <Link to="/" className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out" role="menuitem">Marketplace</Link>
-                <Link to="/" className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out" role="menuitem">Company</Link>
+                <Link to="/about" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out" role="menuitem">About</Link>
+                <Link to="/contact" className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out" role="menuitem">Contact</Link>
+                <Link to="/" className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out" role="menuitem">Money</Link>
               </div>
               <div>
                 <Link to="/" className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100 hover:text-indigo-700 focus:outline-none focus:bg-gray-100 focus:text-indigo-700 transition duration-150 ease-in-out" role="menuitem">
