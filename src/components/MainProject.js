@@ -2,25 +2,36 @@ import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import TablePagination from '@material-ui/core/TablePagination';
 import { getAllProjects, getSearchedProjects } from "../utils/firebaseActions";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 function Main() {
   const [filteredData, setFilteredData] = useState([]);
   const [page, setPage] = useState(0);
   const [rowStart, setRowStart] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    getAllProjects().then(res => setFilteredData(res))
+    setIsLoading(true)
+    getAllProjects().then(res => {
+      setFilteredData(res)
+      setIsLoading(false)
+    })
   }, [])
 
-  const filterResults = (event) => {
+  const filterResults = (event) => {    
     const searchTerm = event.target.value
     if (event.key === 'Enter') {
+      setIsLoading(true)
       if (searchTerm === '') {
-        getAllProjects().then(res => setFilteredData(res))
+        getAllProjects().then(res => {
+          setFilteredData(res)
+          setIsLoading(false)
+        })
       } else {
         getSearchedProjects(searchTerm).then(res => {
           setFilteredData(res)
+          setIsLoading(false)
         })
       }
     }
@@ -28,7 +39,7 @@ function Main() {
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
-    setRowStart(newPage*10);
+    setRowStart(newPage * 10);
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -49,8 +60,15 @@ function Main() {
           </svg>
         </button>
       </div>
+      {isLoading ?
+        <div className="text-center mt-24">
+          <CircularProgress />
+        </div>
+        :
+        null
+      }
       <div className="mt-16 flex flex-col bg-gray-100">
-        {filteredData.slice(rowStart, rowStart+10).map((el, index) => <Card key={index} item={el} />)}
+        {filteredData.slice(rowStart, rowStart + 10).map((el, index) => <Card key={index} item={el} />)}
       </div>
       <TablePagination
         component="div"
