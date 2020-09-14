@@ -1,96 +1,68 @@
-import { graphql, useStaticQuery, Link } from "gatsby";
 import React, { useState } from "react";
-import { auth, useAuth } from "gatsby-theme-firebase";
+import { Link } from "gatsby";
 
 function Header() {
   const [isExpanded, toggleExpansion] = useState(false);
-  const { isLoggedIn } = useAuth();
-  const { site } = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);  
 
   return (
-    <header>
-      <div className="flex flex-wrap items-center justify-between max-w-4xl p-4 mx-auto md:p-8">
-        <Link to="/">
-          <h1 className="flex items-center no-underline">
-            <svg
-              className="w-8 h-8 fill-current"
-              height="54"
-              viewBox="0 0 2048.0 2048.0"
-              width="54"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g id="document" transform="matrix(1,0,0,1,1024.0,1024.0)">			
-                <path d="M314.335,3.84515 L314.335,-376.053 C314.335,-585.996 144.381,-755.95 -65.563,-755.95 C-275.506,-755.95 -445.461,-585.996 -445.461,-376.053 C-445.461,-166.109 -275.506,3.84513 -65.563,3.84513 L314.335,3.84515 Z M144.216,-339.699 C124.126,-223.768 14.0139,-146.183 -101.917,-166.273 C-217.848,-186.364 -295.433,-296.476 -275.342,-412.406 C-255.252,-528.337 -145.14,-605.922 -29.2091,-585.832 C86.7216,-565.742 164.307,-455.629 144.216,-339.699 Z " fill="#4FD1C5" fillOpacity="1.00" />			
-                <path d="M-62.4869,758.335 C145.919,758.335 314.335,589.919 314.335,381.513 L314.335,-1.46056 L-68.6391,-1.46058 C-277.045,-1.46058 -445.461,166.956 -445.461,375.361 L-445.461,758.335 L-62.4869,758.335 Z " fill="#4FD1C5" fillOpacity="1.00" />		
-              </g>           
-            </svg>
-            <span className="text-xl font-bold tracking-tight">
-              {site.siteMetadata.title}
-            </span>
-          </h1>
-        </Link>
-
-        <button
-          className="flex items-center block px-3 py-2 rounded md:hidden"
-          onClick={() => toggleExpansion(!isExpanded)}
-        >
-          <svg
-            className="w-3 h-3 fill-current"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <title>Menu</title>
-            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-          </svg>
-        </button>        
-
-        <nav
-          className={`${
-            isExpanded ? `block` : `hidden`
-            } md:block md:flex md:items-center w-full md:w-auto`}
-        >
-          {[
-            {
-              route: `/about`,
-              title: `About`,
-            },
-            {
-              route: `/contact`,
-              title: `Contact`,
-            }
-          ].map((link) => (
-            <Link
-              className="block mt-4 no-underline md:inline-block md:mt-0 md:ml-6"
-              key={link.title}
-              to={link.route}
-            >
-              {link.title}
-            </Link>
-          ))}
-          {isLoggedIn ?
-            <button
-              className="block mt-4 no-underline md:inline-block md:mt-0 md:ml-6"
-              onClick={() => auth.signOut()}
-            >
-              Sign Out
-            </button> :
-            <Link
-              className="block mt-4 no-underline md:inline-block md:mt-0 md:ml-6"
-              to="/login"
-            >
-              Login
-            </Link>
-          }
-        </nav>
-      </div>
+    <header>   
+      {!isExpanded ?   
+        <div className="relative pt-6 px-4 sm:px-6 lg:px-8">
+          <nav className="relative flex items-center justify-between sm:h-10">
+            <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
+              <div className="flex items-center justify-between w-full md:w-auto">
+                <Link to="/" aria-label="Home">
+                  <img className="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark-on-white.svg" alt="Logo" />
+                </Link>
+                <div className="-mr-2 flex items-center md:hidden">
+                  <button onClick={() => toggleExpansion(!isExpanded)} type="button" className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out" id="main-menu" aria-label="Main menu" aria-haspopup="true">
+                    <svg className="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="hidden md:block md:ml-10 md:pr-4">
+              <Link to="/" className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Product</Link>
+              <Link to="/"className="ml-8 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Features</Link>
+              <Link to="/"className="ml-8 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Marketplace</Link>
+              <Link to="/"className="ml-8 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Company</Link>
+              <Link to="/"className="ml-8 font-medium text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out">Log in</Link>
+            </div>
+          </nav>
+        </div>
+        :
+        <div className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+          <div className="rounded-lg shadow-md">
+            <div className="rounded-lg bg-white shadow-xs overflow-hidden" role="menu" aria-orientation="vertical" aria-labelledby="main-menu">
+              <div className="px-5 pt-4 flex items-center justify-between">
+                <div>
+                  <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-on-white.svg" alt="" />
+                </div>
+                <div className="-mr-2">
+                  <button onClick={() => toggleExpansion(!isExpanded)} type="button" className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out" aria-label="Close menu">
+                    <svg className="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div className="px-2 pt-2 pb-3">
+                <Link to="/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out" role="menuitem">Product</Link>
+                <Link to="/" className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out" role="menuitem">Features</Link>
+                <Link to="/" className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out" role="menuitem">Marketplace</Link>
+                <Link to="/" className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out" role="menuitem">Company</Link>
+              </div>
+              <div>
+                <Link to="/" className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100 hover:text-indigo-700 focus:outline-none focus:bg-gray-100 focus:text-indigo-700 transition duration-150 ease-in-out" role="menuitem">
+                  Log in
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div> 
+      }     
     </header>
   );
 }
