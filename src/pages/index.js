@@ -21,7 +21,7 @@ function IndexPage() {
             <span className="text-indigo-600">Bullshit Projects</span>
           </h2>
           <p className="mt-3 text-base text-gray-600 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:text-xl">
-            Sit back and enjoy seeing me waste my time and build out bullshit ideas.
+            Sit back and enjoy seeing me build out bullshit ideas
            </p>
           <div className="mt-5 sm:mt-8 sm:flex sm:justify-center">
             <div className="rounded-md shadow">

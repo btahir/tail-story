@@ -3,17 +3,17 @@ import React from "react";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
 
-function AboutPage() {
+function ProjPage() {
   return (
     <Layout>
       <SEO title="About" />
-      <section className="flex flex-col items-center md:flex-row">
-        <div className="md:w-2/3 md:mr-8">
-          
+      <section className="mx-auto mt-16 px-6 pb-12">
+        <div className="text-center">
+          test
         </div>
       </section>
     </Layout>
   );
 }
 
-export default AboutPage;
+export default ProjPage;
