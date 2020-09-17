@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { navigate } from "gatsby";
 import { firestoreTimeStampConvert } from "../utils/helpers";
-import GitHubIcon from '@material-ui/icons/GitHub';
+import LiveTvIcon from '@material-ui/icons/LiveTv';
 import Tag from "./Tag";
 import { getProjectImage } from "../utils/firebaseActions";
 
 function Card({ item }) {
-	const { projectId, title, description, projectTags, createdAt, github, projectImageId } = item;
+	const { projectId, title, description, projectTags, createdAt, demo, projectImageId } = item;
 
 	const [projectImageSrc, setProjectImageSrc] = useState(null);
 
@@ -41,8 +41,8 @@ function Card({ item }) {
 						</div>
 					</div>
 					<div className="flex items-center justify-between px-6 sm:px-0 sm:flex-col sm:justify-center">
-						<a href={github} target="_blank" rel="noreferrer" className="flex my-2">
-							<GitHubIcon />
+						<a href={demo} target="_blank" rel="noreferrer" className="flex my-2">
+							<LiveTvIcon />
 						</a>
 						<div className="text-gray-600">{firestoreTimeStampConvert(createdAt)}</div>
 					</div>

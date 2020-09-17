@@ -96,7 +96,7 @@ export default function UpdateProjectBtn({ btnTitle, projectData, handleSubmit }
         err = true
       }  
     }
-    if (!github.startsWith('https://www.github.com/') && !github.startsWith('https://github.com/')) {
+    if (github.length > 0 && !github.startsWith('https://www.github.com/') && !github.startsWith('https://github.com/')) {
       setIsGithubError(true)
       setGithubError('Invalid URL. Should be something like https://github.com/[USERNAME]')
       err = true
@@ -242,18 +242,6 @@ export default function UpdateProjectBtn({ btnTitle, projectData, handleSubmit }
         <DialogContent>
           <TextField
             margin="dense"
-            label="Github URL"
-            variant="outlined"
-            value={github}
-            error={isGithubError}
-            helperText={githubError}
-            fullWidth
-            onChange={(event) => setGithub(event.target.value)}
-          />    
-        </DialogContent>
-        <DialogContent>
-          <TextField
-            margin="dense"
             label="Project URL"
             variant="outlined"
             value={demo}
@@ -262,7 +250,19 @@ export default function UpdateProjectBtn({ btnTitle, projectData, handleSubmit }
             fullWidth
             onChange={(event) => setDemo(event.target.value)}
           />
-        </DialogContent>  
+        </DialogContent>
+        <DialogContent>
+          <TextField
+            margin="dense"
+            label="Github URL (optional)"
+            variant="outlined"
+            value={github}
+            error={isGithubError}
+            helperText={githubError}
+            fullWidth
+            onChange={(event) => setGithub(event.target.value)}
+          />    
+        </DialogContent>          
         <DialogContent>
           <TextField
             margin="dense"
