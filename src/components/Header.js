@@ -68,6 +68,10 @@ function Header() {
               title: `About`,
             },
             {
+              route: `/community`,
+              title: `Community`,
+            },            
+            {
               route: `/developers`,
               title: `Developers`,
             },
