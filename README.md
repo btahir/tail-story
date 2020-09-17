@@ -1,4 +1,4 @@
-# Gatsby Tailwind + Firebase + Stripe Starter
+# Project Job
 
 Authentication and Payments are 40-60% of the work! I wasted enough time on it to realize I needed a system. This starter combines an authentication flow using Firebase with the Stripe Customer Portal where users can manage their subscriptions.
 
