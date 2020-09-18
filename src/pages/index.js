@@ -16,12 +16,12 @@ function IndexPage() {
 			<main className="mx-auto mt-10 px-6 pb-12 bg-gradient-to-t from-indigo-200">
 				<div className="text-center">
 					<h2 className="text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl">
-						Find great developers through
+						Find top developers
             <br />
-						<span className="text-indigo-600">great projects</span>
+						<span className="text-indigo-600">through projects</span>
 					</h2>
 					<p className="mt-3 text-base text-gray-600 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:text-xl">
-						Discover top rated developers that are a perfect match for your requirements.
+						Hire developers that are a perfect match for your requirements.
           </p>
 					<div className="mt-5 sm:mt-8 sm:flex sm:justify-center">
 						<div className="rounded-md shadow">
@@ -72,8 +72,7 @@ function IndexPage() {
 				<div className="flex flex-wrap max-w-6xl mx-auto md:my-12 lg:my-24">
 					<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
 						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Find the project. Find the developer.</h3>
-						<p className="text-gray-600 mb-8">Search through our project list and find the projects that meet your requirements in terms of content and quality. 
-							You can then connect with the developer you have now vetted.</p>
+						<p className="text-gray-600 mb-8">Discover projects, and ultimately, developers that match your requirements.</p>
 					</div>
 					<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6"  src={howItWorks3} alt="how-it-works-3" />
 				</div>
@@ -104,7 +103,7 @@ function IndexPage() {
 									<div className="ml-4">
 										<h4 className="text-lg leading-6 font-medium text-gray-900">Better matches</h4>
 										<p className="mt-2 text-base leading-6 text-gray-600">
-											Find developers who are well versed in the technology stack you want to use and who have built projects that are close to what you want to build.
+											Find developers who are well versed in the technology stack you want to use and who have built projects that resemble what you want to build.
 										</p>
 									</div>
 								</div>
