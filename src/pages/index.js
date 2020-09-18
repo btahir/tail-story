@@ -21,7 +21,7 @@ function IndexPage() {
 						<span className="text-indigo-600">great projects</span>
 					</h2>
 					<p className="mt-3 text-base text-gray-600 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:text-xl">
-						Hire people based on the work they have actually done rather than irrelevant and outdated credentials
+						Discover top rated developers that are a perfect match for your requirements.
           </p>
 					<div className="mt-5 sm:mt-8 sm:flex sm:justify-center">
 						<div className="rounded-md shadow">
@@ -53,26 +53,27 @@ function IndexPage() {
 			<div className="">
 				<div className="flex flex-wrap max-w-6xl mx-auto md:my-12 lg:my-24">
 					<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
-						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Search for projects</h3>
+						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Hiring is broken</h3>
 						<p className="text-gray-600 mb-8">
-							Rather than trying to find someone with a certain background that can execute on your project, we flip the script. 
-							Find projects that are similar to the work you need done and ultimately the right developer for your project.</p>
+							We keep hearing it. Employers spending months trying to find the right candidate. Developers frustrated at being passed up for roles
+							they would be a great fit for. The current hiring process is just not cut out to fill this gap.</p>
 					</div>
 					<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6" src={howItWorks1} alt="how-it-works-1" />
 				</div>
 				<div className="flex flex-wrap flex-col-reverse sm:flex-row max-w-6xl mx-auto md:my-12 lg:my-24">
 					<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6"  src={howItWorks2} alt="how-it-works-2" />
 					<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
-						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">See if its a good fit</h3>
+						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Project based hiring</h3>
 						<p className="text-gray-600 mb-8">
-							Find out more about the project and its creator. See if you resonate with the work done and if 
-							the technology stack used aligns with your reqirements.</p>
+							We fix this broken process by flipping the script. Rather than trying to find candidates based on outdated and irrelevant credentials, we match
+							you with developers through projects.</p>
 					</div>
 				</div>
 				<div className="flex flex-wrap max-w-6xl mx-auto md:my-12 lg:my-24">
 					<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
-						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Connect with the developer</h3>
-						<p className="text-gray-600 mb-8">If you feel like this could be a good match, you can go ahead and contact the project creator to discuss any opportunities.</p>
+						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Find the project. Find the developer.</h3>
+						<p className="text-gray-600 mb-8">Search through our project list and find the projects that meet your requirements in terms of content and quality. 
+							You can then connect with the developer you have now vetted.</p>
 					</div>
 					<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6"  src={howItWorks3} alt="how-it-works-3" />
 				</div>

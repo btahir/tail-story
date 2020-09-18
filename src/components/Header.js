@@ -96,7 +96,7 @@ function Header() {
                 className="block mt-4 no-underline md:inline-block md:mt-0 md:ml-8 font-medium text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out"
                 onClick={() => auth.signOut()}
               >
-                Sign Out
+                Sign out
               </button>
             </>
             :
