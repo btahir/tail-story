@@ -41,7 +41,6 @@ const EditProfile = () => {
   const [croppedImage, setCroppedImage] = useState(null);
   const [zoom, setZoom] = useState(1);
   const [imageSrc, setImageSrc] = useState(null);
-  const [updateAvatar, setUpdateAvatar] = useState(false);
 
   useEffect(() => {
     if (profile) {
@@ -91,7 +90,6 @@ const EditProfile = () => {
         0
       )
       setCroppedImage(croppedImage)
-      setUpdateAvatar(false)
 
       // update firebase storage
       uploadProfileImage(profileId, croppedImage)

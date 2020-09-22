@@ -32,7 +32,6 @@ export default function UpdateProjectBtn({ btnTitle, projectData, handleSubmit }
   const [projectImageId, setProjectImageId] = useState(null);
   const [zoom, setZoom] = useState(1);
   const [imageSrc, setImageSrc] = useState(null);
-  const [updateAvatar, setUpdateAvatar] = useState(false);  
 
   useEffect(() => {    
     if(projectData) {      
@@ -131,7 +130,6 @@ export default function UpdateProjectBtn({ btnTitle, projectData, handleSubmit }
         0
       )
       setCroppedImage(croppedImage)
-      setUpdateAvatar(false)
 
       // update firebase storage
       const randomId = "img_" + Date.now().toString()
