@@ -8,7 +8,6 @@ import UpdateProjectBtn from "./UpdateProjectBtn";
 import { navigate } from "gatsby";
 import { getProfileDetails, addProject, getUserProjects } from "../utils/firebaseActions";
 import { convertArrayToObject } from "../utils/helpers";
-// import { manageStripeSubscription } from '../utils/stripeActions';
 import { useAuth } from "gatsby-theme-firebase";
 
 function MainProfile() {
@@ -83,10 +82,10 @@ function MainProfile() {
     <>
       {isLoggedIn ?
         <div className="max-w-6xl mx-auto">
-          <div className="flex justify-center">
+          <h1 className="text-lg text-center my-4">This is your Developer Profile. You can update your bio and add your projects here.</h1>
+          <div className="flex justify-center">            
             <button onClick={() => navigate('/edit-profile')} className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">Edit</button>
             <button onClick={() => navigate(`/profile/${profileId}`)} className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">Preview</button>
-            {/* <button onClick={() =>  manageStripeSubscription(profile.uid)} className="bg-indigo-600 text-white py-1 px-2 text-xl font-semibold tracking-wide hover:bg-indigo-700 focus:outline-none m-2">Manage Subscription</button> */}
           </div>
           <div className="bg-white my-12 pb-6 w-full flex flex-col">
             <ProfileAvatar
