@@ -204,8 +204,7 @@ const EditProfile = () => {
     <Layout>
       <SEO title="Edit-Profile" />
       <form onSubmit={handleSubmit} className="flex flex-col mt-16 mx-auto max-w-lg">
-        {updateAvatar ?
-          (imageSrc ?
+        {imageSrc ?
             <div className="flex flex-col mb-16 mx-auto">
               <div className="relative h-64 w-64">
                 <Cropper
@@ -251,11 +250,6 @@ const EditProfile = () => {
             </div>
             : 
             <input className="mb-16" type="file" onChange={onFileChange} accept="image/*" />
-          )
-        :
-          <button onClick={() => {setUpdateAvatar(true)}} className="shadow mx-auto h-32 w-32 mb-16 border-white rounded-full overflow-hidden border-4">
-            <img className="object-cover w-full h-full" alt="profile-avatar" src={croppedImage} />
-          </button>
         }
         <div className="mb-8">
           <TextField

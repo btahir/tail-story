@@ -160,8 +160,7 @@ export default function UpdateProjectBtn({ btnTitle, projectData, handleSubmit }
         aria-labelledby="form-dialog-title"
       >
         <DialogTitle id="form-dialog-title">Project Info</DialogTitle>
-        {updateAvatar ?
-          (imageSrc ?
+        {imageSrc ?
             <div className="flex flex-col mb-16 mx-auto">
               <div className="relative h-64 w-64">
                 <Cropper
@@ -206,12 +205,7 @@ export default function UpdateProjectBtn({ btnTitle, projectData, handleSubmit }
               </div>
             </div>
             : 
-            <input className="mb-16 ml-6" type="file" onChange={onFileChange} accept="image/*" />
-          )
-        :
-          <button onClick={() => {setUpdateAvatar(true)}} className="shadow mx-auto h-32 w-32 mb-16 border-white overflow-hidden border-4">
-            <img className="object-cover w-full h-full" alt="project-image" src={croppedImage} />
-          </button>
+          <input className="mb-16 ml-6" type="file" onChange={onFileChange} accept="image/*" />
         }        
         <DialogContent>
           <TextField
