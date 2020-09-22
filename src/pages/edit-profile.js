@@ -130,11 +130,11 @@ const EditProfile = () => {
       setLinkedInError('This can\'t be blank')
       err = true
     }
-    if (github.length < 1) {
-      setIsGithubError(true)
-      setGithubError('This can\'t be blank')
-      err = true
-    }
+    // if (github.length < 1) {
+    //   setIsGithubError(true)
+    //   setGithubError('This can\'t be blank')
+    //   err = true
+    // }
     if (description.length < 50) {
       setIsDescriptionError(true)
       setDescriptionError('Description needs to be at least 50 characters')
@@ -146,7 +146,7 @@ const EditProfile = () => {
       setLinkedInError('Invalid url. Should be something like https://www.linkedin.com/in/[USERNAME]')
       err = true
     }
-    if (!github.startsWith('https://www.github.com/') && !github.startsWith('https://github.com/')) {
+    if (github.length > 0 && !github.startsWith('https://www.github.com/') && !github.startsWith('https://github.com/')) {
       setIsGithubError(true)
       setGithubError('Invalid url. Should be something like https://github.com/[USERNAME]')
       err = true
@@ -288,7 +288,7 @@ const EditProfile = () => {
           <TextField
             id="github-profile"
             fullWidth
-            label="Github Profile"
+            label="Github Profile (optional)"
             value={github}
             error={isGithubError}
             helperText={githubError}
