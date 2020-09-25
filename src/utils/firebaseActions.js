@@ -29,5 +29,16 @@ export const getStripeSubscription = async (id) => {
     catch(err) {
         return null
     }
+}
 
+export const getDefiData = async () => {
+    let resLst = []
+    await firestore.collection("defi_twitter")
+        .get()
+        .then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+                resLst.push( doc.data() )
+            })
+        })
+    return resLst
 }

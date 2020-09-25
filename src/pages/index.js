@@ -1,55 +1,54 @@
-import React, { useState, useEffect, useContext } from "react";
-
+import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
-import { useAuth } from "gatsby-theme-firebase";
-import { manageStripeSubscription } from '../utils/stripeActions';
-import { getStripeSubscription } from '../utils/firebaseActions';
-import { GlobalDispatchContext } from '../context/GlobalContextProvider';
+import {
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+} from 'recharts';
+import { getDefiData } from '../utils/firebaseActions';
 
 function IndexPage() {
-  const { isLoading, isLoggedIn, profile } = useAuth();
-  const [stripePlan, setStripePlan] = useState(null);
-  const themeDispatch = useContext(GlobalDispatchContext)
+
+  const [defiData, setDefiData] = useState([]);
 
   useEffect(() => {
-    if (profile) {
-      getStripeSubscription(profile.uid)
-        .then(res => {
-          if (res) {
-            setStripePlan(res)
-          }
-          else {
-            setTimeout(
-              function () {
-                getStripeSubscription(profile.uid)
-                  .then(res => setStripePlan(res))
-              }, 2500)
-          }
-        });
-    }
-  }, [profile])
+    getDefiData().then(res => {
+      res.forEach(doc => {
+        doc.interval_ending = getFirestoreDate(doc.interval_ending)
+      })
+      setDefiData(res)
+    })
 
+  }, [])
+
+  const getFirestoreDate = (time) => {
+    return new Date(time.seconds * 1000 + time.nanoseconds / 1000000).toLocaleDateString()
+  }
 
   return (
     <Layout>
-      <SEO
-        keywords={[`gatsby`, `tailwind`, `react`, `tailwindcss`]}
-        title="Home"
-      />
-      <div className="text-center text-2xl font-bold tracking-wide" >{isLoggedIn ? `Welcome ${profile.displayName}` : 'Hello!'}</div>
-      {isLoading ? null :
-        <div className="flex justify-center mt-10 outline-none">
-          {isLoggedIn ?
-            <div className="text-center">
-              <div className="mt-8 mb-16 text-3xl">You are on the <span className="text-teal-400 font-semibold">{stripePlan}</span></div>
-              <button onClick={() => themeDispatch({ type: 'TOGGLE_THEME' })} className="text-xl px-4 py-2 bg-teal-400 rounded text-gray-100 focus:outline-none mr-4">Toggle Theme</button>
-              <button onClick={() => manageStripeSubscription(profile.uid)} className="text-xl px-4 py-2 bg-teal-400 rounded text-gray-100 focus:outline-none">Manage Subscription</button>
-            </div>
-            : <button onClick={() => themeDispatch({ type: 'TOGGLE_THEME' })} className="text-xl px-4 py-2 bg-teal-400 rounded text-gray-100 focus:outline-none mr-4">Toggle Theme</button>
-          }
-        </div>
-      }
+      <SEO title="Home" />
+      <h1 className="text-center my-4 font-bold text-2xl">DeFi Snapshot</h1>
+      <div className="mt-12 flex flex-wrap mx-auto max-w-6xl">
+        {['followers', 'eth_price', 'eth_vol'].map((item, index) => (
+          <LineChart
+            key={index}
+            className="my-4"
+            width={500}
+            height={300}
+            data={defiData}
+            margin={{
+              top: 5, right: 30, left: 60, bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="interval_ending" />
+            <YAxis domain={['dataMin, dataMax']} />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey={item} stroke="#8884d8" activeDot={{ r: 4 }} />
+          </LineChart>
+        ))}
+      </div>
     </Layout>
   );
 }
