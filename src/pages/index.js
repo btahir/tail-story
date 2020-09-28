@@ -28,7 +28,7 @@ function IndexPage() {
     <Layout>
       <SEO title="Home" />
       <h1 className="text-center my-4 font-bold text-2xl">DeFi Snapshot</h1>
-      <div className="mt-12 flex flex-wrap mx-auto max-w-6xl">
+      <div className="mt-12 flex flex-col items-center mx-auto max-w-6xl">
         {['followers', 'eth_price', 'eth_vol'].map((item, index) => (
           <LineChart
             key={index}
@@ -45,7 +45,7 @@ function IndexPage() {
             <YAxis domain={['dataMin, dataMax']} />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey={item} stroke="#8884d8" activeDot={{ r: 4 }} />
+            <Line type="monotone" dot={false} dataKey={item} stroke="#8884d8" activeDot={{ r: 4 }} />
           </LineChart>
         ))}
       </div>
