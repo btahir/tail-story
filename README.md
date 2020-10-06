@@ -8,6 +8,8 @@ Live Demo: https://tail-story.netlify.app/
 
 To start, cd into project directory and run
 
+test
+
 ```
 yarn && yarn dev
 ```
