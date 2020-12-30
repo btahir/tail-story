@@ -17,11 +17,19 @@ function Layout({ children }) {
         {children}
       </main>
 
-      <footer>
-        <nav className="flex justify-between max-w-4xl p-4 mx-auto text-sm md:p-8">
-          
-        </nav>
-      </footer>
+      {/* <footer className="text-center pt-8 pb-6">
+        <div className="font-semibold py-1">
+          Built by {' '}
+          <a
+            href="https://twitter.com/deepwhitman"
+            target="_blank"
+            rel="noreferrer"
+            className="text-indigo-600 font-bold text-lg"
+          >
+            Bilal Tahir
+        </a>
+        </div>
+      </footer> */}
     </div>
   );
 }

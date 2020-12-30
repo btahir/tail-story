@@ -6,7 +6,10 @@ import mainImg from "../images/main-img.svg";
 import howItWorks1 from "../images/how-it-works-1.svg";
 import howItWorks2 from "../images/how-it-works-2.svg";
 import howItWorks3 from "../images/how-it-works-3.svg";
+import HowItWorks from '../components/HowItWorks';
 import { navigate } from "gatsby";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 function IndexPage() {
 
@@ -50,38 +53,42 @@ function IndexPage() {
 				</div>
 			</div>
 
-			<div className="">
-				<div className="flex flex-wrap max-w-6xl mx-auto md:my-12 lg:my-24">
-					<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
-						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Hiring is broken</h3>
-						<p className="text-gray-600 mb-8">
-							We keep hearing it. Employers spending months trying to find the right candidate. Developers frustrated at being passed up for roles
-							they would be a great fit for. The current hiring process is just not cut out to fill this gap.</p>
+			<HowItWorks />
+			<div className="bg-gray-100">
+				<div className="">
+					<div className="flex flex-wrap max-w-6xl mx-auto">
+						<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
+							<h3 className="text-4xl text-gray-800 font-bold leading-none mb-6">Hiring is broken</h3>
+							<p className="text-lg md:text-xl text-gray-600 mb-8">
+								We keep hearing it. Employers spending months trying to find the right candidate. Developers frustrated at being passed up for roles
+								they would be a great fit for. The current hiring process is just not cut out to fill this gap.
+						</p>
+						</div>
+						<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6" src={howItWorks1} alt="how-it-works-1" />
 					</div>
-					<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6" src={howItWorks1} alt="how-it-works-1" />
-				</div>
-				<div className="flex flex-wrap flex-col-reverse sm:flex-row max-w-6xl mx-auto md:my-12 lg:my-24">
-					<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6"  src={howItWorks2} alt="how-it-works-2" />
-					<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
-						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Project based hiring</h3>
-						<p className="text-gray-600 mb-8">
-							We fix this broken process by flipping the script. Rather than trying to find candidates based on outdated and irrelevant credentials, we match
+					<div className="flex flex-wrap flex-col-reverse sm:flex-row max-w-6xl mx-auto md:my-12 lg:my-24">
+						<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6" src={howItWorks2} alt="how-it-works-2" />
+						<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
+							<h3 className="text-4xl text-gray-800 font-bold leading-none mb-6">Project based hiring</h3>
+							<p className="text-lg md:text-xl text-gray-600 mb-8">
+								We fix this broken process by flipping the script. Rather than trying to find candidates based on outdated and irrelevant credentials, we match
 							you with developers through projects.</p>
+						</div>
 					</div>
-				</div>
-				<div className="flex flex-wrap max-w-6xl mx-auto md:my-12 lg:my-24">
-					<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
-						<h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">Find the project. Find the developer.</h3>
-						<p className="text-gray-600 mb-8">Discover projects, and ultimately, developers that match your requirements.</p>
+					<div className="flex flex-wrap max-w-6xl mx-auto md:mt-12 lg:mt-24">
+						<div className="max-w-md mx-auto sm:w-1/2 p-6 self-center">
+							<h3 className="text-4xl text-gray-800 font-bold leading-none mb-6">Find the project. Find the developer.</h3>
+							<p className="text-lg md:text-xl text-gray-600 mb-8">Discover projects, and ultimately, developers that match your requirements.</p>
+						</div>
+						<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6" src={howItWorks3} alt="how-it-works-3" />
 					</div>
-					<img className="w-full sm:w-1/2 sm:h-96 object-contain p-6"  src={howItWorks3} alt="how-it-works-3" />
 				</div>
 			</div>
 
-			<div className="bg-gray-100 py-8">
+			<div className="py-12 lg:py-16">
 				<div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="lg:text-center">
-						<h3 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
+						<h3 className="text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
 							A better way to hire
             </h3>
 						<p className="mt-4 max-w-2xl text-xl leading-7 text-gray-600 lg:mx-auto">
@@ -164,24 +171,23 @@ function IndexPage() {
 				</div>
 			</div>
 
-			<div className="">
-				<div className="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
-					<h2 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
-						Ready to dive in?
+
+			<div className="mx-auto py-12 px-4 lg:py-16 bg-indigo-100">
+				<h2 className="text-3xl text-center leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
+					Ready to dive in?
 						<br />
-						<span className="text-indigo-600">Start exploring projects.</span>
-					</h2>
-					<div className="mt-8 flex lg:flex-shrink-0 lg:mt-0">
-						<div className="inline-flex rounded-md shadow">
-							<button onClick={() => navigate("/projects")} className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
-								Explore Projects
+					<span className="text-indigo-600">Start exploring projects.</span>
+				</h2>
+				<div className="mt-12 text-center">
+					<div className="inline-flex rounded-md shadow">
+						<button onClick={() => navigate("/projects")} className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
+							Explore Projects
 								</button>
-						</div>
-						<div className="ml-3 inline-flex rounded-md shadow">
-							<button onClick={() => navigate("/profile")} className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
-								Build Portfolio								 
+					</div>
+					<div className="ml-3 inline-flex rounded-md shadow">
+						<button onClick={() => navigate("/profile")} className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
+							Build Portfolio
 							</button>
-						</div>
 					</div>
 				</div>
 			</div>

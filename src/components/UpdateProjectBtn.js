@@ -73,9 +73,9 @@ export default function UpdateProjectBtn({ btnTitle, projectData, handleSubmit }
       setTitleError('This can\'t be blank')
       err = true
     }
-    if (description.length < 100) {
+    if (description.length < 40) {
       setIsDescriptionError(true)
-      setDescriptionError('Description needs to be at least 100 characters')
+      setDescriptionError('Description needs to be at least 40 characters')
       err = true
     }
     if (demo.length < 1) {
