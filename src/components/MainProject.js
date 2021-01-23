@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import TablePagination from '@material-ui/core/TablePagination';
-import { getAllProjects, getSearchedProjects } from "../utils/firebaseActions";
+import { getAllProjects } from "../utils/firebaseActions";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 function Main() {
   const [filteredData, setFilteredData] = useState([]);
+  const [originalData, setOriginalData] = useState([]);
   const [page, setPage] = useState(0);
   const [rowStart, setRowStart] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -14,26 +15,26 @@ function Main() {
   useEffect(() => {
     setIsLoading(true)
     getAllProjects().then(res => {
+      setOriginalData(res)
       setFilteredData(res)
       setIsLoading(false)
     })
   }, [])
 
-  const filterResults = (event) => {    
+  const filterResults = (event) => {
     const searchTerm = event.target.value
-    if (event.key === 'Enter') {
-      setIsLoading(true)
-      if (searchTerm === '') {
-        getAllProjects().then(res => {
-          setFilteredData(res)
-          setIsLoading(false)
-        })
-      } else {
-        getSearchedProjects(searchTerm).then(res => {
-          setFilteredData(res)
-          setIsLoading(false)
-        })
-      }
+    if (searchTerm === '') {
+      setFilteredData(originalData)
+    } else {
+      let filteredArray = []
+      filteredArray = originalData.filter((item) => {
+        for (const property in item.projectTags) {
+          if (property.includes(searchTerm)) {
+            return item
+          }
+        }
+      })
+      setFilteredData(filteredArray)
     }
   }
 
@@ -52,7 +53,7 @@ function Main() {
     <div className="max-w-6xl mx-auto">
       <div className="pt-2 relative mx-auto text-gray-600 text-center w-full sm:w-1/2">
         <input className="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none w-full"
-          onKeyDown={(event) => filterResults(event)} type="search" name="search" placeholder="Search" />
+          onChange={(event) => filterResults(event)} type="search" name="search" placeholder="Search" />
         <button type="submit" className="absolute right-0 top-0 mt-5 mr-4 focus:outline-none">
           <svg className="text-gray-600 h-4 w-4 fill-current" viewBox="0 0 56.966 56.966" width="512px" height="512px">
             <path
