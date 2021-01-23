@@ -100,7 +100,7 @@ export default function UpdateProjectBtn({ btnTitle, projectData, handleSubmit }
       setGithubError('Invalid URL. Should be something like https://github.com/[USERNAME]')
       err = true
     }   
-    if (!demo.startsWith('https://') && !github.startsWith('http://')) {
+    if (!demo.startsWith('https://') && !demo.startsWith('http://')) {
       setIsDemoError(true)
       setDemoError('Invalid URL. Should start with https/http')
       err = true
