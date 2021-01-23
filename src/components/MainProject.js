@@ -22,14 +22,14 @@ function Main() {
   }, [])
 
   const filterResults = (event) => {
-    const searchTerm = event.target.value
+    const searchTerm = event.target.value.toLowerCase()
     if (searchTerm === '') {
       setFilteredData(originalData)
     } else {
       let filteredArray = []
       filteredArray = originalData.filter((item) => {
         for (const property in item.projectTags) {
-          if (property.includes(searchTerm)) {
+          if (property.toLowerCase().includes(searchTerm)) {
             return item
           }
         }

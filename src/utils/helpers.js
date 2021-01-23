@@ -11,7 +11,7 @@ export const convertArrayToObject = (tagArray) => {
   let tagObject = {};
   tagArray.forEach(item => {
     if(item !== '') {
-      tagObject[item] = true
+      tagObject[item.toLowerCase()] = true
     }    
   })
   return tagObject
